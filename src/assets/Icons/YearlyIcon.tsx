@@ -1,0 +1,37 @@
+const YearlyIcon = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      width="54"
+      height="54"
+      viewBox="0 0 54 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <rect opacity="0.15" width="54" height="54" rx="10" fill="#ED991A" />
+      <path
+        d="M27 12L12 19.5L27 27L42 19.5L27 12Z"
+        stroke="#ED9A19"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 34.5L27 42L42 34.5"
+        stroke="#ED9A19"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 27L27 34.5L42 27"
+        stroke="#ED9A19"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export default YearlyIcon;
