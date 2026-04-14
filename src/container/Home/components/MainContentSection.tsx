@@ -96,48 +96,39 @@ export default function MainContentSection() {
   };
 
   return (
-    <div
-      id="contact"
-      className="relative h-[700px] bg-black-900 self-stretch md:h-auto"
-    >
-      <div className="h-full w-full rounded-[30px] bg-amber-a400 md:flex md:flex-col-reverse md:items-center md:pb-0 overflow-hidden">
-        {/* image section */}
-        <div>
+    <div id="contact" className="w-full bg-black-900">
+      <div className="rounded-[30px] overflow-hidden flex flex-row md:flex-col min-h-[600px]">
+
+        {/* LEFT — amber panel with chess image */}
+        <div className="relative flex-1 bg-amber-a400_01 flex items-end justify-center overflow-hidden md:h-[280px] sm:h-[220px]">
           <Img
             src="OBJECTS.svg"
-            width={100}
-            height={100}
-            alt="Teaching1one"
-            className="absolute left-0 bottom-0 w-[63%] md:static md:w-[100%] md:mx-auto md:mt-6"
+            width={600}
+            height={500}
+            alt="Chess pieces"
+            className="w-full max-w-[520px] object-contain"
           />
         </div>
 
-        {/* form section */}
-        <div className="absolute bottom-0 right-0 top-0 z-[52] bg-gradient-to-r from-white to-yellow-400 flex h-full w-[62%] flex-col justify-center gap-[24px] px-[48px] py-[48px] md:static md:w-full md:items-center md:px-6 md:py-8 sm:p-5">
-          {/* heading block */}
-          <div className="flex lg:justify-end justify-center">
-            <div className="flex w-full flex-col lg:w-[75%] gap-2">
-              <Heading
-                as="h2"
-                className="sm:text-[22px] md:text-[22px] uppercase lg:text-[32px] font-bold leading-tight !text-black-900_02"
-              >
-                Book Your Free Demo
-              </Heading>
-              <p className="text-black-900 text-[14px] font-medium opacity-80 leading-relaxed">
-                Every chess legend started with a single move. Fill in your details and we&apos;ll
-                get in touch to schedule your free class.
-              </p>
-              <p className="text-[12px] !text-black-900 font-semibold mt-1">
-                ✓ Free first class &nbsp;·&nbsp; ✓ No card required &nbsp;·&nbsp; ✓ Instant confirmation
-              </p>
-            </div>
-          </div>
-
-          {/* form fields */}
-          <form
-            onSubmit={handleSubmit}
-            className="flex w-full lg:w-[75%] lg:self-end flex-col gap-4"
+        {/* RIGHT — form panel */}
+        <div className="flex-1 bg-gradient-to-br from-white to-yellow-300 flex flex-col justify-center px-12 py-12 md:px-8 md:py-10 sm:px-5 sm:py-8">
+          {/* heading */}
+          <Heading
+            as="h2"
+            className="uppercase text-[30px] md:text-[24px] sm:text-[22px] font-bold leading-tight !text-black-900_02 mb-2"
           >
+            Book Your Free Demo
+          </Heading>
+          <p className="text-black-900 text-[14px] font-medium opacity-75 leading-relaxed mb-1">
+            Every chess legend started with a single move. Fill in your details
+            and we&apos;ll get in touch to schedule your free class.
+          </p>
+          <p className="text-[12px] text-black-900 font-bold mb-6">
+            ✓ Free first class &nbsp;·&nbsp; ✓ No card required &nbsp;·&nbsp; ✓ Instant confirmation
+          </p>
+
+          {/* form */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-[420px]">
             <input
               type="text"
               name="name"
@@ -168,32 +159,27 @@ export default function MainContentSection() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-black-900 text-white-a700 rounded-[12px] py-4 font-bold text-[16px] tracking-[0.5px] hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed mt-1"
+              className="w-full bg-black-900 text-white-a700 rounded-[12px] py-4 font-bold text-[16px] hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed mt-1"
             >
               {isSubmitting ? "Submitting…" : "Get My Free Demo Class →"}
             </button>
           </form>
 
-          {/* or divider */}
-          <div className="flex lg:w-[75%] lg:self-end items-center gap-3">
+          {/* or + calendly */}
+          <div className="flex items-center gap-3 mt-5 max-w-[420px]">
             <div className="flex-1 h-px bg-black-900 opacity-20" />
             <span className="text-black-900 text-[12px] opacity-50 font-medium">or</span>
             <div className="flex-1 h-px bg-black-900 opacity-20" />
           </div>
-
-          {/* calendly fallback */}
-          <div className="flex lg:w-[75%] lg:self-end justify-center">
-            <button
-              onClick={handleClick}
-              className="text-black-900_02 font-semibold text-[14px] underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity"
-            >
-              Pick a time slot on Calendly instead →
-            </button>
-          </div>
+          <button
+            onClick={handleClick}
+            className="mt-3 text-black-900_02 font-semibold text-[13px] underline underline-offset-2 opacity-60 hover:opacity-100 transition-opacity text-left max-w-[420px]"
+          >
+            Pick a time slot on Calendly instead →
+          </button>
         </div>
       </div>
 
-      {/* Toast Container - placed outside the form */}
       <ToastContainer
         position="top-center"
         autoClose={5000}
