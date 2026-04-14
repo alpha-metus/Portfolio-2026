@@ -20,6 +20,8 @@ import { useIsDesktop } from "@/hooks/useIsDesktop";
 import { trackJoinClassClick, trackWhatsAppClick } from "@/lib/fbPixel";
 import Icon from "@/components/Icons";
 import WhatsappIcon from "@/assets/Icons/WhatsappIcon";
+import TestimonialsSection from "./components/TestimonialsSection";
+import MidPageCTA from "./components/MidPageCTA";
 
 export default function Home() {
   const isDesktop = useIsDesktop();
@@ -39,6 +41,15 @@ export default function Home() {
   return (
     <div className="w-full bg-black-900 ">
       <CustomCursor />
+      {/* Announcement Bar */}
+      <div className="w-full bg-amber-a400_01 py-2.5 px-4 text-center z-[100] relative">
+        <p className="text-black-900_02 text-[13px] font-semibold tracking-wide">
+          🎯 Limited spots available — Next batch starts soon.{" "}
+          <a href="#contact" onClick={handleJoinClassClick} className="underline underline-offset-2 font-bold hover:opacity-80">
+            Book your free demo now →
+          </a>
+        </p>
+      </div>
       <div
         className="fixed sm:bottom-2 sm:right-2 bottom-4 right-4 z-[99] cursor-pointer"
         onClick={handleWhatsAppClick}
@@ -53,6 +64,12 @@ export default function Home() {
                 <Header />
                 <div className="lg:hidden">
                   <div className="flex flex-col items-center text-center">
+                    {/* Social proof bar */}
+                    <div className="flex items-center gap-2 mb-5 bg-white-a700_0a rounded-full px-4 py-2 border border-amber-400 border-opacity-30">
+                      <span className="text-amber-400 text-[14px]">★★★★★</span>
+                      <span className="text-white-a700 text-[12px] font-semibold">4.9/5</span>
+                      <span className="text-white-a700_bf text-[12px]">· 2,000+ students trained</span>
+                    </div>
                     <div className="w-full flex-col items-center gap-1">
                       <Heading
                         as="h1"
@@ -90,8 +107,7 @@ export default function Home() {
                       as="h3"
                       className="text-[15.42px] font-semibold tracking-[0.23px] mb-8"
                     >
-                      Join our free demo class and discover your winning
-                      strategy.
+                      From beginner to tournament-ready — trained by national &amp; international champions.
                     </Heading>
                     <div className="flex gap-4 flex-wrap justify-center w-full mb-4">
                       <a
@@ -117,6 +133,12 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex flex-col items-start lg:block md:hidden sm:hidden">
+                  {/* Desktop social proof badge */}
+                  <div className="flex items-center gap-2 mb-5 bg-white-a700_0a rounded-full px-4 py-2 border border-amber-400 border-opacity-30 w-fit">
+                    <span className="text-amber-400 text-[15px]">★★★★★</span>
+                    <span className="text-white-a700 text-[13px] font-semibold">4.9/5</span>
+                    <span className="text-white-a700_bf text-[13px]">· 2,000+ students trained worldwide</span>
+                  </div>
                   <div className="flex sm:mt-10 w-[50%] flex-col items-center gap-1 md:w-full">
                     <Heading
                       as="h1"
@@ -154,7 +176,7 @@ export default function Home() {
                     as="h3"
                     className="ml-5 mt-[26px] text-[15.42px] font-semibold tracking-[0.23px] md:ml-0 sm:text-center sm:w-full"
                   >
-                    Join our free demo class and discover your winning strategy.
+                    From beginner to tournament-ready — trained by national &amp; international champions.
                   </Heading>
                   <div className="mx-3.5 mt-[68px] flex flex-col gap-4 self-stretch md:mx-0">
                     <div className="flex gap-[37px] sm:justify-center sm:flex-wrap sm:gap-4">
@@ -369,8 +391,12 @@ export default function Home() {
 
         </div>
       </div>
+      {/* testimonials */}
+      <TestimonialsSection />
       {/* international students section */}
       <InternationalStudentsSection />
+      {/* mid-page CTA */}
+      <MidPageCTA />
       <div className="w-full bg-black-900">
         <div className="sm:px-5 sm:pb-20 sm:pt-4 px-[72px] pb-[151px] max-w-[1440px] m-auto bg-black-900">
           <MainContentSection />

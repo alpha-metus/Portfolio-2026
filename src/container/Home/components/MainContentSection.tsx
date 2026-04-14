@@ -6,6 +6,9 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { trackEvent } from "@/lib/fbPixel";
 
+const inputClass =
+  "w-full rounded-[12px] border border-black-900 border-opacity-30 bg-white-a700 px-4 py-3 text-[14px] text-black-900_02 placeholder-black-900 placeholder-opacity-50 outline-none focus:border-black-900 focus:ring-2 focus:ring-black-900 focus:ring-opacity-20 transition-all";
+
 export default function MainContentSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -110,43 +113,83 @@ export default function MainContentSection() {
         </div>
 
         {/* form section */}
-        <div className="absolute bottom-0 right-0 top-0 z-[52] mt-10 lg:mt-28  bg-gradient-to-r from-white to-yellow-400 flex h-max w-[62%] flex-col  gap-[30px] px-[38px] py-[92px] md:static md:w-full md:items-center md:px-0 md:py-8  lg:py-0 sm:p-5">
+        <div className="absolute bottom-0 right-0 top-0 z-[52] bg-gradient-to-r from-white to-yellow-400 flex h-full w-[62%] flex-col justify-center gap-[24px] px-[48px] py-[48px] md:static md:w-full md:items-center md:px-6 md:py-8 sm:p-5">
+          {/* heading block */}
+          <div className="flex lg:justify-end justify-center">
+            <div className="flex w-full flex-col lg:w-[75%] gap-2">
+              <Heading
+                as="h2"
+                className="sm:text-[22px] md:text-[22px] uppercase lg:text-[32px] font-bold leading-tight !text-black-900_02"
+              >
+                Book Your Free Demo
+              </Heading>
+              <p className="text-black-900 text-[14px] font-medium opacity-80 leading-relaxed">
+                Every chess legend started with a single move. Fill in your details and we&apos;ll
+                get in touch to schedule your free class.
+              </p>
+              <p className="text-[12px] !text-black-900 font-semibold mt-1">
+                ✓ Free first class &nbsp;·&nbsp; ✓ No card required &nbsp;·&nbsp; ✓ Instant confirmation
+              </p>
+            </div>
+          </div>
+
+          {/* form fields */}
           <form
             onSubmit={handleSubmit}
-            className="flex w-full flex-col items-center gap-6"
+            className="flex w-full lg:w-[75%] lg:self-end flex-col gap-4"
           >
-            <div className="flex lg:justify-end justify-center">
-              <div className="flex w-[70%] flex-col items-center lg:w-[45%] lg:mr-20 md:w-[90%]">
-                <Heading
-                  as="h2"
-                  className="sm:text-[25px] md:text-[19.5px] mb-6 uppercase lg:text-[35px] font-semibold leading-[131%] !text-black-900_02"
-                >
-                  Book Your Free Demo
-                </Heading>
-                <div className="text-black-900 leading-[162.5%] w-full text-center lg:text-start font-bold">
-                  Every chess legend started with a single move.
-                </div>
-                <div className="relative mt-[10px] w-[96%] sm:text-center leading-[162.5%] !text-black-900_bf lg:w-full">
-                  At KwinBee, we believe in nurturing potential from day one.
-                  Whether you're chasing titles or just discovering the board,
-                  our expert coaches are here to guide every step. Your journey
-                  begins now — make your first move count.
-                </div>
-                <div className="mt-4 w-full lg:text-start text-center text-[13px] !text-black-900 font-medium">
-                  ✓ Free first class &nbsp;·&nbsp; ✓ No card required &nbsp;·&nbsp; ✓ Instant booking
-                </div>
-              </div>
-            </div>
-            {/* book appointment button */}
-            <div
-              className="w-full lg:w-[65%] flex justify-center lg:justify-end mt-10 cursor-pointer items-center"
-              onClick={handleClick}
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className={inputClass}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className={inputClass}
+            />
+            <input
+              type="tel"
+              name="mobile_no"
+              placeholder="Phone / WhatsApp number"
+              required
+              value={formData.mobile_no}
+              onChange={handleChange}
+              className={inputClass}
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-black-900 text-white-a700 rounded-[12px] py-4 font-bold text-[16px] tracking-[0.5px] hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed mt-1"
             >
-              <button className="min-w-[220px] bg-black-900 text-white-a700 rounded-[32px] border-[2px] border-solid border-black-900 px-[40px] py-4 font-bold text-[18px] tracking-[0.5px] hover:bg-black-900_01 transition-colors">
-                Book Free Demo Class →
-              </button>
-            </div>
+              {isSubmitting ? "Submitting…" : "Get My Free Demo Class →"}
+            </button>
           </form>
+
+          {/* or divider */}
+          <div className="flex lg:w-[75%] lg:self-end items-center gap-3">
+            <div className="flex-1 h-px bg-black-900 opacity-20" />
+            <span className="text-black-900 text-[12px] opacity-50 font-medium">or</span>
+            <div className="flex-1 h-px bg-black-900 opacity-20" />
+          </div>
+
+          {/* calendly fallback */}
+          <div className="flex lg:w-[75%] lg:self-end justify-center">
+            <button
+              onClick={handleClick}
+              className="text-black-900_02 font-semibold text-[14px] underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity"
+            >
+              Pick a time slot on Calendly instead →
+            </button>
+          </div>
         </div>
       </div>
 
