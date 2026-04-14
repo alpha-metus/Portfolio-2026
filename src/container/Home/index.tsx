@@ -65,8 +65,11 @@ export default function Home() {
                 <div className="lg:hidden">
                   <div className="flex flex-col items-center text-center">
                     {/* Social proof bar */}
-                    <div className="flex items-center gap-2 mb-5 bg-white-a700_0a rounded-full px-4 py-2 border border-amber-400 border-opacity-30">
-                      <span className="text-amber-400 text-[14px]">★★★★★</span>
+                    <div
+                      className="flex items-center gap-2 mb-5 rounded-full px-4 py-2"
+                      style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(249,203,0,0.35)" }}
+                    >
+                      <span style={{ color: "#f9cb00", fontSize: "14px" }}>★★★★★</span>
                       <span className="text-white-a700 text-[12px] font-semibold">4.9/5</span>
                       <span className="text-white-a700_bf text-[12px]">· 2,000+ students trained</span>
                     </div>
@@ -127,15 +130,18 @@ export default function Home() {
                         Chat on WhatsApp
                       </Button>
                     </div>
-                    <p className="text-[12px] text-amber-400 font-medium tracking-wide">
+                    <p className="text-[12px] font-medium tracking-wide" style={{ color: "#f9cb00" }}>
                       ✓ Free first class &nbsp;·&nbsp; ✓ No commitment &nbsp;·&nbsp; ✓ Flexible scheduling
                     </p>
                   </div>
                 </div>
                 <div className="flex flex-col items-start lg:block md:hidden sm:hidden">
                   {/* Desktop social proof badge */}
-                  <div className="flex items-center gap-2 mb-5 bg-white-a700_0a rounded-full px-4 py-2 border border-amber-400 border-opacity-30 w-fit">
-                    <span className="text-amber-400 text-[15px]">★★★★★</span>
+                  <div
+                    className="flex items-center gap-2 mb-5 rounded-full px-4 py-2 w-fit"
+                    style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(249,203,0,0.35)" }}
+                  >
+                    <span style={{ color: "#f9cb00", fontSize: "15px" }}>★★★★★</span>
                     <span className="text-white-a700 text-[13px] font-semibold">4.9/5</span>
                     <span className="text-white-a700_bf text-[13px]">· 2,000+ students trained worldwide</span>
                   </div>
@@ -197,7 +203,7 @@ export default function Home() {
                         Chat on WhatsApp
                       </Button>
                     </div>
-                    <p className="text-[13px] text-amber-400 font-medium tracking-wide ml-1">
+                    <p className="text-[13px] font-medium tracking-wide ml-1" style={{ color: "#f9cb00" }}>
                       ✓ Free first class &nbsp;·&nbsp; ✓ No commitment &nbsp;·&nbsp; ✓ Flexible scheduling
                     </p>
                   </div>
