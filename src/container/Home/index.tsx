@@ -20,17 +20,17 @@ import { Heading } from "@/components/Heading";
 
 const featureBullets = [
   {
-    icon: "♘",
+    icon: "♟",
     title: "Free first class",
     desc: "Analyze your current weaknesses with a pro.",
   },
   {
-    icon: "♗",
+    icon: "♟",
     title: "No card required",
     desc: "Zero commitment to start your journey.",
   },
   {
-    icon: "♖",
+    icon: "♟",
     title: "Instant confirmation",
     desc: "Get scheduled within minutes of booking.",
   },
@@ -77,87 +77,53 @@ export default function Home() {
         className="relative overflow-hidden"
         style={{ backgroundColor: "#0d0404" }}
       >
-        {/* Subtle radial amber glow top-left */}
+        {/* === HERO BACKGROUND === */}
+
+        {/* 1. Full-section chessboard — covers entire hero, both sides */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `
+              linear-gradient(45deg, rgba(249,203,0,0.055) 25%, transparent 25%),
+              linear-gradient(-45deg, rgba(249,203,0,0.055) 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, rgba(249,203,0,0.055) 75%),
+              linear-gradient(-45deg, transparent 75%, rgba(249,203,0,0.055) 75%)
+            `,
+            backgroundSize: "72px 72px",
+            backgroundPosition: "0 0, 0 36px, 36px -36px, -36px 0",
+          }}
+        />
+
+        {/* 2. Left vignette — keeps text legible over the chessboard */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 60% at 0% 0%, rgba(249,203,0,0.12) 0%, transparent 70%)",
+              "radial-gradient(ellipse 65% 110% at 20% 50%, rgba(13,4,4,0.9) 0%, rgba(13,4,4,0.55) 55%, rgba(13,4,4,0.1) 100%)",
           }}
         />
 
-        {/* Decorative floating chess pieces */}
-        <div className="absolute top-20 right-1/4 text-[80px] opacity-5 pointer-events-none select-none">♔</div>
-        <div className="absolute top-1/3 right-1/3 text-[120px] opacity-4 pointer-events-none select-none">♕</div>
-        <div className="absolute bottom-1/4 right-20 text-[100px] opacity-5 pointer-events-none select-none">♖</div>
-        <div className="absolute top-1/2 right-2/3 text-[90px] opacity-4 pointer-events-none select-none">♗</div>
-
-        {/* Chess board pattern background */}
+        {/* 3. Amber glow — top-left warm accent */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none md:hidden"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: `
-              linear-gradient(90deg,
-                transparent 0%,
-                transparent calc(50% - 2px),
-                rgba(249,203,0,0.08) calc(50% - 2px),
-                rgba(249,203,0,0.08) calc(50% + 2px),
-                transparent calc(50% + 2px),
-                transparent 100%
-              ),
-              linear-gradient(0deg,
-                transparent 0%,
-                transparent calc(50% - 2px),
-                rgba(249,203,0,0.08) calc(50% - 2px),
-                rgba(249,203,0,0.08) calc(50% + 2px),
-                transparent calc(50% + 2px),
-                transparent 100%
-              ),
-              repeating-linear-gradient(
-                0deg,
-                rgba(249,203,0,0.04) 0px,
-                rgba(249,203,0,0.04) 60px,
-                transparent 60px,
-                transparent 120px
-              ),
-              repeating-linear-gradient(
-                90deg,
-                rgba(249,203,0,0.04) 0px,
-                rgba(249,203,0,0.04) 60px,
-                transparent 60px,
-                transparent 120px
-              )
-            `,
-            backgroundSize: "120px 120px, 120px 120px, 120px 120px, 120px 120px",
-            backgroundPosition: "0 0, 0 0, 0 0, 0 0",
-            opacity: 0.7,
+            background:
+              "radial-gradient(ellipse 55% 55% at 0% 0%, rgba(249,203,0,0.13) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* 4. Giant King silhouette — right side focal point */}
+        <div
+          className="absolute right-[-2%] top-0 bottom-0 flex items-center pointer-events-none select-none md:hidden"
+          style={{
+            fontSize: "clamp(280px, 28vw, 460px)",
+            color: "#f9cb00",
+            opacity: 0.06,
+            lineHeight: 1,
+            userSelect: "none",
           }}
         >
-          {/* Subtle checkered pattern overlay */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              backgroundImage: `
-                linear-gradient(45deg,
-                  rgba(249,203,0,0.02) 25%,
-                  transparent 25%,
-                  transparent 75%,
-                  rgba(249,203,0,0.02) 75%,
-                  rgba(249,203,0,0.02)
-                ),
-                linear-gradient(45deg,
-                  rgba(249,203,0,0.02) 25%,
-                  transparent 25%,
-                  transparent 75%,
-                  rgba(249,203,0,0.02) 75%,
-                  rgba(249,203,0,0.02)
-                )
-              `,
-              backgroundSize: "80px 80px",
-              backgroundPosition: "0 0, 40px 40px",
-            }}
-          />
+          ♔
         </div>
 
         <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-8 pb-20 md:px-5 md:pb-12">
@@ -189,24 +155,19 @@ export default function Home() {
               </div>
 
               {/* Main headline */}
-              <div style={{ position: "relative" }}>
-                <h1
-                  style={{
-                    color: "#ffffff",
-                    fontWeight: 900,
-                    lineHeight: 1.05,
-                    fontSize: "clamp(42px, 5.5vw, 72px)",
-                    margin: 0,
-                  }}
-                >
-                  Master the
-                  <br />
-                  <span style={{ color: "#f9cb00" }}>Strategic</span> Edge.
-                </h1>
-                {/* Decorative chess pieces around headline */}
-                <span style={{ position: "absolute", top: "-10px", left: "-20px", fontSize: "32px", opacity: 0.3 }}>♖</span>
-                <span style={{ position: "absolute", bottom: "-10px", right: "-20px", fontSize: "32px", opacity: 0.3 }}>♗</span>
-              </div>
+              <h1
+                style={{
+                  color: "#ffffff",
+                  fontWeight: 900,
+                  lineHeight: 1.05,
+                  fontSize: "clamp(42px, 5.5vw, 72px)",
+                  margin: 0,
+                }}
+              >
+                Master the
+                <br />
+                <span style={{ color: "#f9cb00" }}>Strategic</span> Edge.
+              </h1>
 
               {/* Subtitle */}
               <p
