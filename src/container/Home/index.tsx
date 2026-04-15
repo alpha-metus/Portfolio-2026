@@ -86,16 +86,79 @@ export default function Home() {
           }}
         />
 
-        {/* Chess board grid pattern background */}
+        {/* Decorative floating chess pieces */}
+        <div className="absolute top-20 right-1/4 text-[80px] opacity-5 pointer-events-none select-none">♔</div>
+        <div className="absolute top-1/3 right-1/3 text-[120px] opacity-4 pointer-events-none select-none">♕</div>
+        <div className="absolute bottom-1/4 right-20 text-[100px] opacity-5 pointer-events-none select-none">♖</div>
+        <div className="absolute top-1/2 right-2/3 text-[90px] opacity-4 pointer-events-none select-none">♗</div>
+
+        {/* Chess board pattern background */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-1/3 pointer-events-none md:hidden"
+          className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none md:hidden"
           style={{
-            backgroundImage:
-              "linear-gradient(45deg, transparent 30%, rgba(249,203,0,0.03) 30%, rgba(249,203,0,0.03) 70%, transparent 70%)",
-            backgroundSize: "60px 60px",
-            opacity: 0.5,
+            backgroundImage: `
+              linear-gradient(90deg,
+                transparent 0%,
+                transparent calc(50% - 2px),
+                rgba(249,203,0,0.08) calc(50% - 2px),
+                rgba(249,203,0,0.08) calc(50% + 2px),
+                transparent calc(50% + 2px),
+                transparent 100%
+              ),
+              linear-gradient(0deg,
+                transparent 0%,
+                transparent calc(50% - 2px),
+                rgba(249,203,0,0.08) calc(50% - 2px),
+                rgba(249,203,0,0.08) calc(50% + 2px),
+                transparent calc(50% + 2px),
+                transparent 100%
+              ),
+              repeating-linear-gradient(
+                0deg,
+                rgba(249,203,0,0.04) 0px,
+                rgba(249,203,0,0.04) 60px,
+                transparent 60px,
+                transparent 120px
+              ),
+              repeating-linear-gradient(
+                90deg,
+                rgba(249,203,0,0.04) 0px,
+                rgba(249,203,0,0.04) 60px,
+                transparent 60px,
+                transparent 120px
+              )
+            `,
+            backgroundSize: "120px 120px, 120px 120px, 120px 120px, 120px 120px",
+            backgroundPosition: "0 0, 0 0, 0 0, 0 0",
+            opacity: 0.7,
           }}
-        />
+        >
+          {/* Subtle checkered pattern overlay */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `
+                linear-gradient(45deg,
+                  rgba(249,203,0,0.02) 25%,
+                  transparent 25%,
+                  transparent 75%,
+                  rgba(249,203,0,0.02) 75%,
+                  rgba(249,203,0,0.02)
+                ),
+                linear-gradient(45deg,
+                  rgba(249,203,0,0.02) 25%,
+                  transparent 25%,
+                  transparent 75%,
+                  rgba(249,203,0,0.02) 75%,
+                  rgba(249,203,0,0.02)
+                )
+              `,
+              backgroundSize: "80px 80px",
+              backgroundPosition: "0 0, 40px 40px",
+            }}
+          />
+        </div>
 
         <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-8 pb-20 md:px-5 md:pb-12">
           <Header />
