@@ -77,54 +77,52 @@ export default function Home() {
         className="relative overflow-hidden"
         style={{ backgroundColor: "#0d0404" }}
       >
-        {/* === HERO BACKGROUND === */}
-
-        {/* 1. Full-section chessboard — covers entire hero, both sides */}
+        {/* ── BACKGROUND LAYER 1: warm dark gradient ── */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
+            background: "linear-gradient(160deg, #1c0c02 0%, #0d0404 45%, #080202 100%)",
+          }}
+        />
+
+        {/* ── BACKGROUND LAYER 2: 3D perspective chessboard floor ── */}
+        <div
+          className="absolute bottom-0 left-0 right-0 pointer-events-none"
+          style={{
+            height: "58%",
+            transform: "perspective(600px) rotateX(62deg)",
+            transformOrigin: "50% 100%",
             backgroundImage: `
-              linear-gradient(45deg, rgba(249,203,0,0.055) 25%, transparent 25%),
-              linear-gradient(-45deg, rgba(249,203,0,0.055) 25%, transparent 25%),
-              linear-gradient(45deg, transparent 75%, rgba(249,203,0,0.055) 75%),
-              linear-gradient(-45deg, transparent 75%, rgba(249,203,0,0.055) 75%)
+              linear-gradient(45deg, rgba(249,203,0,0.09) 25%, transparent 25%),
+              linear-gradient(-45deg, rgba(249,203,0,0.09) 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, rgba(249,203,0,0.09) 75%),
+              linear-gradient(-45deg, transparent 75%, rgba(249,203,0,0.09) 75%)
             `,
-            backgroundSize: "72px 72px",
-            backgroundPosition: "0 0, 0 36px, 36px -36px, -36px 0",
+            backgroundSize: "88px 88px",
+            backgroundPosition: "0 0, 0 44px, 44px -44px, -44px 0",
+            WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)",
+            maskImage: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)",
           }}
         />
 
-        {/* 2. Left vignette — keeps text legible over the chessboard */}
+        {/* ── BACKGROUND LAYER 3: amber spotlight top-left ── */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
-            background:
-              "radial-gradient(ellipse 65% 110% at 20% 50%, rgba(13,4,4,0.9) 0%, rgba(13,4,4,0.55) 55%, rgba(13,4,4,0.1) 100%)",
+            top: "-15%", left: "-5%",
+            width: "55%", height: "80%",
+            background: "radial-gradient(ellipse, rgba(249,203,0,0.14) 0%, transparent 68%)",
           }}
         />
 
-        {/* 3. Amber glow — top-left warm accent */}
+        {/* ── BACKGROUND LAYER 4: centre-bottom fade so floor doesn't clash with form ── */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute bottom-0 left-0 right-0 pointer-events-none"
           style={{
-            background:
-              "radial-gradient(ellipse 55% 55% at 0% 0%, rgba(249,203,0,0.13) 0%, transparent 70%)",
+            height: "40%",
+            background: "linear-gradient(to top, rgba(13,4,4,0.9) 0%, transparent 100%)",
           }}
         />
-
-        {/* 4. Giant King silhouette — right side focal point */}
-        <div
-          className="absolute right-[-2%] top-0 bottom-0 flex items-center pointer-events-none select-none md:hidden"
-          style={{
-            fontSize: "clamp(280px, 28vw, 460px)",
-            color: "#f9cb00",
-            opacity: 0.06,
-            lineHeight: 1,
-            userSelect: "none",
-          }}
-        >
-          ♔
-        </div>
 
         <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-8 pb-20 md:px-5 md:pb-12">
           <Header />
@@ -135,18 +133,15 @@ export default function Home() {
             {/* ── LEFT: hero copy ── */}
             <div className="flex-1 flex flex-col gap-7 md:items-center md:text-center">
 
-              {/* "Limited slots" badge */}
-              <div
-                className="w-fit flex items-center gap-2 rounded-full px-4 py-2"
-                style={{ background: "#1e1e1e", border: "1px solid #333" }}
-              >
-                <span style={{ color: "#f9cb00", fontSize: "8px", lineHeight: 1 }}>●</span>
+              {/* "Limited slots" pill */}
+              <div className="w-fit flex items-center gap-3">
+                <span style={{ display: "block", width: "28px", height: "2px", backgroundColor: "#f9cb00", borderRadius: "2px" }} />
                 <span
                   style={{
-                    color: "#ffffff",
+                    color: "#f9cb00",
                     fontSize: "11px",
                     fontWeight: 700,
-                    letterSpacing: "1.5px",
+                    letterSpacing: "2px",
                     textTransform: "uppercase",
                   }}
                 >
