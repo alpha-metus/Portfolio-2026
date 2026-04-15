@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Heading, Img } from "@/components";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
@@ -62,137 +61,139 @@ export default function MainContentSection() {
     window.location.href = `${process.env.NEXT_PUBLIC_CALENDLY_APPOINTMENT_BOOK_URL}`;
   };
 
-  return (
-    <div id="contact" className="w-full">
-      {/* Outer card — amber background matches site's golden theme */}
-      <div className="rounded-[30px] overflow-hidden bg-amber-a400_01 flex flex-row md:flex-col min-h-[540px]">
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    borderRadius: "10px",
+    border: "none",
+    backgroundColor: "#2a2a2a",
+    padding: "14px 16px",
+    fontSize: "14px",
+    color: "#ffffff",
+    outline: "none",
+  };
 
-        {/* LEFT — chess image sits naturally against amber background */}
-        <div className="flex-1 flex items-end justify-center overflow-hidden md:h-[260px] sm:h-[200px]">
-          <Img
-            src="OBJECTS.svg"
-            width={520}
-            height={440}
-            alt="Chess pieces"
-            className="w-full max-w-[480px] object-contain md:max-w-[340px] sm:max-w-[260px]"
+  const labelStyle: React.CSSProperties = {
+    color: "#9ca3af",
+    fontSize: "11px",
+    fontWeight: 700,
+    letterSpacing: "1.5px",
+    textTransform: "uppercase" as const,
+    marginBottom: "6px",
+    display: "block",
+  };
+
+  return (
+    <div
+      id="contact"
+      style={{
+        background: "#1a1a1a",
+        borderRadius: "20px",
+        padding: "40px",
+        width: "100%",
+      }}
+    >
+      {/* Heading */}
+      <h2
+        style={{
+          color: "#ffffff",
+          fontSize: "28px",
+          fontWeight: 800,
+          lineHeight: 1.2,
+          marginBottom: "8px",
+        }}
+      >
+        Book Your Free Demo
+      </h2>
+      <p style={{ color: "#9ca3af", fontSize: "14px", marginBottom: "28px" }}>
+        Secure your spot for a personalized 30-minute session.
+      </p>
+
+      {/* Form */}
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <div>
+          <label style={labelStyle}>Your Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Magnus Carlsen"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            style={inputStyle}
           />
         </div>
 
-        {/* RIGHT — white card floats over amber */}
-        <div
-          className="m-6 rounded-[20px] flex flex-col justify-center px-10 py-10 md:m-4 md:px-6 md:py-8 sm:px-5 sm:py-6"
-          style={{ background: "#ffffff", minWidth: 0, flex: "0 0 46%" }}
-        >
-          {/* heading */}
-          <Heading
-            as="h2"
-            className="uppercase text-[28px] md:text-[22px] sm:text-[20px] font-bold leading-tight !text-black-900_02 mb-2"
-          >
-            Book Your Free Demo
-          </Heading>
-
-          <p className="text-[14px] font-medium leading-relaxed mb-1" style={{ color: "#333" }}>
-            Every chess legend started with a single move. Fill in your details
-            and we&apos;ll contact you to schedule your free class.
-          </p>
-
-          <p className="text-[12px] font-bold mb-6" style={{ color: "#000" }}>
-            ✓ Free first class &nbsp;·&nbsp; ✓ No card required &nbsp;·&nbsp; ✓ Instant confirmation
-          </p>
-
-          {/* form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                border: "1.5px solid #d1d5db",
-                backgroundColor: "#f9fafb",
-                padding: "12px 16px",
-                fontSize: "14px",
-                color: "#111",
-                outline: "none",
-              }}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email address"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                border: "1.5px solid #d1d5db",
-                backgroundColor: "#f9fafb",
-                padding: "12px 16px",
-                fontSize: "14px",
-                color: "#111",
-                outline: "none",
-              }}
-            />
-            <input
-              type="tel"
-              name="mobile_no"
-              placeholder="Phone / WhatsApp number"
-              required
-              value={formData.mobile_no}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                border: "1.5px solid #d1d5db",
-                backgroundColor: "#f9fafb",
-                padding: "12px 16px",
-                fontSize: "14px",
-                color: "#111",
-                outline: "none",
-              }}
-            />
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              style={{
-                width: "100%",
-                backgroundColor: "#000",
-                color: "#fff",
-                borderRadius: "10px",
-                padding: "14px 20px",
-                fontWeight: 700,
-                fontSize: "15px",
-                marginTop: "4px",
-                cursor: isSubmitting ? "not-allowed" : "pointer",
-                opacity: isSubmitting ? 0.6 : 1,
-                border: "none",
-                transition: "opacity 0.2s",
-              }}
-            >
-              {isSubmitting ? "Submitting…" : "Get My Free Demo Class →"}
-            </button>
-          </form>
-
-          {/* or divider */}
-          <div className="flex items-center gap-3 mt-5">
-            <div className="flex-1 h-px" style={{ backgroundColor: "#d1d5db" }} />
-            <span className="text-[12px]" style={{ color: "#9ca3af" }}>or</span>
-            <div className="flex-1 h-px" style={{ backgroundColor: "#d1d5db" }} />
-          </div>
-
-          <button
-            onClick={handleCalendly}
-            className="mt-3 text-left text-[13px] font-semibold underline underline-offset-2"
-            style={{ color: "#555", background: "none", border: "none", cursor: "pointer" }}
-          >
-            Pick a time slot on Calendly instead →
-          </button>
+        <div>
+          <label style={labelStyle}>Email Address</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="magnus@chessbase.com"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            style={inputStyle}
+          />
         </div>
+
+        <div>
+          <label style={labelStyle}>Phone / WhatsApp Number</label>
+          <input
+            type="tel"
+            name="mobile_no"
+            placeholder="+1 (555) 000-0000"
+            required
+            value={formData.mobile_no}
+            onChange={handleChange}
+            style={inputStyle}
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          style={{
+            width: "100%",
+            backgroundColor: "#f9cb00",
+            color: "#000000",
+            borderRadius: "50px",
+            padding: "16px 24px",
+            fontWeight: 800,
+            fontSize: "16px",
+            marginTop: "8px",
+            cursor: isSubmitting ? "not-allowed" : "pointer",
+            opacity: isSubmitting ? 0.7 : 1,
+            border: "none",
+            transition: "opacity 0.2s",
+          }}
+          onMouseEnter={e => { if (!isSubmitting) e.currentTarget.style.opacity = "0.88"; }}
+          onMouseLeave={e => { if (!isSubmitting) e.currentTarget.style.opacity = "1"; }}
+        >
+          {isSubmitting ? "Submitting…" : "Get My Free Demo Class →"}
+        </button>
+      </form>
+
+      {/* Privacy note */}
+      <p style={{ color: "#6b7280", fontSize: "12px", textAlign: "center", marginTop: "16px", lineHeight: 1.6 }}>
+        By clicking you agree to our Terms of Service. We respect your privacy and never spam.
+      </p>
+
+      {/* Calendly fallback */}
+      <div style={{ textAlign: "center", marginTop: "12px" }}>
+        <button
+          onClick={handleCalendly}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#9ca3af",
+            fontSize: "13px",
+            cursor: "pointer",
+            textDecoration: "underline",
+            textUnderlineOffset: "3px",
+          }}
+        >
+          Prefer to pick a time? Book on Calendly →
+        </button>
       </div>
 
       <ToastContainer
