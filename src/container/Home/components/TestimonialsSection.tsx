@@ -26,7 +26,11 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-black-900 py-20 px-5 md:py-12">
+    <section className="bg-black-900 py-20 px-5 md:py-12 relative">
+      {/* Decorative chess pieces - top corners */}
+      <div className="absolute top-10 left-5 text-[40px] opacity-20 pointer-events-none">♕</div>
+      <div className="absolute top-10 right-5 text-[40px] opacity-20 pointer-events-none">♔</div>
+
       <div className="max-w-[1200px] mx-auto">
 
         {/* heading */}
@@ -35,7 +39,7 @@ export default function TestimonialsSection() {
             className="font-semibold text-center"
             style={{ color: "#ffffff", fontSize: "clamp(30px, 4vw, 48px)" }}
           >
-            What Parents &amp; Students Say
+            ♞ What Parents &amp; Students Say ♞
           </h2>
           <p style={{ color: "#ffffffbf", fontSize: "16px", maxWidth: "520px" }}>
             Don&apos;t take our word for it — hear from the families we&apos;ve coached
@@ -49,8 +53,13 @@ export default function TestimonialsSection() {
         </div>
 
         {/* cards */}
-        <div className="grid grid-cols-3 gap-6 md:grid-cols-1">
-          {testimonials.map((t, i) => (
+        <div className="grid grid-cols-3 gap-6 md:grid-cols-1 relative">
+          {/* Decorative chess piece between cards */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[60px] opacity-10 pointer-events-none hidden lg:hidden xl:block">♟</div>
+
+          {testimonials.map((t, i) => {
+            const chessPieces = ["♘", "♗", "♕"];
+            return (
             <div
               key={i}
               style={{
@@ -61,8 +70,13 @@ export default function TestimonialsSection() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",
+                position: "relative",
               }}
             >
+              {/* Small chess piece icon top-right corner */}
+              <div style={{ position: "absolute", top: "12px", right: "16px", fontSize: "18px", opacity: 0.4 }}>
+                {chessPieces[i % chessPieces.length]}
+              </div>
               {/* stars */}
               <div style={{ color: "#f9cb00", fontSize: "18px", letterSpacing: "2px" }}>
                 ★★★★★
@@ -105,7 +119,8 @@ export default function TestimonialsSection() {
                 </div>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       </div>
     </section>

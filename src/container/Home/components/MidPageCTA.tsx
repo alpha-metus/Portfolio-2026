@@ -6,9 +6,13 @@ export default function MidPageCTA() {
   return (
     <section
       style={{ backgroundColor: "#0d0404" }}
-      className="w-full py-24 px-5 md:py-16 sm:py-12"
+      className="w-full py-24 px-5 md:py-16 sm:py-12 relative"
     >
-      <div className="max-w-[780px] mx-auto flex flex-col items-center text-center gap-6">
+      {/* Decorative chess pieces */}
+      <div className="absolute top-8 left-12 text-[48px] opacity-15 pointer-events-none md:hidden">♞</div>
+      <div className="absolute bottom-8 right-12 text-[48px] opacity-15 pointer-events-none md:hidden">♞</div>
+
+      <div className="max-w-[780px] mx-auto flex flex-col items-center text-center gap-6 relative z-10">
 
         {/* Headline — white + amber split */}
         <h2

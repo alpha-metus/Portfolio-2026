@@ -20,17 +20,17 @@ import { Heading } from "@/components/Heading";
 
 const featureBullets = [
   {
-    icon: "✓",
+    icon: "♘",
     title: "Free first class",
     desc: "Analyze your current weaknesses with a pro.",
   },
   {
-    icon: "✕",
+    icon: "♗",
     title: "No card required",
     desc: "Zero commitment to start your journey.",
   },
   {
-    icon: "⚡",
+    icon: "♖",
     title: "Instant confirmation",
     desc: "Get scheduled within minutes of booking.",
   },
@@ -86,15 +86,14 @@ export default function Home() {
           }}
         />
 
-        {/* Chess piece faded right-side decoration */}
+        {/* Chess board grid pattern background */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-[320px] pointer-events-none md:hidden"
+          className="absolute right-0 top-0 bottom-0 w-1/3 pointer-events-none md:hidden"
           style={{
-            backgroundImage: "url(/images/img_chess_winner_1.png)",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "right center",
-            opacity: 0.12,
+            backgroundImage:
+              "linear-gradient(45deg, transparent 30%, rgba(249,203,0,0.03) 30%, rgba(249,203,0,0.03) 70%, transparent 70%)",
+            backgroundSize: "60px 60px",
+            opacity: 0.5,
           }}
         />
 
@@ -127,19 +126,24 @@ export default function Home() {
               </div>
 
               {/* Main headline */}
-              <h1
-                style={{
-                  color: "#ffffff",
-                  fontWeight: 900,
-                  lineHeight: 1.05,
-                  fontSize: "clamp(42px, 5.5vw, 72px)",
-                  margin: 0,
-                }}
-              >
-                Master the
-                <br />
-                <span style={{ color: "#f9cb00" }}>Strategic</span> Edge.
-              </h1>
+              <div style={{ position: "relative" }}>
+                <h1
+                  style={{
+                    color: "#ffffff",
+                    fontWeight: 900,
+                    lineHeight: 1.05,
+                    fontSize: "clamp(42px, 5.5vw, 72px)",
+                    margin: 0,
+                  }}
+                >
+                  Master the
+                  <br />
+                  <span style={{ color: "#f9cb00" }}>Strategic</span> Edge.
+                </h1>
+                {/* Decorative chess pieces around headline */}
+                <span style={{ position: "absolute", top: "-10px", left: "-20px", fontSize: "32px", opacity: 0.3 }}>♖</span>
+                <span style={{ position: "absolute", bottom: "-10px", right: "-20px", fontSize: "32px", opacity: 0.3 }}>♗</span>
+              </div>
 
               {/* Subtitle */}
               <p

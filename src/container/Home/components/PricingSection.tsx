@@ -11,13 +11,17 @@ export default function PricingSection() {
       id="pricing"
       className="relative h-auto sm:pb-[40px] bg-[radial-gradient(ellipse_at_center,rgba(250,204,0,0.8)_0%,rgba(150,120,0,0.6)_30%,rgba(80,50,0,0.4)_55%,rgba(13,4,4,1)_80%)] py-12"
     >
-      <div className="w-full mx-auto flex flex-col items-center bg-blue_gray-700_7f rounded-[50px] py-7">
+      {/* Chess piece decorations */}
+      <div className="absolute top-8 left-8 text-[40px] opacity-30 pointer-events-none">♕</div>
+      <div className="absolute top-8 right-8 text-[40px] opacity-30 pointer-events-none">♕</div>
+
+      <div className="w-full mx-auto flex flex-col items-center bg-blue_gray-700_7f rounded-[50px] py-7 relative z-10">
         <Heading
           size="h2"
           as="h2"
           className="!font-quicksand text-[48px] font-bold tracking-[-0.48px] md:text-[44px] sm:text-[38px]"
         >
-          Simple, Flexible Plans
+          ♔ Simple, Flexible Plans ♔
         </Heading>
         <Heading
           size="body_test"
