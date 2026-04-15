@@ -77,50 +77,72 @@ export default function Home() {
         className="relative overflow-hidden"
         style={{ backgroundColor: "#0d0404" }}
       >
-        {/* ── BACKGROUND LAYER 1: warm dark gradient ── */}
+        {/* ── BASE: warm dark gradient ── */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "linear-gradient(160deg, #1c0c02 0%, #0d0404 45%, #080202 100%)",
-          }}
+          style={{ background: "linear-gradient(160deg, #1c0c02 0%, #0d0404 50%, #080202 100%)" }}
         />
 
-        {/* ── BACKGROUND LAYER 2: 3D perspective chessboard floor ── */}
+        {/* ── 3D CHESS FLOOR — perspective board receding into the horizon ── */}
+        {/* Outer wrapper: apply the perspective+tilt */}
+        <div
+          className="absolute bottom-0 left-[-10%] right-[-10%] pointer-events-none"
+          style={{
+            height: "62%",
+            transform: "perspective(700px) rotateX(58deg)",
+            transformOrigin: "50% 100%",
+          }}
+        >
+          {/* Inner: the actual chessboard squares */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `
+                linear-gradient(45deg, rgba(249,203,0,0.22) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(249,203,0,0.22) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(249,203,0,0.22) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(249,203,0,0.22) 75%)
+              `,
+              backgroundSize: "90px 90px",
+              backgroundPosition: "0 0, 0 45px, 45px -45px, -45px 0",
+              /* fade from fully visible at bottom to invisible at top */
+              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,1) 100%)",
+              maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,1) 100%)",
+            }}
+          />
+          {/* Subtle grid lines on top of squares for crispness */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `
+                linear-gradient(rgba(249,203,0,0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(249,203,0,0.12) 1px, transparent 1px)
+              `,
+              backgroundSize: "90px 90px",
+              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.9) 100%)",
+              maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.9) 100%)",
+            }}
+          />
+        </div>
+
+        {/* ── Fade the bottom edge of the floor so it blends with content ── */}
         <div
           className="absolute bottom-0 left-0 right-0 pointer-events-none"
           style={{
-            height: "58%",
-            transform: "perspective(600px) rotateX(62deg)",
-            transformOrigin: "50% 100%",
-            backgroundImage: `
-              linear-gradient(45deg, rgba(249,203,0,0.09) 25%, transparent 25%),
-              linear-gradient(-45deg, rgba(249,203,0,0.09) 25%, transparent 25%),
-              linear-gradient(45deg, transparent 75%, rgba(249,203,0,0.09) 75%),
-              linear-gradient(-45deg, transparent 75%, rgba(249,203,0,0.09) 75%)
-            `,
-            backgroundSize: "88px 88px",
-            backgroundPosition: "0 0, 0 44px, 44px -44px, -44px 0",
-            WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)",
-            maskImage: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)",
+            height: "28%",
+            background: "linear-gradient(to top, #0d0404 0%, transparent 100%)",
           }}
         />
 
-        {/* ── BACKGROUND LAYER 3: amber spotlight top-left ── */}
+        {/* ── Amber spotlight — top-left warm accent ── */}
         <div
           className="absolute pointer-events-none"
           style={{
-            top: "-15%", left: "-5%",
-            width: "55%", height: "80%",
-            background: "radial-gradient(ellipse, rgba(249,203,0,0.14) 0%, transparent 68%)",
-          }}
-        />
-
-        {/* ── BACKGROUND LAYER 4: centre-bottom fade so floor doesn't clash with form ── */}
-        <div
-          className="absolute bottom-0 left-0 right-0 pointer-events-none"
-          style={{
-            height: "40%",
-            background: "linear-gradient(to top, rgba(13,4,4,0.9) 0%, transparent 100%)",
+            top: "-20%", left: "-8%",
+            width: "60%", height: "90%",
+            background: "radial-gradient(ellipse, rgba(249,203,0,0.16) 0%, transparent 65%)",
           }}
         />
 
