@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { trackEvent } from "@/lib/fbPixel";
 
@@ -29,26 +28,35 @@ export default function MainContentSection() {
       return;
     }
 
-    const formDataToSend = new URLSearchParams();
-    formDataToSend.append("Name", formData.name);
-    formDataToSend.append("Email", formData.email);
-    formDataToSend.append("Mobile_No", formData.mobile_no);
-    formDataToSend.append("Timestamp", new Date().toISOString());
+    const body = new URLSearchParams();
+    body.append("Name", formData.name);
+    body.append("Email", formData.email);
+    body.append("Mobile_No", formData.mobile_no);
+    body.append("Timestamp", new Date().toISOString());
 
     try {
-      const response = await axios.post(url, formDataToSend.toString(), {
+      // Use no-cors fetch — bypasses the CORS preflight that blocks axios.
+      // The Apps Script still runs (saves to sheet + sends email); we just
+      // can't read the opaque response, so we assume success on completion.
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
       });
+
       setIsSubmitting(false);
-      if (response.data.includes("Data Submitted Successfully..")) {
-        toast.success("Your information has been added!", { position: "top-center", autoClose: 5000 });
-        setFormData({ name: "", email: "", mobile_no: "" });
-      } else {
-        toast.error("Failed to add your information. Please try again.", { position: "top-center", autoClose: 5000 });
-      }
+      toast.success("🎉 Done! Check your email — we'll be in touch within 24 hrs.", {
+        position: "top-center",
+        autoClose: 6000,
+      });
+      setFormData({ name: "", email: "", mobile_no: "" });
     } catch (error) {
       setIsSubmitting(false);
-      toast.error(`An error occurred: ${error instanceof Error ? error.message : "Unknown error"}`, { position: "top-center", autoClose: 5000 });
+      toast.error("Something went wrong. Please try again or WhatsApp us.", {
+        position: "top-center",
+        autoClose: 5000,
+      });
     }
   };
 
