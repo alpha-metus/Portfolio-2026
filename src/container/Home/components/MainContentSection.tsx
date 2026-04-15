@@ -28,21 +28,18 @@ export default function MainContentSection() {
       return;
     }
 
-    const body = new URLSearchParams();
-    body.append("Name", formData.name);
-    body.append("Email", formData.email);
-    body.append("Mobile_No", formData.mobile_no);
-    body.append("Timestamp", new Date().toISOString());
+    // GET + URL params avoids the CORS redirect issue that blocks POST to Apps Script
+    const params = new URLSearchParams({
+      Name: formData.name,
+      Email: formData.email,
+      Mobile_No: formData.mobile_no,
+      Timestamp: new Date().toISOString(),
+    });
 
     try {
-      // Use no-cors fetch — bypasses the CORS preflight that blocks axios.
-      // The Apps Script still runs (saves to sheet + sends email); we just
-      // can't read the opaque response, so we assume success on completion.
-      await fetch(url, {
-        method: "POST",
+      await fetch(`${url}?${params.toString()}`, {
+        method: "GET",
         mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
       });
 
       setIsSubmitting(false);
