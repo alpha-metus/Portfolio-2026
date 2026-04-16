@@ -57,16 +57,7 @@ export default function MainContentSection() {
     }
   };
 
-  const handleCalendly = () => {
-    trackEvent("Demo_Booking_Event", {
-      content_name: "Free Demo Enrollment",
-      source: "enrollment_section",
-      method: "calendly",
-    });
-    window.location.href = `${process.env.NEXT_PUBLIC_CALENDLY_APPOINTMENT_BOOK_URL}`;
-  };
-
-  const inputStyle: React.CSSProperties = {
+const inputStyle: React.CSSProperties = {
     width: "100%",
     borderRadius: "10px",
     border: "none",
@@ -183,23 +174,6 @@ export default function MainContentSection() {
         By clicking you agree to our Terms of Service. We respect your privacy and never spam.
       </p>
 
-      {/* Calendly fallback */}
-      <div style={{ textAlign: "center", marginTop: "12px" }}>
-        <button
-          onClick={handleCalendly}
-          style={{
-            background: "none",
-            border: "none",
-            color: "#9ca3af",
-            fontSize: "13px",
-            cursor: "pointer",
-            textDecoration: "underline",
-            textUnderlineOffset: "3px",
-          }}
-        >
-          Prefer to pick a time? Book on Calendly →
-        </button>
-      </div>
 
       <ToastContainer
         position="top-right"
