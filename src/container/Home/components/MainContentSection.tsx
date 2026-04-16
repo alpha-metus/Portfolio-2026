@@ -202,7 +202,7 @@ export default function MainContentSection() {
       </div>
 
       <ToastContainer
-        position="top-center"
+        position="top-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop
@@ -212,6 +212,7 @@ export default function MainContentSection() {
         draggable
         pauseOnHover
         theme="dark"
+        style={{ top: "80px", zIndex: 9999 }}
       />
     </div>
   );
