@@ -85,6 +85,7 @@ const inputStyle: React.CSSProperties = {
         borderRadius: "20px",
         padding: "40px",
         width: "100%",
+        scrollMarginTop: "80px",
       }}
     >
       {/* Heading */}

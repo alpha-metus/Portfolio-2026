@@ -3,7 +3,7 @@ import { celebrities } from "./config";
 
 export default function CelebrityStudents() {
   return (
-    <section id="about" className="pb-16 px-4 bg-black-900 text-white">
+    <section id="about" className="pb-16 px-4 bg-black-900 text-white scroll-mt-20">
       <h2 className="text-3xl md:text-[47px] leading-normal sm:leading-none  lg:text-[55px] lg:mb-20 font-bold text-white-a700 text-center mb-12">
         Our Celebrity Students
       </h2>

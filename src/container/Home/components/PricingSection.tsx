@@ -12,7 +12,7 @@ export default function PricingSection() {
   return (
     <div
       id="pricing"
-      className="relative h-auto sm:pb-[40px] bg-[radial-gradient(ellipse_at_center,rgba(250,204,0,0.8)_0%,rgba(150,120,0,0.6)_30%,rgba(80,50,0,0.4)_55%,rgba(13,4,4,1)_80%)] py-12"
+      className="relative h-auto sm:pb-[40px] bg-[radial-gradient(ellipse_at_center,rgba(250,204,0,0.8)_0%,rgba(150,120,0,0.6)_30%,rgba(80,50,0,0.4)_55%,rgba(13,4,4,1)_80%)] py-12 scroll-mt-20"
     >
       {/* Chess piece decorations */}
       <div className="absolute top-8 left-8 text-[40px] opacity-30 pointer-events-none">♕</div>

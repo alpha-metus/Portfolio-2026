@@ -5,7 +5,7 @@ import { marketingSectionData } from "../config";
 
 export default function ServicesOverviewSection() {
   return (
-    <section id="features">
+    <section id="features" className="scroll-mt-20">
       <div className="w-full mt-12 lg:mt-0 ">
         <div className="px-12 md:px-6 sm:px-4 flex flex-row md:flex-col justify-between w-full gap-12 md:gap-8">
           {/* text section  */}
