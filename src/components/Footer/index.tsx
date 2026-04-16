@@ -53,19 +53,6 @@ export default function Footer({ ...props }: Props) {
               color="white_A700_33"
               variant="fill"
               shape="circle"
-              className="w-[52px] rounded-[26px] px-2"
-              onClick={() => handleSocialClick("Twitter", "https://x.com/kwinbee")}
-            >
-              <Img
-                src="img_akar_icons_twitter_fill.svg"
-                width={36}
-                height={16}
-              />
-            </Button>
-            <Button
-              color="white_A700_33"
-              variant="fill"
-              shape="circle"
               className="w-[52px] rounded-[26px] px-4"
               onClick={() =>
                 handleSocialClick(

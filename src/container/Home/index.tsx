@@ -40,9 +40,7 @@ const featureBullets = [
 
 export default function Home() {
   const handleWhatsAppClick = () => {
-    const phone = process.env.NEXT_PUBLIC_PHONE_NUMBER;
-    if (!phone) return;
-    window.open(`https://wa.me/${phone}`, "_blank", "noopener,noreferrer");
+    window.open("https://wa.link/pbywtu", "_blank", "noopener,noreferrer");
     trackWhatsAppClick();
   };
 
