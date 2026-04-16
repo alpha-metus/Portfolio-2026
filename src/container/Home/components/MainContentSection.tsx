@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { trackEvent } from "@/lib/fbPixel";
 
 export default function MainContentSection() {
@@ -107,12 +106,14 @@ const inputStyle: React.CSSProperties = {
       {/* Form */}
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         <div>
-          <label style={labelStyle}>Your Name</label>
+          <label htmlFor="enroll-name" style={labelStyle}>Your Name</label>
           <input
+            id="enroll-name"
             type="text"
             name="name"
             placeholder="Magnus Carlsen"
             required
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             style={inputStyle}
@@ -120,12 +121,14 @@ const inputStyle: React.CSSProperties = {
         </div>
 
         <div>
-          <label style={labelStyle}>Email Address</label>
+          <label htmlFor="enroll-email" style={labelStyle}>Email Address</label>
           <input
+            id="enroll-email"
             type="email"
             name="email"
             placeholder="magnus@chessbase.com"
             required
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             style={inputStyle}
@@ -133,12 +136,16 @@ const inputStyle: React.CSSProperties = {
         </div>
 
         <div>
-          <label style={labelStyle}>Phone / WhatsApp Number</label>
+          <label htmlFor="enroll-phone" style={labelStyle}>Phone / WhatsApp Number</label>
           <input
+            id="enroll-phone"
             type="tel"
             name="mobile_no"
             placeholder="+1 (555) 000-0000"
             required
+            autoComplete="tel"
+            pattern="[+\d\s\-()]+"
+            title="Please enter a valid phone number"
             value={formData.mobile_no}
             onChange={handleChange}
             style={inputStyle}
@@ -175,19 +182,6 @@ const inputStyle: React.CSSProperties = {
       </p>
 
 
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        style={{ top: "80px", zIndex: 9999 }}
-      />
     </div>
   );
 }

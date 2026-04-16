@@ -54,7 +54,7 @@ export default function Footer({ ...props }: Props) {
               variant="fill"
               shape="circle"
               className="w-[52px] rounded-[26px] px-2"
-              onClick={() => handleSocialClick("Twitter", "#")}
+              onClick={() => handleSocialClick("Twitter", "https://x.com/kwinbee")}
             >
               <Img
                 src="img_akar_icons_twitter_fill.svg"
@@ -87,7 +87,7 @@ export default function Footer({ ...props }: Props) {
                 src="callicon.png"
                 width={24}
                 height={24}
-                alt="Linkedin"
+                alt="Phone"
                 className="h-[24px] object-cover"
               />
               <Text
@@ -102,7 +102,7 @@ export default function Footer({ ...props }: Props) {
                 src="callicon.png"
                 width={24}
                 height={24}
-                alt="Linkedin"
+                alt="Phone"
                 className="h-[24px] object-cover"
               />
               <Text
@@ -117,7 +117,7 @@ export default function Footer({ ...props }: Props) {
                 src="callicon.png"
                 width={24}
                 height={24}
-                alt="Linkedin"
+                alt="Phone"
                 className="h-[24px] object-cover"
               />
               <Text
@@ -136,7 +136,7 @@ export default function Footer({ ...props }: Props) {
                 src="img_eva_email_fill.svg"
                 width={24}
                 height={24}
-                alt="Evaemailfill"
+                alt="Email"
                 className="h-[24px] self-end"
               />
               <Text
@@ -316,7 +316,7 @@ export default function Footer({ ...props }: Props) {
                   src="img_eva_email_fill.svg"
                   width={24}
                   height={24}
-                  alt="Evaemailfill"
+                  alt="Email"
                   className="h-[24px] self-end"
                 />
                 <Text
@@ -339,22 +339,12 @@ export default function Footer({ ...props }: Props) {
           <span className="font-bold">&nbsp;Kwinbee.All rights reserved</span>
         </Text>
         <div className="flex flex-wrap gap-2.5">
-          <Link href="#">
-            <Text
-              as="p"
-              className="text-[16px] font-normal !text-white-a700_bf"
-            >
-              Privacy policy
-            </Text>
-          </Link>
-          <Link href="#">
-            <Text
-              as="p"
-              className="text-[16px] font-normal !text-white-a700_bf"
-            >
-              Terms & conditions
-            </Text>
-          </Link>
+          <Text as="p" className="text-[16px] font-normal !text-white-a700_bf">
+            Privacy policy
+          </Text>
+          <Text as="p" className="text-[16px] font-normal !text-white-a700_bf">
+            Terms &amp; conditions
+          </Text>
         </div>
       </div>
     </footer>

@@ -17,6 +17,8 @@ import Icon from "@/components/Icons";
 import TestimonialsSection from "./components/TestimonialsSection";
 import MidPageCTA from "./components/MidPageCTA";
 import { Heading } from "@/components/Heading";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const featureBullets = [
   {
@@ -38,7 +40,9 @@ const featureBullets = [
 
 export default function Home() {
   const handleWhatsAppClick = () => {
-    window.location.href = `https://wa.me/${process.env.NEXT_PUBLIC_PHONE_NUMBER}`;
+    const phone = process.env.NEXT_PUBLIC_PHONE_NUMBER;
+    if (!phone) return;
+    window.open(`https://wa.me/${phone}`, "_blank", "noopener,noreferrer");
     trackWhatsAppClick();
   };
 
@@ -325,6 +329,19 @@ export default function Home() {
       </div>
 
       <Footer />
+
+      {/* Single global toast instance for entire page */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="dark"
+        style={{ top: "80px", zIndex: 9999 }}
+      />
     </div>
   );
 }

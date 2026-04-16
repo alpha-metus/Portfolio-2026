@@ -38,11 +38,10 @@ export default function Header({ ...props }: Props) {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     }
-
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
 
@@ -95,13 +94,6 @@ export default function Header({ ...props }: Props) {
               Pricing
             </Heading>
           </a>
-        </li>
-        <li>
-          <Link href="/blogs">
-            <Heading as="p" className="text-[13.88px] font-semibold">
-              Blog
-            </Heading>
-          </Link>
         </li>
         <li>
           <a href="#contact" onClick={() => handleNavClick("Contact")}>
@@ -168,13 +160,6 @@ export default function Header({ ...props }: Props) {
                   Contact
                 </Heading>
               </a>
-            </li>
-            <li>
-              <Link href="#" onClick={toggleMenu}>
-                <Heading as="p" className="text-[13.88px] font-semibold">
-                  Blog
-                </Heading>
-              </Link>
             </li>
           </ul>
         </div>

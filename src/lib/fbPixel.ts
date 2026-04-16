@@ -31,7 +31,7 @@ export const trackJoinClassClick = () => {
     content_name: "Join Class Button",
     content_category: "Booking CTA",
     source: "hero_section",
-    method: "calendly",
+    method: "form",
   });
 };
 
