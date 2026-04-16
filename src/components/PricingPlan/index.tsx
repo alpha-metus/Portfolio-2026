@@ -11,6 +11,7 @@ interface PricingPlanProps {
   dashboard: string;
   isBestseller?: boolean;
   className?: string;
+  onEnroll?: (plan: string) => void;
 }
 
 export default function PricingPlan({
@@ -21,6 +22,7 @@ export default function PricingPlan({
   dashboard,
   isBestseller,
   className = "",
+  onEnroll,
 }: PricingPlanProps) {
   const handleClick = (plan: string) => {
     trackEvent("Enroll_Event", {
@@ -28,10 +30,8 @@ export default function PricingPlan({
       content_category: "Pricing Plan",
       source: "pricing_section",
       plan_name: plan,
-      method: "calendly",
     });
-
-    window.location.href = `${process.env.NEXT_PUBLIC_CALENDLY_APPOINTMENT_BOOK_URL}`;
+    if (onEnroll) onEnroll(plan);
   };
   return (
     <div

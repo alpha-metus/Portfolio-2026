@@ -2,10 +2,13 @@
 
 import { Heading } from "@/components";
 import PricingPlan from "@/components/PricingPlan";
-import React from "react";
+import EnrollModal from "@/components/EnrollModal";
+import React, { useState } from "react";
 import { pricingPlans } from "../config";
 
 export default function PricingSection() {
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
   return (
     <div
       id="pricing"
@@ -41,11 +44,20 @@ export default function PricingSection() {
                 key={`plan-${index}`}
                 {...plan}
                 className="border-white-a700"
+                onEnroll={(planName) => setSelectedPlan(planName)}
               />
             ))}
           </div>
         </div>
       </div>
+
+      {/* Enroll modal */}
+      {selectedPlan && (
+        <EnrollModal
+          plan={selectedPlan}
+          onClose={() => setSelectedPlan(null)}
+        />
+      )}
     </div>
   );
 }
