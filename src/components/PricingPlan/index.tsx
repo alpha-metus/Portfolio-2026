@@ -134,7 +134,7 @@ export default function PricingPlan({
           <button
             type="button"
             onClick={() => handleClick(duration)}
-            className={`flex w-full justify-center mt-10 sm:my-2 cursor-pointer sm:w-[80%] items-center mx-[30px] sm:mx-auto bg-amber-a400_01 h-[54px] px-[34px] text-[20px] self-stretch rounded-[26px] border-[4px] border-solid border-black-900 font-quicksand font-bold tracking-[-0.20px] sm:px-5`}
+            className={`flex w-full justify-center mt-10 sm:my-2 cursor-pointer items-center bg-amber-a400_01 h-[54px] text-[20px] self-stretch rounded-[26px] border-[4px] border-solid border-black-900 font-quicksand font-bold tracking-[-0.20px]`}
           >
             Enroll
           </button>
