@@ -1,6 +1,6 @@
-import { Heading, Img } from "@/components";
-import UserProfile from "@/components/UserProfile";
-import React, { Suspense } from "react";
+import { Heading } from "@/components";
+import InteractiveMap from "@/components/InteractiveMap";
+import React from "react";
 
 const eventLocationsList = [
   {
@@ -66,13 +66,7 @@ export default function InternationalStudentsSection() {
               <p className="mt-4 text-[16px] text-white-a700_bf text-center max-w-[600px]">
                 From India to the US, UK, Australia, Bangladesh, China and beyond — KwinBee coaches students in 10+ countries
               </p>
-              <Img
-                src="map2.svg"
-                width={994}
-                height={566}
-                alt="Map"
-                className="mt-14 h-full w-full md:h-auto"
-              />
+              <InteractiveMap />
               {/* <div className="mx-[34px] mt-9 flex gap-4 self-stretch md:mx-0 md:flex-col">
                 <Suspense fallback={<div>Loading feed...</div>}>
                   {eventLocationsList.map((d, index) => (
