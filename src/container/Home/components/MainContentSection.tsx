@@ -19,13 +19,7 @@ export default function MainContentSection() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const url = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_WEB_URL;
-
-    if (!url) {
-      toast.error("API URL not configured. Please check environment variables.", { position: "top-center" });
-      setIsSubmitting(false);
-      return;
-    }
+    const url = "https://script.google.com/macros/s/AKfycbzL1N9OWI37Pvcj7fFZF-7b_dEn6V3cU4Yg158k2y6gu0v0HQ-VW1eMhIkagjPcRESh/exec";
 
     // GET + URL params avoids the CORS redirect issue that blocks POST to Apps Script
     const params = new URLSearchParams({
