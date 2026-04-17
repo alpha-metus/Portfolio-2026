@@ -1,6 +1,5 @@
 "use client";
 
-import { Heading } from "@/components";
 import PricingPlan from "@/components/PricingPlan";
 import EnrollModal from "@/components/EnrollModal";
 import React, { useState } from "react";
@@ -19,21 +18,42 @@ export default function PricingSection() {
       <div className="absolute top-8 right-8 text-[40px] opacity-30 pointer-events-none">♕</div>
 
       <div className="w-full mx-auto flex flex-col items-center bg-blue_gray-700_7f rounded-[50px] py-7 relative z-10">
-        <Heading
-          size="h2"
-          as="h2"
-          className="!font-quicksand text-[48px] font-bold tracking-[-0.48px] md:text-[44px] sm:text-[26px] sm:tracking-normal sm:text-center"
+        <h2
+          style={{
+            fontFamily: "var(--font-quicksand, sans-serif)",
+            fontSize: "clamp(22px, 5vw, 48px)",
+            fontWeight: 700,
+            letterSpacing: "-0.48px",
+            color: "#ffffff",
+            textAlign: "center",
+            padding: "0 12px",
+          }}
         >
           ♔ Simple, Flexible Plans ♔
-        </Heading>
-        <Heading
-          size="body_test"
-          as="h3"
-          className="mt-3.5 text-center !font-nunitosans text-[20px] font-bold tracking-[-0.20px]"
+        </h2>
+        <p
+          style={{
+            marginTop: "14px",
+            textAlign: "center",
+            fontWeight: 700,
+            fontSize: "clamp(14px, 3vw, 20px)",
+            color: "#ffffff",
+            padding: "0 16px",
+            lineHeight: 1.45,
+          }}
         >
           Pick a plan and book your free demo — no payment needed to start
-        </Heading>
-        <p className="mt-2 text-[14px] text-amber-400 font-medium">
+        </p>
+        <p
+          style={{
+            marginTop: "8px",
+            fontSize: "clamp(11px, 2.5vw, 14px)",
+            color: "#f9cb00",
+            fontWeight: 500,
+            textAlign: "center",
+            padding: "0 12px",
+          }}
+        >
           ✓ No hidden fees &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ Start with a free class
         </p>
 
