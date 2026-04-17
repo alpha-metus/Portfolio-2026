@@ -137,13 +137,17 @@ const inputStyle: React.CSSProperties = {
             id="enroll-phone"
             type="tel"
             name="mobile_no"
-            placeholder="+1 (555) 000-0000"
+            placeholder="9876543210"
             required
             autoComplete="tel"
-            pattern="[+\d\s\-()]+"
-            title="Please enter a valid phone number"
+            pattern="[0-9+]{7,15}"
+            title="Please enter a valid phone number (7–15 digits)"
+            maxLength={15}
             value={formData.mobile_no}
-            onChange={handleChange}
+            onChange={(e) => {
+              const val = e.target.value.replace(/[^0-9+]/g, "");
+              setFormData((prev) => ({ ...prev, mobile_no: val }));
+            }}
             style={inputStyle}
           />
         </div>
