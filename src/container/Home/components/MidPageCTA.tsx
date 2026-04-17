@@ -1,78 +1,88 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { trackJoinClassClick } from "@/lib/fbPixel";
+import EnrollModal from "@/components/EnrollModal";
 
 export default function MidPageCTA() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <section
-      style={{ backgroundColor: "#0d0404" }}
-      className="w-full py-24 px-5 md:py-16 sm:py-10 sm:px-4 relative"
-    >
-      {/* Decorative chess pieces */}
-      <div className="absolute top-8 left-12 text-[48px] opacity-15 pointer-events-none md:hidden">♞</div>
-      <div className="absolute bottom-8 right-12 text-[48px] opacity-15 pointer-events-none md:hidden">♞</div>
+    <>
+      <section
+        style={{ backgroundColor: "#0d0404" }}
+        className="w-full py-24 px-5 md:py-16 sm:py-10 sm:px-4 relative"
+      >
+        {/* Decorative chess pieces */}
+        <div className="absolute top-8 left-12 text-[48px] opacity-15 pointer-events-none md:hidden">♞</div>
+        <div className="absolute bottom-8 right-12 text-[48px] opacity-15 pointer-events-none md:hidden">♞</div>
 
-      <div className="max-w-[780px] mx-auto flex flex-col items-center text-center gap-6 relative z-10">
+        <div className="max-w-[780px] mx-auto flex flex-col items-center text-center gap-6 relative z-10">
 
-        {/* Headline — white + amber split */}
-        <h2
-          className="font-bold leading-[1.1] md:text-[42px] sm:text-[34px]"
-          style={{ fontSize: "clamp(36px, 6vw, 62px)", color: "#ffffff" }}
-        >
-          Ready to make your{" "}
-          <span style={{ color: "#f9cb00" }}>first move?</span>
-        </h2>
-
-        {/* Subtext */}
-        <p
-          className="max-w-[520px] leading-relaxed"
-          style={{ color: "#ffffffbf", fontSize: "16px" }}
-        >
-          Join 2,000+ students trained by national &amp; international champions.
-          Your free demo class is one click away.
-        </p>
-
-        {/* Buttons */}
-        <div className="flex items-center gap-4 flex-wrap justify-center mt-2">
-          <a
-            href="#contact"
-            onClick={trackJoinClassClick}
-            style={{
-              backgroundColor: "#f9cb00",
-              color: "#000000",
-              fontWeight: 700,
-              fontSize: "15px",
-              borderRadius: "999px",
-              padding: "14px 32px",
-              display: "inline-block",
-              transition: "opacity 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "0.88")}
-            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+          {/* Headline */}
+          <h2
+            className="font-bold leading-[1.1] md:text-[42px] sm:text-[34px]"
+            style={{ fontSize: "clamp(36px, 6vw, 62px)", color: "#ffffff" }}
           >
-            Book Free Demo Class
-          </a>
+            Ready to make your{" "}
+            <span style={{ color: "#f9cb00" }}>first move?</span>
+          </h2>
 
-          <a
-            href="#pricing"
-            style={{
-              backgroundColor: "#2a2a2a",
-              color: "#ffffff",
-              fontWeight: 600,
-              fontSize: "15px",
-              borderRadius: "999px",
-              padding: "14px 32px",
-              display: "inline-block",
-              transition: "opacity 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "0.8")}
-            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+          {/* Subtext */}
+          <p
+            className="max-w-[520px] leading-relaxed"
+            style={{ color: "#ffffffbf", fontSize: "16px" }}
           >
-            View Programs
-          </a>
+            Join 2,000+ students trained by national &amp; international champions.
+            Your free demo class is one click away.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex items-center gap-4 flex-wrap justify-center mt-2">
+            <button
+              onClick={() => { trackJoinClassClick(); setShowModal(true); }}
+              style={{
+                backgroundColor: "#f9cb00",
+                color: "#000000",
+                fontWeight: 700,
+                fontSize: "15px",
+                borderRadius: "999px",
+                padding: "14px 32px",
+                display: "inline-block",
+                transition: "opacity 0.2s",
+                border: "none",
+                cursor: "pointer",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = "0.88")}
+              onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+            >
+              Book Free Demo Class
+            </button>
+
+            <a
+              href="#pricing"
+              style={{
+                backgroundColor: "#2a2a2a",
+                color: "#ffffff",
+                fontWeight: 600,
+                fontSize: "15px",
+                borderRadius: "999px",
+                padding: "14px 32px",
+                display: "inline-block",
+                transition: "opacity 0.2s",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = "0.8")}
+              onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+            >
+              View Programs
+            </a>
+          </div>
+
         </div>
+      </section>
 
-      </div>
-    </section>
+      {showModal && (
+        <EnrollModal plan="Free Demo Class" onClose={() => setShowModal(false)} />
+      )}
+    </>
   );
 }
