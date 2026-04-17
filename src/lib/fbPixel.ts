@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-export const FB_PIXEL_ID = "2032704990979668";
+export const FB_PIXEL_ID = "1762547577601215";
 
 export const pageview = () => {
   if (typeof window !== "undefined" && window.fbq) {
