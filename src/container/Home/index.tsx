@@ -277,7 +277,7 @@ export default function Home() {
       </div>
 
       {/* ─── REAL STUDENTS CAROUSELS ─── */}
-      <div className="relative h-[1024px] content-center md:h-auto" style={{ backgroundColor: "#0d0404" }}>
+      <div className="relative h-[1024px] content-center md:h-auto md:py-12 sm:py-8" style={{ backgroundColor: "#0d0404" }}>
         <div className="absolute pointer-events-none z-10 left-0 top-0 bottom-0 my-auto h-[1024px] w-[36%] bg-gradient" />
         <div className="absolute pointer-events-none bottom-0 right-0 top-0 z-10 my-auto h-[1024px] w-[36%] rotate-[-180deg] bg-gradient" />
 

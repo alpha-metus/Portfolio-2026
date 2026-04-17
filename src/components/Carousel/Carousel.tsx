@@ -62,7 +62,7 @@ const Carousel = ({
   }, [direction, moveDirection, pixelsPerFrame]);
 
   return (
-    <div className="overflow-hidden bg-amber-400 py-2 relative w-full">
+    <div className="overflow-hidden bg-[#0d0404] py-2 relative w-full">
       <div
         ref={containerRef}
         className="flex"
@@ -73,7 +73,7 @@ const Carousel = ({
         {doubledStudents.map((student, index) => (
           <div
             key={`${student.id}-${index}`}
-            className="relative min-w-[200px] h-[320px] mx-2 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105"
+            className="relative min-w-[160px] h-[240px] sm:min-w-[140px] sm:h-[200px] mx-2 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105"
             onMouseEnter={() => setHoveredId(student.id)}
             onMouseLeave={() => setHoveredId(null)}
           >

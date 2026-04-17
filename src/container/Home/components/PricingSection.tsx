@@ -22,7 +22,7 @@ export default function PricingSection() {
         <Heading
           size="h2"
           as="h2"
-          className="!font-quicksand text-[48px] font-bold tracking-[-0.48px] md:text-[44px] sm:text-[38px]"
+          className="!font-quicksand text-[48px] font-bold tracking-[-0.48px] md:text-[44px] sm:text-[26px] sm:tracking-normal sm:text-center"
         >
           ♔ Simple, Flexible Plans ♔
         </Heading>

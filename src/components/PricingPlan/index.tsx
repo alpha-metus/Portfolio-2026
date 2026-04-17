@@ -144,7 +144,7 @@ export default function PricingPlan({
             color="white_A700"
             size="md"
             variant="fill"
-            className={`lg:mx-[30px] sm:mx-auto mt-10 sm:my-2 self-stretch rounded-[26px] border border-solid border-white-a700 sm:w-[80%] px-[33px] font-quicksand font-bold tracking-[-0.20px] sm:px-5`}
+            className={`mt-10 sm:my-2 w-full rounded-[26px] border border-solid border-white-a700 px-[33px] font-quicksand font-bold tracking-[-0.20px] sm:px-5`}
           >
             Enroll
           </Button>
