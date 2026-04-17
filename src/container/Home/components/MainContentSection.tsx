@@ -80,6 +80,7 @@ const inputStyle: React.CSSProperties = {
   return (
     <div
       id="contact"
+      className="sm:!p-5"
       style={{
         background: "#1a1a1a",
         borderRadius: "20px",

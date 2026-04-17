@@ -85,10 +85,9 @@ export default function Home() {
           style={{ background: "linear-gradient(160deg, #1c0c02 0%, #0d0404 50%, #080202 100%)" }}
         />
 
-        {/* ── 3D CHESS FLOOR — perspective board receding into the horizon ── */}
-        {/* Outer wrapper: apply the perspective+tilt */}
+        {/* ── 3D CHESS FLOOR — hidden on mobile to avoid overflow + perf ── */}
         <div
-          className="absolute bottom-0 left-[-10%] right-[-10%] pointer-events-none"
+          className="absolute bottom-0 left-[-10%] right-[-10%] pointer-events-none sm:hidden"
           style={{
             height: "62%",
             transform: "perspective(700px) rotateX(58deg)",
@@ -148,11 +147,11 @@ export default function Home() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-8 pb-20 md:px-5 md:pb-12">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-8 pb-20 md:px-5 md:pb-12 sm:px-4 sm:pb-8">
           <Header />
 
           {/* Two-column hero */}
-          <div className="flex items-center gap-14 mt-14 lg:flex-row md:flex-col md:gap-10">
+          <div className="flex items-center gap-14 mt-14 md:mt-8 sm:mt-6 lg:flex-row md:flex-col md:gap-8 sm:gap-6">
 
             {/* ── LEFT: hero copy ── */}
             <div className="flex-1 flex flex-col gap-7 md:items-center md:text-center">
@@ -179,7 +178,7 @@ export default function Home() {
                   color: "#ffffff",
                   fontWeight: 900,
                   lineHeight: 1.05,
-                  fontSize: "clamp(42px, 5.5vw, 72px)",
+                  fontSize: "clamp(32px, 7vw, 72px)",
                   margin: 0,
                 }}
               >
@@ -252,10 +251,7 @@ export default function Home() {
             </div>
 
             {/* ── RIGHT: form card ── */}
-            <div
-              className="w-full md:w-full"
-              style={{ maxWidth: "460px", flexShrink: 0 }}
-            >
+            <div className="w-full" style={{ maxWidth: "460px", flexShrink: 0 }}>
               <MainContentSection />
             </div>
           </div>

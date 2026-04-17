@@ -6,7 +6,7 @@ export default function MidPageCTA() {
   return (
     <section
       style={{ backgroundColor: "#0d0404" }}
-      className="w-full py-24 px-5 md:py-16 sm:py-12 relative"
+      className="w-full py-24 px-5 md:py-16 sm:py-10 sm:px-4 relative"
     >
       {/* Decorative chess pieces */}
       <div className="absolute top-8 left-12 text-[48px] opacity-15 pointer-events-none md:hidden">♞</div>

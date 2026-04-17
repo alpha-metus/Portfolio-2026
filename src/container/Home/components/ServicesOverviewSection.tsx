@@ -47,7 +47,7 @@ export default function ServicesOverviewSection() {
             </div>
           </div>
           {/* box section */}
-          <div className="flex items-center h-[646px] md:h-auto px-5 py-5 rounded-xl w-full bg-amber-400 md:w-full">
+          <div className="flex items-center h-[646px] md:h-auto px-5 py-5 sm:px-3 sm:py-4 rounded-xl w-full bg-amber-400 md:w-full">
             <div className="relative md:right-0 right-[75px] grid grid-cols-2 gap-6 sm:gap-2 w-full sm:grid-cols-2">
               {marketingSectionData.map((d, index) => (
                 <MarketingSession {...d} key={"listshoppingbag" + index} />

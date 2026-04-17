@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
         </div>
 
         {/* cards */}
-        <div className="grid grid-cols-3 gap-6 md:grid-cols-1 relative">
+        <div className="grid grid-cols-3 gap-6 md:grid-cols-2 sm:grid-cols-1 relative">
           {/* Decorative chess piece between cards */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[60px] opacity-10 pointer-events-none hidden lg:hidden xl:block">♟</div>
 
