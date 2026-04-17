@@ -4,6 +4,22 @@ declare global {
   }
 }
 
+export const FB_PIXEL_ID = "2032704990979668";
+
+export const pageview = () => {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "PageView");
+  }
+};
+
+export const event = (name: string, options = {}) => {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", name, options);
+  }
+};
+
+// ── Custom event helpers used across the site ──
+
 const isPixelLoaded = (): boolean => {
   return typeof window !== "undefined" && typeof window.fbq === "function";
 };

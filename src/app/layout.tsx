@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "@/styles/tailwind.css";
 import "@/styles/font.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Script from "next/script";
+import { Suspense } from "react";
+import FacebookPixel from "@/components/FacebookPixel";
 
 export const metadata: Metadata = {
   icons: {
@@ -20,8 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-
-        {/* Meta Pixel */}
+        {/* Meta Pixel base code */}
         <Script
           id="meta-pixel"
           strategy="afterInteractive"
@@ -39,18 +38,19 @@ export default function RootLayout({
               s.parentNode.insertBefore(t,s)
               }(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-
               fbq('init', '2032704990979668');
-              fbq('track', 'PageView');
             `,
           }}
         />
-
       </head>
 
       <body>
+        {/* FacebookPixel component tracks PageView on every route change */}
+        <Suspense fallback={null}>
+          <FacebookPixel />
+        </Suspense>
 
-        {/* Meta Pixel NoScript */}
+        {/* NoScript fallback */}
         <noscript>
           <img
             height="1"
@@ -61,7 +61,6 @@ export default function RootLayout({
         </noscript>
 
         <main className="min-h-screen">{children}</main>
-
       </body>
     </html>
   );
