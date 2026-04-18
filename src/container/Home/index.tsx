@@ -25,19 +25,19 @@ import FAQSection from "@/components/FAQSection";
 
 const featureBullets = [
   {
-    icon: "♟",
-    title: "Free first class",
-    desc: "Analyze your current weaknesses with a pro.",
+    icon: "🏆",
+    title: "Real results from session one",
+    desc: "Your coach pinpoints your weaknesses and builds a personalised improvement plan immediately.",
   },
   {
-    icon: "♟",
-    title: "No card required",
-    desc: "Zero commitment to start your journey.",
+    icon: "🆓",
+    title: "100% free to start",
+    desc: "No card, no contract — try a full class with zero risk.",
   },
   {
-    icon: "♟",
-    title: "Instant confirmation",
-    desc: "Get scheduled within minutes of booking.",
+    icon: "⚡",
+    title: "Booked & confirmed in minutes",
+    desc: "Pick a time and start playing today.",
   },
 ];
 
@@ -192,50 +192,62 @@ export default function Home() {
             {/* ── LEFT: hero copy ── */}
             <div className="flex-1 flex flex-col gap-7 md:items-center md:text-center">
 
-              {/* "Limited slots" pill */}
-              <div className="w-fit flex items-center gap-3">
-                <span style={{ display: "block", width: "28px", height: "2px", backgroundColor: "#f9cb00", borderRadius: "2px" }} />
+              {/* Social proof badge */}
+              <div
+                className="w-fit flex items-center gap-2 px-4 py-2 rounded-full"
+                style={{
+                  background: "rgba(249,203,0,0.1)",
+                  border: "1px solid rgba(249,203,0,0.3)",
+                }}
+              >
+                <span style={{ fontSize: "13px" }}>⭐</span>
                 <span
                   style={{
                     color: "#f9cb00",
-                    fontSize: "11px",
+                    fontSize: "11.5px",
                     fontWeight: 700,
-                    letterSpacing: "2px",
+                    letterSpacing: "1.5px",
                     textTransform: "uppercase",
                   }}
                 >
-                  Limited Slots Available
+                  2,000+ Students Worldwide · 4.8 / 5 Rating
                 </span>
               </div>
 
-              {/* Main headline */}
+              {/* Main headline — Pain → Aspiration → Result */}
               <h1
                 style={{
                   color: "#ffffff",
                   fontWeight: 900,
                   lineHeight: 1.05,
-                  fontSize: "clamp(32px, 7vw, 72px)",
+                  fontSize: "clamp(34px, 6.5vw, 70px)",
                   margin: 0,
                 }}
               >
-                Master the
+                From Beginner to
                 <br />
-                <span style={{ color: "#f9cb00" }}>Strategic</span> Edge.
+                <span style={{ color: "#f9cb00" }}>Tournament Winner</span>
+                <br />
+                <span style={{ fontSize: "0.68em", color: "rgba(255,255,255,0.88)", fontWeight: 800 }}>
+                  — in 90 Days.
+                </span>
               </h1>
 
               {/* Subtitle */}
               <p
                 style={{
-                  color: "rgba(255,255,255,0.72)",
-                  fontSize: "17px",
+                  color: "rgba(255,255,255,0.68)",
+                  fontSize: "16.5px",
                   lineHeight: 1.75,
-                  maxWidth: "480px",
+                  maxWidth: "460px",
                   margin: 0,
                 }}
               >
-                Experience world-class coaching from Grandmasters.
-                No generic puzzles, just deep strategic mastery
-                tailored to your playstyle.
+                Personalised 1-on-1 coaching by{" "}
+                <span style={{ color: "#ffffff", fontWeight: 600 }}>
+                  national &amp; international chess champions.
+                </span>{" "}
+                Proven curriculum, weekly tournaments, and a clear path to real improvement.
               </p>
 
               {/* Feature bullets */}

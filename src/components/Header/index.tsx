@@ -54,66 +54,79 @@ export default function Header({ ...props }: Props) {
     });
   };
 
+  const navLinkStyle: React.CSSProperties = {
+    color: "rgba(255,255,255,0.92)",
+    fontSize: "14.5px",
+    fontWeight: 600,
+    letterSpacing: "0.1px",
+    transition: "color 0.15s",
+    position: "relative",
+  };
+
   return (
     <header
       {...props}
-      className={`${
-        props.className
-      } flex sm:px-4 justify-between items-center  gap-5 md:mx-0 rounded-bl-3xl rounded-tr-3xl  ${
+      className={`${props.className} flex sm:px-4 justify-between items-center gap-5 md:mx-0 ${
         isSticky
-          ? "fixed top-0 left-0 right-0 z-[999] bg-black-900 bg-opacity-90 backdrop-blur-sm py-4 px-8 shadow-md transition-all duration-300 ml-0 mr-0"
-          : ""
+          ? "fixed top-0 left-0 right-0 z-[999] bg-black-900 bg-opacity-95 backdrop-blur-md py-3 px-8 shadow-lg transition-all duration-300"
+          : "py-1 px-2 rounded-2xl"
       }`}
+      style={
+        !isSticky
+          ? { background: "rgba(13,4,4,0.55)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.07)" }
+          : undefined
+      }
     >
       <Img
         src="img_header_logo.png"
-        width={120}
-        height={34}
+        width={130}
+        height={36}
         alt="Headerlogo"
-        className="h-[34px] w-[120px] object-contain sm:w-[120px]"
+        className="h-[36px] w-[130px] object-contain"
       />
-      {/* Desktop Menu - visible on medium screens and up */}
-      <ul className="!mr-3.5 flex flex-nowrap items-center gap-5 lg:gap-8 sm:hidden">
+
+      {/* Desktop nav */}
+      <ul className="!mr-2 flex flex-nowrap items-center gap-6 lg:gap-8 sm:hidden">
         <li>
-          <a href="#about" onClick={() => handleNavClick("About Us")}>
-            <Heading as="p" className="text-[13.88px] font-semibold">
-              About Us
-            </Heading>
+          <a href="#about" onClick={() => handleNavClick("About Us")}
+            className="hover:opacity-100 transition-opacity"
+            style={{ ...navLinkStyle, opacity: 0.85 }}>
+            About Us
           </a>
         </li>
         <li>
-          <a href="#features" onClick={() => handleNavClick("Features")}>
-            <Heading as="p" className="text-[13.88px] font-semibold">
-              Features
-            </Heading>
+          <a href="#features" onClick={() => handleNavClick("Features")}
+            className="hover:opacity-100 transition-opacity"
+            style={{ ...navLinkStyle, opacity: 0.85 }}>
+            Features
           </a>
         </li>
         <li>
-          <a href="#pricing" onClick={() => handleNavClick("Pricing")}>
-            <Heading as="p" className="text-[13.88px] font-semibold">
-              Pricing
-            </Heading>
+          <a href="#pricing" onClick={() => handleNavClick("Pricing")}
+            className="hover:opacity-100 transition-opacity"
+            style={{ ...navLinkStyle, opacity: 0.85 }}>
+            Pricing
           </a>
         </li>
         <li>
-          <a href="#contact" onClick={() => handleNavClick("Contact")}>
-            <Heading as="p" className="text-[13.88px] font-semibold">
-              Contact
-            </Heading>
+          <a href="#contact" onClick={() => handleNavClick("Contact")}
+            className="hover:opacity-100 transition-opacity"
+            style={{ ...navLinkStyle, opacity: 0.85 }}>
+            Contact
           </a>
         </li>
         <li>
-          <Link href="/tournaments" onClick={() => handleNavClick("Tournaments")}>
-            <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#f9cb00" }}>
-              ♟ Tournaments
-            </Heading>
+          <Link href="/tournaments" onClick={() => handleNavClick("Tournaments")}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-full transition-opacity hover:opacity-90"
+            style={{ background: "rgba(249,203,0,0.12)", border: "1px solid rgba(249,203,0,0.3)", color: "#f9cb00", fontSize: "14px", fontWeight: 700 }}>
+            ♟ Tournaments
           </Link>
         </li>
         <li>
-          <Link href="/explore" onClick={() => handleNavClick("Chess Hub")}>
-            <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#4ade80" }}>
-              ♞ Chess Hub
-            </Heading>
+          <Link href="/explore" onClick={() => handleNavClick("Chess Hub")}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-full transition-opacity hover:opacity-90"
+            style={{ background: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.3)", color: "#4ade80", fontSize: "14px", fontWeight: 700 }}>
+            ♞ Chess Hub
           </Link>
         </li>
       </ul>
