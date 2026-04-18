@@ -50,8 +50,8 @@ export default function InternationalStudentsSection() {
     <>
       {/* international students section */}
       <div>
-        <div className="flex justify-center bg-black-900 py-7 mt-20 lg:mt-0  sm:py-5">
-          <div className="container-xs mb-[26px] flex justify-center px-14 md:px-5">
+        <div className="flex justify-center bg-black-900 py-10 mt-16 md:mt-10 lg:mt-0 sm:py-8">
+          <div className="container-xs mb-6 flex justify-center px-8 md:px-5 sm:px-4">
             <div className="flex w-full flex-col items-center md:w-full">
               <Heading
                 as="h2"

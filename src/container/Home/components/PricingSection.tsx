@@ -57,8 +57,8 @@ export default function PricingSection() {
           ✓ No hidden fees &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ Start with a free class
         </p>
 
-        <div className="w-full mt-10 px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:grid-cols-1">
+        <div className="w-full mt-10 px-5 md:px-4 sm:px-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:grid-cols-1 sm:gap-4">
             {pricingPlans.map((plan, index) => (
               <PricingPlan
                 key={`plan-${index}`}

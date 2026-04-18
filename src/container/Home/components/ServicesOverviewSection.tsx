@@ -7,7 +7,7 @@ export default function ServicesOverviewSection() {
   return (
     <section id="features" className="scroll-mt-20">
       <div className="w-full mt-12 lg:mt-0 ">
-        <div className="px-12 md:px-6 sm:px-4 flex flex-row md:flex-col justify-between w-full gap-12 md:gap-8">
+        <div className="px-12 md:px-6 sm:px-4 flex flex-row md:flex-col justify-between w-full gap-12 md:gap-8 sm:gap-6">
           {/* text section  */}
           <div className="mt-28 md:mt-16 sm:mt-10 w-full flex-col gap-3.5">
             <Heading
@@ -47,8 +47,8 @@ export default function ServicesOverviewSection() {
             </div>
           </div>
           {/* box section */}
-          <div className="flex items-center h-[646px] md:h-auto px-5 py-5 sm:px-3 sm:py-4 rounded-xl w-full bg-amber-400 md:w-full">
-            <div className="relative md:right-0 right-[75px] grid grid-cols-2 gap-6 sm:gap-2 w-full sm:grid-cols-2">
+          <div className="flex items-center min-h-[500px] md:h-auto px-6 py-6 sm:px-4 sm:py-5 rounded-xl w-full bg-amber-400 md:w-full">
+            <div className="grid grid-cols-2 gap-6 sm:gap-4 w-full sm:grid-cols-2">
               {marketingSectionData.map((d, index) => (
                 <MarketingSession {...d} key={"listshoppingbag" + index} />
               ))}

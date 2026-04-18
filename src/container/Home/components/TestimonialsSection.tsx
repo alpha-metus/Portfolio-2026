@@ -26,7 +26,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-black-900 py-20 px-5 md:py-12 relative">
+    <section className="bg-black-900 py-20 px-8 md:py-12 md:px-6 sm:py-10 sm:px-4 relative">
       {/* Decorative chess pieces - top corners */}
       <div className="absolute top-10 left-5 text-[40px] opacity-20 pointer-events-none">♕</div>
       <div className="absolute top-10 right-5 text-[40px] opacity-20 pointer-events-none">♔</div>
@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
       <div className="max-w-[1200px] mx-auto">
 
         {/* heading */}
-        <div className="flex flex-col items-center mb-14 md:mb-10 gap-3 text-center">
+        <div className="flex flex-col items-center mb-14 md:mb-10 sm:mb-8 gap-3 text-center">
           <h2
             className="font-semibold text-center"
             style={{ color: "#ffffff", fontSize: "clamp(30px, 4vw, 48px)" }}
@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(249,203,0,0.25)",
                 borderRadius: "24px",
-                padding: "32px",
+                padding: "clamp(20px, 4vw, 32px)",
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",

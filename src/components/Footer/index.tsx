@@ -34,8 +34,8 @@ export default function Footer({ ...props }: Props) {
       {...props}
       className={`${props.className} bg-black-900 flex flex-col items-start`}
     >
-      <div className="mx-auto flex w-full max-w-[1218px] items-start justify-between gap-5 md:flex-col md:px-5">
-        <div className="flex flex-col items-start gap-[46px]">
+      <div className="mx-auto flex w-full max-w-[1218px] items-start justify-between gap-8 md:flex-col md:px-5 md:gap-10 pt-10 md:pt-8 sm:pt-6">
+        <div className="flex flex-col items-start gap-10 md:gap-8">
           <Img
             src="img_footer_logo.png"
             width={228}
@@ -146,7 +146,7 @@ export default function Footer({ ...props }: Props) {
         </div>
         <div className="mt-3.5 flex w-[54%] items-start justify-between gap-5 self-end md:w-full sm:flex-col">
           <div className="mt-2 flex w-[46%] justify-between gap-5 sm:w-full">
-            <ul className="flex w-[70%] flex-col items-start gap-[18px]">
+            <ul className="flex w-[70%] flex-col items-start gap-4">
               <li>
                 <a href="/">
                   <Text as="p" className="text-[16px] font-normal">
@@ -176,7 +176,7 @@ export default function Footer({ ...props }: Props) {
                 </a>
               </li>
             </ul>
-            <ul className="flex flex-col items-start gap-[18px]">
+            <ul className="flex flex-col items-start gap-4">
               <li>
                 <a href="#pricing">
                   <Text as="p" className="text-[16px] font-normal">
@@ -327,9 +327,9 @@ export default function Footer({ ...props }: Props) {
         </div>
       </div>
       <div className="w-full flex justify-center">
-        <div className="mr-2.5 mt-[54px] h-px w-[90%] self-stretch bg-gray-400_7f md:mr-0" />
+        <div className="mr-2.5 mt-14 h-px w-[90%] self-stretch bg-gray-400_7f md:mr-0" />
       </div>
-      <div className="mr-2.5 mt-[26px] flex justify-between gap-5 self-stretch px-5 pb-4 md:mr-0 sm:flex-col">
+      <div className="mr-2.5 mt-6 flex justify-between gap-5 self-stretch px-5 pb-6 md:mr-0 sm:flex-col sm:gap-3">
         <Text as="p" className="text-[16px] font-normal !text-white-a700_bf">
           <span>©2025.</span>
           <span className="font-bold">&nbsp;Kwinbee.All rights reserved</span>

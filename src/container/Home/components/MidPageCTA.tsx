@@ -37,7 +37,7 @@ export default function MidPageCTA() {
           </p>
 
           {/* Buttons */}
-          <div className="flex items-center gap-4 flex-wrap justify-center mt-2">
+          <div className="flex items-center gap-4 sm:gap-3 flex-wrap sm:flex-col justify-center mt-2 w-full sm:px-4">
             <button
               onClick={() => { trackJoinClassClick(); setShowModal(true); }}
               style={{
@@ -51,6 +51,9 @@ export default function MidPageCTA() {
                 transition: "opacity 0.2s",
                 border: "none",
                 cursor: "pointer",
+                width: "100%",
+                maxWidth: "320px",
+                textAlign: "center",
               }}
               onMouseEnter={e => (e.currentTarget.style.opacity = "0.88")}
               onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
@@ -69,6 +72,9 @@ export default function MidPageCTA() {
                 padding: "14px 32px",
                 display: "inline-block",
                 transition: "opacity 0.2s",
+                width: "100%",
+                maxWidth: "320px",
+                textAlign: "center",
               }}
               onMouseEnter={e => (e.currentTarget.style.opacity = "0.8")}
               onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
