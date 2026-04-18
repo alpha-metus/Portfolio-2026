@@ -207,7 +207,7 @@ export default function Home() {
                   }}
                 >
                   From Beginner to{" "}
-                  <span style={{ color: "#f9cb00" }}>Tournament<br />Winner</span>
+                  <span style={{ color: "#f9cb00" }}>Tournament Winner</span>
                 </h1>
                 <p
                   style={{
