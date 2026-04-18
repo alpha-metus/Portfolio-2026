@@ -5,6 +5,7 @@ import "@/styles/font.css";
 import Script from "next/script";
 import { Suspense } from "react";
 import FacebookPixel from "@/components/FacebookPixel";
+import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
   icons: {
@@ -38,6 +39,7 @@ export default function RootLayout({
               s.parentNode.insertBefore(t,s)
               }(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('consent', 'revoke');
               fbq('init', '1762547577601215');
             `,
           }}
@@ -61,6 +63,7 @@ export default function RootLayout({
         </noscript>
 
         <main className="min-h-screen">{children}</main>
+        <CookieConsent />
       </body>
     </html>
   );

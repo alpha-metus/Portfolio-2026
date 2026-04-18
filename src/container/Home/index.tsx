@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import StatisticsOverviewSection from "./components/StatisticsOverviewSection";
 import ServicesOverviewSection from "./components/ServicesOverviewSection";
 import PricingSection from "./components/PricingSection";
@@ -19,6 +19,7 @@ import MidPageCTA from "./components/MidPageCTA";
 import { Heading } from "@/components/Heading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AgeGate from "@/components/AgeGate";
 
 const featureBullets = [
   {
@@ -39,9 +40,16 @@ const featureBullets = [
 ];
 
 export default function Home() {
+  const [showAgeGate, setShowAgeGate] = useState(false);
+
   const handleWhatsAppClick = () => {
-    window.open("https://wa.link/pbywtu", "_blank", "noopener,noreferrer");
+    setShowAgeGate(true);
+  };
+
+  const proceedToWhatsApp = () => {
+    setShowAgeGate(false);
     trackWhatsAppClick();
+    window.open("https://wa.link/pbywtu", "_blank", "noopener,noreferrer");
   };
 
   const handleJoinClassClick = () => {
@@ -73,6 +81,15 @@ export default function Home() {
       >
         <Icon name="whatsAppIcon" />
       </div>
+
+      {/* Age Gate modal — shown before WhatsApp redirect */}
+      {showAgeGate && (
+        <AgeGate
+          destination="WhatsApp"
+          onProceed={proceedToWhatsApp}
+          onClose={() => setShowAgeGate(false)}
+        />
+      )}
 
       {/* ─── HERO SECTION ─── */}
       <section

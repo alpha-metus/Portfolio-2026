@@ -1,15 +1,19 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Img } from "../Img";
 import { Button } from "../Button";
 import { Text } from "../Text";
 import { trackEvent } from "@/lib/fbPixel";
+import AgeGate from "@/components/AgeGate";
 
 interface Props {
   className?: string;
 }
 
 export default function Footer({ ...props }: Props) {
+  const [gateTarget, setGateTarget] = useState<{ url: string; label: string } | null>(null);
+
   const handleSocialClick = (platform: string, url: string) => {
     trackEvent("SocialMedia_Event", {
       content_name: `${platform} Footer Click`,
@@ -17,8 +21,13 @@ export default function Footer({ ...props }: Props) {
       source: "footer_section",
       method: "external_link",
     });
+    // Show parental gate before opening social links
+    setGateTarget({ url, label: platform });
+  };
 
-    window.open(url, "_blank", "noopener,noreferrer");
+  const proceedToSocial = () => {
+    if (gateTarget) window.open(gateTarget.url, "_blank", "noopener,noreferrer");
+    setGateTarget(null);
   };
   return (
     <footer
@@ -326,14 +335,25 @@ export default function Footer({ ...props }: Props) {
           <span className="font-bold">&nbsp;Kwinbee.All rights reserved</span>
         </Text>
         <div className="flex flex-wrap gap-2.5">
-          <Text as="p" className="text-[16px] font-normal !text-white-a700_bf">
-            Privacy policy
-          </Text>
+          <Link href="/privacy-policy">
+            <Text as="p" className="text-[16px] font-normal !text-white-a700_bf" style={{ textDecoration: "underline", cursor: "pointer" }}>
+              Privacy policy
+            </Text>
+          </Link>
           <Text as="p" className="text-[16px] font-normal !text-white-a700_bf">
             Terms &amp; conditions
           </Text>
         </div>
       </div>
+
+      {/* Parental gate for social links */}
+      {gateTarget && (
+        <AgeGate
+          destination={gateTarget.label}
+          onProceed={proceedToSocial}
+          onClose={() => setGateTarget(null)}
+        />
+      )}
     </footer>
   );
 }
