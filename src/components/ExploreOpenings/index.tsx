@@ -28,9 +28,9 @@ export default function ExploreOpenings() {
   const [selected, setSelected] = useState(OPENINGS[0]);
   const [speed, setSpeed] = useState<SpeedFilter>("blitz");
 
-  // Build iframe src — Lichess opening explorer
-  const encodedMoves = encodeURIComponent(selected.moves);
-  const iframeSrc = `https://lichess.org/analysis#${encodedMoves}?db=lichess&speed=${speed}&bg=dark&theme=brown`;
+  // Build iframe src — Lichess official analysis embed
+  const movesSlug = selected.moves.replace(/ /g, "_");
+  const iframeSrc = `https://lichess.org/analysis/embed/${movesSlug}?theme=brown&bg=dark`;
 
   return (
     <ExploreLayout title="Opening Explorer">

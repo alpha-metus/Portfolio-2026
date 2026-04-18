@@ -64,7 +64,7 @@ export default function ExploreLive() {
           {CHANNELS.find((c) => c.id === channel)?.desc}
         </div>
 
-        {/* Embed */}
+        {/* Embed — uses Lichess official embed endpoint */}
         <div
           style={{
             borderRadius: "20px",
@@ -76,8 +76,8 @@ export default function ExploreLive() {
           }}
         >
           <iframe
-            key={channel} // remount on channel change
-            src={`https://lichess.org/tv/${channel}?theme=brown&bg=dark`}
+            key={channel}
+            src={`https://lichess.org/tv/embed/${channel}?theme=brown&bg=dark`}
             style={{
               position: "absolute",
               inset: 0,
