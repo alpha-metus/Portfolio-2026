@@ -45,12 +45,11 @@ export default function PrivacyPolicy() {
         </div>
 
         <Section title="1. Who We Are">
-          <p>KwinBee (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is a chess coaching platform operated from India. We offer online chess classes for children aged 5–18 under the guidance of national and international chess champions.</p>
+          <p>KwinBee (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is an online chess coaching platform. We run fully online and offer live chess classes for children aged 5–18 under the guidance of national and international chess champions. Our students and coaches are located across the globe.</p>
           <br />
           <p><strong style={{ color: "#fff" }}>Contact:</strong></p>
           <ul style={{ listStyle: "none", padding: 0, marginTop: "8px" }}>
             <Li>Email: <a href="mailto:kwinbee.chess@gmail.com" style={{ color: "#60a5fa" }}>kwinbee.chess@gmail.com</a></Li>
-            <Li>Phone: <a href="tel:+919082303293" style={{ color: "#60a5fa" }}>+91 90823 03293</a></Li>
             <Li>Website: <a href="https://kwinbee.com" style={{ color: "#60a5fa" }}>kwinbee.com</a></Li>
           </ul>
         </Section>
@@ -165,7 +164,7 @@ export default function PrivacyPolicy() {
           <div style={{ backgroundColor: "rgba(249,203,0,0.06)", border: "1px solid rgba(249,203,0,0.15)", borderRadius: "14px", padding: "20px 24px", marginTop: "12px" }}>
             <p style={{ fontWeight: 700, color: "#fff", marginBottom: "8px" }}>KwinBee Chess</p>
             <p style={{ color: "#9ca3af", fontSize: "13px", margin: "4px 0" }}>📧 <a href="mailto:kwinbee.chess@gmail.com" style={{ color: "#60a5fa" }}>kwinbee.chess@gmail.com</a></p>
-            <p style={{ color: "#9ca3af", fontSize: "13px", margin: "4px 0" }}>📞 <a href="tel:+919082303293" style={{ color: "#60a5fa" }}>+91 90823 03293</a></p>
+            <p style={{ color: "#9ca3af", fontSize: "13px", margin: "4px 0" }}>🌐 <a href="https://kwinbee.com" style={{ color: "#60a5fa" }}>kwinbee.com</a></p>
           </div>
         </Section>
       </div>

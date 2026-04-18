@@ -68,7 +68,7 @@ export default function CookieConsent() {
           </div>
           <p style={{ color: "#9ca3af", fontSize: "12px", lineHeight: 1.6, margin: 0 }}>
             We use cookies to improve your experience and for analytics (Meta Pixel).
-            Tracking cookies are <strong style={{ color: "#fff" }}>only activated</strong> with
+            Tracking cookies are <strong style={{ color: "#fff" }}>only activated</strong>{" "}with
             your consent. Our site is used by children — we follow COPPA &amp; GDPR guidelines.{" "}
             <Link
               href="/privacy-policy"

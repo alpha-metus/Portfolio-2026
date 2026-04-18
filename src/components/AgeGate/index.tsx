@@ -190,12 +190,9 @@ export default function AgeGate({ onProceed, onClose, destination = "WhatsApp" }
               }}
             >
               <p style={{ color: "#f9cb00", fontWeight: 700, fontSize: "13px", marginBottom: "4px" }}>
-                📞 Parent can reach us directly:
+                ✉️ Parent can reach us directly:
               </p>
-              <a href="tel:+919082303293" style={{ color: "#fff", fontSize: "14px", fontWeight: 600, textDecoration: "none", display: "block" }}>
-                +91 90823 03293
-              </a>
-              <a href="mailto:kwinbee.chess@gmail.com" style={{ color: "#9ca3af", fontSize: "12px", textDecoration: "none", display: "block", marginTop: "4px" }}>
+              <a href="mailto:kwinbee.chess@gmail.com" style={{ color: "#fff", fontSize: "14px", fontWeight: 600, textDecoration: "none", display: "block" }}>
                 kwinbee.chess@gmail.com
               </a>
             </div>
