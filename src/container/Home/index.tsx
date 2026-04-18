@@ -24,21 +24,9 @@ import EnrollModal from "@/components/EnrollModal";
 import FAQSection from "@/components/FAQSection";
 
 const featureBullets = [
-  {
-    icon: "🏆",
-    title: "Real results from session one",
-    desc: "Your coach pinpoints your weaknesses and builds a personalised improvement plan immediately.",
-  },
-  {
-    icon: "🆓",
-    title: "100% free to start",
-    desc: "No card, no contract — try a full class with zero risk.",
-  },
-  {
-    icon: "⚡",
-    title: "Booked & confirmed in minutes",
-    desc: "Pick a time and start playing today.",
-  },
+  { title: "Results from session one" },
+  { title: "First class is free" },
+  { title: "Book in 60 seconds" },
 ];
 
 export default function Home() {
@@ -183,14 +171,14 @@ export default function Home() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-8 pb-20 md:px-5 md:pb-12 sm:px-4 sm:pb-8">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-6 pb-28 md:px-5 md:pb-16 sm:px-4 sm:pb-10">
           <Header />
 
           {/* Two-column hero */}
           <div className="flex items-center gap-14 mt-14 md:mt-8 sm:mt-6 lg:flex-row md:flex-col md:gap-8 sm:gap-6">
 
             {/* ── LEFT: hero copy ── */}
-            <div className="flex-1 flex flex-col gap-5 md:items-center md:text-center">
+            <div className="flex-1 flex flex-col gap-10 md:gap-8 md:items-center md:text-center">
 
               {/* Social proof badge */}
               <div
@@ -200,89 +188,70 @@ export default function Home() {
                   border: "1px solid rgba(249,203,0,0.3)",
                 }}
               >
-                <span style={{ color: "#f9cb00", fontSize: "12px" }}>★</span>
+                <span style={{ color: "#f9cb00", fontSize: "11px" }}>★★★★★</span>
                 <span style={{ color: "#f9cb00", fontSize: "11px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase" }}>
-                  2,000+ Students Worldwide · 4.8 / 5 Rating
+                  2,000+ Students · 4.8 / 5
                 </span>
               </div>
 
               {/* Main headline */}
-              <div>
+              <div className="flex flex-col gap-4">
                 <h1
                   style={{
                     color: "#ffffff",
                     fontWeight: 900,
-                    lineHeight: 1.08,
-                    fontSize: "clamp(32px, 4.6vw, 56px)",
+                    lineHeight: 1.04,
+                    fontSize: "clamp(38px, 5.2vw, 64px)",
                     margin: 0,
-                    letterSpacing: "-1px",
+                    letterSpacing: "-2px",
                   }}
                 >
                   From Beginner to{" "}
-                  <span style={{ color: "#f9cb00" }}>Tournament Winner</span>
+                  <span style={{ color: "#f9cb00" }}>Tournament<br />Winner</span>
                 </h1>
                 <p
                   style={{
-                    fontSize: "clamp(16px, 2vw, 22px)",
-                    fontWeight: 600,
-                    color: "rgba(255,255,255,0.55)",
-                    margin: "8px 0 0",
-                    letterSpacing: "-0.2px",
+                    fontSize: "clamp(15px, 1.6vw, 18px)",
+                    fontWeight: 500,
+                    color: "rgba(255,255,255,0.45)",
+                    margin: 0,
+                    letterSpacing: "0.1px",
                   }}
                 >
-                  — in 90 Days, Coached by Champions.
+                  Coached by national champions · Results in 90 days
                 </p>
               </div>
 
-              {/* Gold divider */}
-              <div
-                className="md:mx-auto"
-                style={{ width: 44, height: 2, background: "#f9cb00", borderRadius: 2 }}
-              />
-
-              {/* Subtitle */}
-              <p
-                style={{
-                  color: "rgba(255,255,255,0.65)",
-                  fontSize: "15.5px",
-                  lineHeight: 1.7,
-                  maxWidth: "440px",
-                  margin: 0,
-                }}
-              >
-                Personalised 1-on-1 coaching by national &amp; international chess champions.
-                Proven curriculum, weekly tournaments, and a clear path to real improvement.
-              </p>
-
-              {/* Feature bullets */}
-              <div className="flex flex-col gap-3 md:items-start md:self-start">
+              {/* Feature pills — horizontal row */}
+              <div className="flex flex-wrap gap-3 md:justify-center">
                 {featureBullets.map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
+                  <div
+                    key={item.title}
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl"
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.09)",
+                    }}
+                  >
                     <div
                       style={{
-                        width: 30,
-                        height: 30,
+                        width: 20,
+                        height: 20,
                         borderRadius: "50%",
                         backgroundColor: "#f9cb00",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         flexShrink: 0,
-                        marginTop: 1,
                       }}
                     >
-                      <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-                        <path d="M1.5 5L5 8.5L11.5 1.5" stroke="#0d0404" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      <svg width="10" height="8" viewBox="0 0 13 10" fill="none">
+                        <path d="M1.5 5L5 8.5L11.5 1.5" stroke="#0d0404" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
-                    <div>
-                      <p style={{ color: "#ffffff", fontWeight: 700, fontSize: "14.5px", margin: 0, lineHeight: 1.3 }}>
-                        {item.title}
-                      </p>
-                      <p style={{ color: "rgba(255,255,255,0.52)", fontSize: "13px", margin: "3px 0 0", lineHeight: 1.5 }}>
-                        {item.desc}
-                      </p>
-                    </div>
+                    <span style={{ color: "rgba(255,255,255,0.82)", fontSize: "13px", fontWeight: 600, whiteSpace: "nowrap" }}>
+                      {item.title}
+                    </span>
                   </div>
                 ))}
               </div>
