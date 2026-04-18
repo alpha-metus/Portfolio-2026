@@ -354,6 +354,9 @@ export const pricingPlans = [
     assignments: "8 Assignments",
     dashboard: "24/7 Dashboard",
     isBestseller: false,
+    badge: null as string | null,
+    bestFor: "Try it out first",
+    spotsLeft: null as number | null,
   },
   {
     duration: "4 Month",
@@ -362,6 +365,9 @@ export const pricingPlans = [
     assignments: "40 Assignments",
     dashboard: "24/7 Dashboard",
     isBestseller: false,
+    badge: null as string | null,
+    bestFor: "Build a solid foundation",
+    spotsLeft: null as number | null,
   },
   {
     duration: "8 Month",
@@ -369,7 +375,10 @@ export const pricingPlans = [
     tournaments: "32 Tournaments",
     assignments: "40 Assignments",
     dashboard: "24/7 Dashboard",
-    isBestseller: false,
+    isBestseller: true,
+    badge: "MOST POPULAR" as string | null,
+    bestFor: "Serious skill improvement",
+    spotsLeft: 4 as number | null,
   },
   {
     duration: "12 Month",
@@ -377,7 +386,10 @@ export const pricingPlans = [
     tournaments: "48 Tournaments",
     assignments: "200 Assignments",
     dashboard: "24/7 Dashboard",
-    isBestseller: true,
+    isBestseller: false,
+    badge: "BEST VALUE" as string | null,
+    bestFor: "Full competitive mastery",
+    spotsLeft: null as number | null,
   },
 ];
 

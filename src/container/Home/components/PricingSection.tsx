@@ -57,6 +57,28 @@ export default function PricingSection() {
           ✓ No hidden fees &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ Start with a free class
         </p>
 
+        {/* Urgency banner */}
+        <div
+          className="mt-6 flex items-center gap-2 px-5 py-2.5 rounded-full"
+          style={{
+            background: "rgba(249,203,0,0.1)",
+            border: "1px solid rgba(249,203,0,0.3)",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "clamp(11px, 2.5vw, 13px)",
+              fontWeight: 700,
+              color: "#f9cb00",
+            }}
+          >
+            📅 Next cohort starts May 2026 —{" "}
+            <span style={{ color: "#ffffff", fontWeight: 500 }}>
+              Secure your spot before it fills up
+            </span>
+          </span>
+        </div>
+
         <div className="w-full mt-10 px-5 md:px-4 sm:px-3">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:grid-cols-1 sm:gap-4">
             {pricingPlans.map((plan, index) => (

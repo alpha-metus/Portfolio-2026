@@ -116,6 +116,16 @@ export default function Header({ ...props }: Props) {
             </Heading>
           </Link>
         </li>
+        <li>
+          <a
+            href="#contact"
+            onClick={() => handleNavClick("Book Free Demo")}
+            className="inline-block px-5 py-2 rounded-full font-bold text-[13px] transition-opacity duration-150 hover:opacity-85 whitespace-nowrap"
+            style={{ background: "#f9cb00", color: "#0d0404" }}
+          >
+            Book Free Demo
+          </a>
+        </li>
       </ul>
       {/* Hamburger Button (Mobile Only) */}
       <button
@@ -188,6 +198,16 @@ export default function Header({ ...props }: Props) {
                   ♞ Chess Hub
                 </Heading>
               </Link>
+            </li>
+            <li className="mt-2">
+              <a
+                href="#contact"
+                onClick={toggleMenu}
+                className="flex justify-center w-full py-3 rounded-full font-bold text-[14px]"
+                style={{ background: "#f9cb00", color: "#0d0404" }}
+              >
+                Book Free Demo
+              </a>
             </li>
           </ul>
         </div>
