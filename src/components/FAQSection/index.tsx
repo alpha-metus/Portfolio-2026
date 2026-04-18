@@ -38,7 +38,6 @@ const faqs = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
@@ -46,15 +45,16 @@ export default function FAQSection() {
       className="w-full py-20 px-8 md:py-14 md:px-6 sm:py-10 sm:px-4"
       style={{ backgroundColor: "#0d0404" }}
     >
-      <div className="max-w-[820px] mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-12 md:mb-8">
-          <p
-            className="uppercase tracking-[3px] text-[11px] font-bold mb-3"
-            style={{ color: "#f9cb00" }}
+      <div className="max-w-[860px] mx-auto">
+
+        {/* ── Heading ── */}
+        <div className="text-center mb-12 md:mb-10">
+          <span
+            className="inline-block uppercase tracking-[3px] text-[11px] font-bold mb-4 px-4 py-1.5 rounded-full"
+            style={{ color: "#f9cb00", background: "rgba(249,203,0,0.1)", border: "1px solid rgba(249,203,0,0.25)" }}
           >
             Got questions?
-          </p>
+          </span>
           <h2
             className="font-bold leading-tight"
             style={{ color: "#ffffff", fontSize: "clamp(26px, 4vw, 44px)" }}
@@ -62,14 +62,14 @@ export default function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p
-            className="mt-3 text-[15px]"
-            style={{ color: "rgba(255,255,255,0.55)", maxWidth: "480px", margin: "12px auto 0" }}
+            className="mt-3"
+            style={{ color: "rgba(255,255,255,0.5)", fontSize: "15px", maxWidth: "460px", margin: "10px auto 0" }}
           >
             Everything you need to know before booking your first class
           </p>
         </div>
 
-        {/* Accordion */}
+        {/* ── Accordion ── */}
         <div className="flex flex-col gap-3">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
@@ -77,72 +77,121 @@ export default function FAQSection() {
               <div
                 key={i}
                 style={{
-                  border: isOpen
-                    ? "1px solid rgba(249,203,0,0.5)"
-                    : "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "16px",
-                  background: isOpen
-                    ? "rgba(249,203,0,0.06)"
-                    : "rgba(255,255,255,0.03)",
-                  transition: "border-color 0.2s, background 0.2s",
+                  borderRadius: "18px",
                   overflow: "hidden",
+                  border: isOpen
+                    ? "1.5px solid rgba(249,203,0,0.45)"
+                    : "1.5px solid rgba(255,255,255,0.08)",
+                  background: isOpen
+                    ? "linear-gradient(135deg, rgba(249,203,0,0.07) 0%, rgba(249,203,0,0.02) 100%)"
+                    : "rgba(255,255,255,0.025)",
+                  boxShadow: isOpen ? "0 4px 28px rgba(249,203,0,0.08)" : "none",
+                  transition: "border-color 0.25s, background 0.25s, box-shadow 0.25s",
                 }}
               >
-                {/* Question row */}
+                {/* Question button */}
                 <button
                   onClick={() => toggle(i)}
-                  className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 sm:px-4 sm:py-4 cursor-pointer"
-                  style={{ background: "transparent", border: "none" }}
+                  className="w-full flex items-center justify-between gap-5 text-left cursor-pointer"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    padding: "20px 24px",
+                  }}
                   aria-expanded={isOpen}
                 >
-                  <span
-                    className="font-semibold text-[15px] sm:text-[14px] leading-snug"
-                    style={{ color: isOpen ? "#f9cb00" : "#ffffff" }}
-                  >
-                    {faq.q}
-                  </span>
+                  {/* Number + Question */}
+                  <div className="flex items-center gap-4 sm:gap-3">
+                    <span
+                      className="flex-shrink-0 font-bold text-[12px] tabular-nums"
+                      style={{
+                        width: 28,
+                        height: 28,
+                        borderRadius: "50%",
+                        background: isOpen ? "#f9cb00" : "rgba(249,203,0,0.12)",
+                        color: isOpen ? "#0d0404" : "#f9cb00",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className="font-semibold leading-snug sm:text-[14px]"
+                      style={{
+                        color: isOpen ? "#f9cb00" : "#ffffff",
+                        fontSize: "15.5px",
+                        transition: "color 0.2s",
+                      }}
+                    >
+                      {faq.q}
+                    </span>
+                  </div>
 
-                  {/* +/– icon */}
-                  <span
-                    className="flex-shrink-0 flex items-center justify-center rounded-full font-bold text-[18px] transition-transform duration-200"
-                    style={{
-                      width: 28,
-                      height: 28,
-                      background: isOpen ? "#f9cb00" : "rgba(255,255,255,0.1)",
-                      color: isOpen ? "#0d0404" : "#ffffff",
-                      transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-                    }}
+                  {/* Chevron icon */}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    className="flex-shrink-0 transition-transform duration-300"
+                    style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                   >
-                    +
-                  </span>
+                    <path
+                      d="M4 6.5L9 11.5L14 6.5"
+                      stroke={isOpen ? "#f9cb00" : "rgba(255,255,255,0.4)"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </button>
 
-                {/* Answer */}
+                {/* Answer — divider + text */}
                 {isOpen && (
-                  <div
-                    className="px-6 pb-5 sm:px-4 sm:pb-4 text-[14px] leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.72)" }}
-                  >
-                    {faq.a}
-                  </div>
+                  <>
+                    <div style={{ height: 1, background: "rgba(249,203,0,0.15)", margin: "0 24px" }} />
+                    <div
+                      style={{
+                        padding: "16px 24px 22px",
+                        paddingLeft: "64px",
+                        color: "rgba(255,255,255,0.78)",
+                        fontSize: "14.5px",
+                        lineHeight: "1.8",
+                      }}
+                      className="sm:pl-6"
+                    >
+                      {faq.a}
+                    </div>
+                  </>
                 )}
               </div>
             );
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-10">
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "14px" }}>
-            Still have questions?{" "}
-            <a
-              href="mailto:chess@kwinbee.com"
-              style={{ color: "#f9cb00", fontWeight: 600, textDecoration: "underline" }}
-            >
-              Email us at chess@kwinbee.com
-            </a>
-          </p>
+        {/* ── Bottom CTA ── */}
+        <div
+          className="mt-10 flex items-center justify-center gap-3 py-4 px-6 rounded-2xl sm:flex-col sm:text-center"
+          style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+        >
+          <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "14px" }}>
+            Still have questions?
+          </span>
+          <a
+            href="mailto:chess@kwinbee.com"
+            className="inline-flex items-center gap-1.5 font-semibold text-[14px] transition-opacity hover:opacity-80"
+            style={{ color: "#f9cb00" }}
+          >
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <path d="M1 3.5h13M1 3.5v9h13v-9M1 3.5l6.5 5 6.5-5" stroke="#f9cb00" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            chess@kwinbee.com
+          </a>
         </div>
+
       </div>
     </section>
   );
