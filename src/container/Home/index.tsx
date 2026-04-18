@@ -190,7 +190,7 @@ export default function Home() {
           <div className="flex items-center gap-14 mt-14 md:mt-8 sm:mt-6 lg:flex-row md:flex-col md:gap-8 sm:gap-6">
 
             {/* ── LEFT: hero copy ── */}
-            <div className="flex-1 flex flex-col gap-7 md:items-center md:text-center">
+            <div className="flex-1 flex flex-col gap-5 md:items-center md:text-center">
 
               {/* Social proof badge */}
               <div
@@ -200,96 +200,86 @@ export default function Home() {
                   border: "1px solid rgba(249,203,0,0.3)",
                 }}
               >
-                <span style={{ fontSize: "13px" }}>⭐</span>
-                <span
-                  style={{
-                    color: "#f9cb00",
-                    fontSize: "11.5px",
-                    fontWeight: 700,
-                    letterSpacing: "1.5px",
-                    textTransform: "uppercase",
-                  }}
-                >
+                <span style={{ color: "#f9cb00", fontSize: "12px" }}>★</span>
+                <span style={{ color: "#f9cb00", fontSize: "11px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase" }}>
                   2,000+ Students Worldwide · 4.8 / 5 Rating
                 </span>
               </div>
 
-              {/* Main headline — Pain → Aspiration → Result */}
-              <h1
-                style={{
-                  color: "#ffffff",
-                  fontWeight: 900,
-                  lineHeight: 1.05,
-                  fontSize: "clamp(34px, 6.5vw, 70px)",
-                  margin: 0,
-                }}
-              >
-                From Beginner to
-                <br />
-                <span style={{ color: "#f9cb00" }}>Tournament Winner</span>
-                <br />
-                <span style={{ fontSize: "0.68em", color: "rgba(255,255,255,0.88)", fontWeight: 800 }}>
-                  — in 90 Days.
-                </span>
-              </h1>
+              {/* Main headline */}
+              <div>
+                <h1
+                  style={{
+                    color: "#ffffff",
+                    fontWeight: 900,
+                    lineHeight: 1.08,
+                    fontSize: "clamp(32px, 4.6vw, 56px)",
+                    margin: 0,
+                    letterSpacing: "-1px",
+                  }}
+                >
+                  From Beginner to{" "}
+                  <span style={{ color: "#f9cb00" }}>Tournament Winner</span>
+                </h1>
+                <p
+                  style={{
+                    fontSize: "clamp(16px, 2vw, 22px)",
+                    fontWeight: 600,
+                    color: "rgba(255,255,255,0.55)",
+                    margin: "8px 0 0",
+                    letterSpacing: "-0.2px",
+                  }}
+                >
+                  — in 90 Days, Coached by Champions.
+                </p>
+              </div>
+
+              {/* Gold divider */}
+              <div
+                className="md:mx-auto"
+                style={{ width: 44, height: 2, background: "#f9cb00", borderRadius: 2 }}
+              />
 
               {/* Subtitle */}
               <p
                 style={{
-                  color: "rgba(255,255,255,0.68)",
-                  fontSize: "16.5px",
-                  lineHeight: 1.75,
-                  maxWidth: "460px",
+                  color: "rgba(255,255,255,0.65)",
+                  fontSize: "15.5px",
+                  lineHeight: 1.7,
+                  maxWidth: "440px",
                   margin: 0,
                 }}
               >
-                Personalised 1-on-1 coaching by{" "}
-                <span style={{ color: "#ffffff", fontWeight: 600 }}>
-                  national &amp; international chess champions.
-                </span>{" "}
+                Personalised 1-on-1 coaching by national &amp; international chess champions.
                 Proven curriculum, weekly tournaments, and a clear path to real improvement.
               </p>
 
               {/* Feature bullets */}
-              <div className="flex flex-col gap-4 md:items-start md:self-start">
+              <div className="flex flex-col gap-3 md:items-start md:self-start">
                 {featureBullets.map((item) => (
-                  <div key={item.title} className="flex items-start gap-4">
+                  <div key={item.title} className="flex items-start gap-3">
                     <div
                       style={{
-                        width: "38px",
-                        height: "38px",
+                        width: 30,
+                        height: 30,
                         borderRadius: "50%",
                         backgroundColor: "#f9cb00",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontWeight: 800,
-                        fontSize: "15px",
-                        color: "#000",
                         flexShrink: 0,
+                        marginTop: 1,
                       }}
                     >
-                      {item.icon}
+                      <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
+                        <path d="M1.5 5L5 8.5L11.5 1.5" stroke="#0d0404" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
                     </div>
                     <div>
-                      <p
-                        style={{
-                          color: "#ffffff",
-                          fontWeight: 700,
-                          fontSize: "15px",
-                          margin: 0,
-                        }}
-                      >
+                      <p style={{ color: "#ffffff", fontWeight: 700, fontSize: "14.5px", margin: 0, lineHeight: 1.3 }}>
                         {item.title}
                       </p>
-                      <p
-                        style={{
-                          color: "rgba(255,255,255,0.6)",
-                          fontSize: "13px",
-                          margin: 0,
-                          marginTop: "2px",
-                        }}
-                      >
+                      <p style={{ color: "rgba(255,255,255,0.52)", fontSize: "13px", margin: "3px 0 0", lineHeight: 1.5 }}>
                         {item.desc}
                       </p>
                     </div>
