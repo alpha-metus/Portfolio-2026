@@ -21,6 +21,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AgeGate from "@/components/AgeGate";
 import EnrollModal from "@/components/EnrollModal";
+import FAQSection from "@/components/FAQSection";
 
 const featureBullets = [
   {
@@ -352,6 +353,9 @@ export default function Home() {
           <PricingSection />
         </div>
       </div>
+
+      {/* ─── FAQ ─── */}
+      <FAQSection />
 
       <Footer />
 
