@@ -19,7 +19,7 @@ import CookieConsent from "@/components/CookieConsent";
                     → Add property → HTML tag method
                     → copy only the content="..." value
 ───────────────────────────────────────── */
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-420X4DTDFY";
 const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? "";
 
 const BASE_URL = "https://kwinbee.com";
