@@ -402,11 +402,8 @@ export default function TournamentsPage() {
               })}
             </div>
 
-            <p style={{ textAlign: "center", marginTop: "32px", color: "rgba(255,255,255,0.3)", fontSize: "12px" }}>
-              OTB data sourced from{" "}
-              <a href="https://www.fide.com" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "underline" }}>FIDE</a>,{" "}
-              <a href="https://new.uschess.org" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "underline" }}>US Chess</a>{" "}
-              and other national federations.
+            <p style={{ textAlign: "center", marginTop: "32px", color: "rgba(255,255,255,0.3)", fontSize: "12px", whiteSpace: "nowrap" }}>
+              OTB data sourced from <a href="https://www.fide.com" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "underline" }}>FIDE</a>, <a href="https://new.uschess.org" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "underline" }}>US Chess</a> and other national federations.
             </p>
           </>
         )}
