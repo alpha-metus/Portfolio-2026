@@ -102,6 +102,13 @@ export default function Header({ ...props }: Props) {
             </Heading>
           </a>
         </li>
+        <li>
+          <Link href="/tournaments" onClick={() => handleNavClick("Tournaments")}>
+            <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#f9cb00" }}>
+              ♟ Tournaments
+            </Heading>
+          </Link>
+        </li>
       </ul>
       {/* Hamburger Button (Mobile Only) */}
       <button
@@ -160,6 +167,13 @@ export default function Header({ ...props }: Props) {
                   Contact
                 </Heading>
               </a>
+            </li>
+            <li className="mb-4">
+              <Link href="/tournaments" onClick={toggleMenu}>
+                <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#f9cb00" }}>
+                  ♟ Tournaments
+                </Heading>
+              </Link>
             </li>
           </ul>
         </div>
