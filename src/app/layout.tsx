@@ -7,92 +7,148 @@ import { Suspense } from "react";
 import FacebookPixel from "@/components/FacebookPixel";
 import CookieConsent from "@/components/CookieConsent";
 
-/* ─────────────────────────────────────────
-   REPLACE these two values once you have them
-   from your Google accounts:
-
-   GA_ID  → your GA4 Measurement ID, e.g. "G-XXXXXXXXXX"
-            Get it: analytics.google.com → Admin → Data Streams
-
-   GSC_ID → your Google Search Console verification code
-            Get it: search.google.com/search-console
-                    → Add property → HTML tag method
-                    → copy only the content="..." value
-───────────────────────────────────────── */
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-420X4DTDFY";
 const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? "";
 
-const BASE_URL = "https://kwinbee.com";
+export const BASE_URL = "https://www.kwinbee.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
-  /* ── Title ── */
   title: {
-    default:
-      "KwinBee | Online Chess Coaching by National & International Champions",
-    template: "%s | KwinBee Chess",
+    default: "KwinBee | #1 Online Chess Coaching — Learn from National & International Champions",
+    template: "%s | KwinBee Chess Academy",
   },
 
-  /* ── Description ── */
   description:
-    "Master chess with world-class 1-on-1 coaching, weekly tournaments, and puzzle-based assignments. Personalised lessons for kids and adults of all levels. Book your free demo class today.",
+    "KwinBee is a world-class online chess academy offering 1-on-1 chess coaching, group classes, and weekly tournaments for kids, beginners, and advanced players. Learn chess from national and international champions. Book your free demo class today.",
 
-  /* ── Keywords ── */
   keywords: [
+    // Core service keywords
     "online chess coaching",
-    "chess lessons for kids",
+    "chess lessons online",
+    "chess classes online",
     "chess tutor",
-    "learn chess online",
-    "chess classes",
-    "grandmaster coaching",
+    "chess tutor online",
+    "chess teacher",
+    "chess instructor",
+    "chess coaching",
     "chess academy",
-    "KwinBee chess",
-    "chess for beginners",
+    "chess school online",
+    "learn chess online",
+    "chess training online",
+    "private chess lessons",
     "1-on-1 chess lessons",
+    "personal chess coach",
+    "chess lessons",
+
+    // Audience-specific
+    "chess lessons for kids",
+    "chess for children",
+    "kids chess lessons",
+    "chess coaching for kids",
+    "chess classes for kids",
+    "chess for beginners",
+    "chess lessons for beginners",
+    "chess coaching for beginners",
+    "chess for adults",
+    "chess lessons for adults",
+    "chess for intermediate players",
+    "chess for advanced players",
+    "youth chess coaching",
+    "junior chess coaching",
+
+    // Quality/expertise keywords
+    "grandmaster chess coaching",
+    "chess coaching by champions",
+    "professional chess coach",
+    "certified chess coach",
+    "FIDE chess coach",
+    "national chess champion coach",
+    "international chess coach",
+    "best online chess coach",
+    "top chess tutor",
+    "expert chess lessons",
+
+    // Skill/improvement keywords
+    "improve chess rating",
+    "chess rating improvement",
+    "chess tactics training",
+    "chess strategy lessons",
+    "chess opening theory",
+    "chess endgame training",
+    "chess puzzle training",
+    "chess combination training",
+    "chess game analysis",
+    "chess competition training",
+    "chess tournament preparation",
+
+    // Chess openings
+    "chess openings lessons",
+    "Sicilian Defense coaching",
+    "King's Indian Defense",
+    "French Defense chess",
+    "Ruy Lopez chess",
+    "Queen's Gambit chess",
+
+    // Format keywords
+    "virtual chess lessons",
+    "remote chess coaching",
+    "online chess classes",
+    "weekly chess tournaments",
+    "chess assignments",
+    "chess curriculum",
+    "chess program for kids",
+
+    // Brand + location
+    "KwinBee chess",
+    "KwinBee chess academy",
+    "chess coaching worldwide",
+    "chess lessons USA",
+    "chess lessons UK",
+    "chess lessons India",
+    "chess lessons UAE",
+    "chess coaching anywhere in the world",
+    "global chess academy",
+    "chess lessons for all levels",
   ],
 
-  /* ── Canonical & alternates ── */
   alternates: {
     canonical: BASE_URL,
   },
 
-  /* ── Open Graph (WhatsApp, Facebook, LinkedIn previews) ── */
   openGraph: {
     type: "website",
     url: BASE_URL,
-    siteName: "KwinBee Chess",
-    title:
-      "KwinBee | Online Chess Coaching by National & International Champions",
+    siteName: "KwinBee Chess Academy",
+    title: "KwinBee | #1 Online Chess Coaching — Learn from National & International Champions",
     description:
-      "Personalised 1-on-1 chess lessons, weekly tournaments, and assignments — taught by champions. Start with a free demo class.",
+      "World-class 1-on-1 chess coaching, weekly tournaments, and puzzle-based assignments for kids and adults of all levels. Trained by national and international champions. Start with a free demo class.",
     images: [
       {
-        url: "/images/og-image.png", // ← upload a 1200×630 branded image to public/images/
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "KwinBee Online Chess Coaching",
+        alt: "KwinBee Online Chess Coaching Academy",
       },
     ],
+    locale: "en_US",
   },
 
-  /* ── Twitter / X card ── */
   twitter: {
     card: "summary_large_image",
-    title:
-      "KwinBee | Online Chess Coaching by National & International Champions",
+    title: "KwinBee | #1 Online Chess Coaching — Learn from Champions",
     description:
-      "Personalised 1-on-1 chess lessons, weekly tournaments, and assignments — taught by champions. Start with a free demo class.",
+      "1-on-1 chess lessons, weekly tournaments & puzzle assignments taught by national and international champions. Free demo class available.",
     images: ["/images/og-image.png"],
   },
 
-  /* ── Icons ── */
   icons: {
     icon: "/images/logo_kwinbee.png",
     apple: "/images/logo_kwinbee.png",
+    shortcut: "/images/logo_kwinbee.png",
   },
 
-  /* ── Robots ── */
   robots: {
     index: true,
     follow: true,
@@ -105,95 +161,203 @@ export const metadata: Metadata = {
     },
   },
 
-  /* ── Google Search Console verification ── */
+  category: "education",
+
   ...(GSC_VERIFICATION && {
-    verification: {
-      google: GSC_VERIFICATION,
-    },
+    verification: { google: GSC_VERIFICATION },
   }),
 };
 
-/* ── JSON-LD structured data ── */
+/* ────────────────────────────────────────────────────────────
+   JSON-LD: EducationalOrganization + WebSite + FAQ + Course
+──────────────────────────────────────────────────────────── */
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
+    /* 1. Organisation */
     {
-      "@type": "EducationalOrganization",
+      "@type": ["EducationalOrganization", "Organization"],
       "@id": `${BASE_URL}/#organization`,
-      name: "KwinBee",
-      alternateName: "KwinBee Chess Academy",
+      name: "KwinBee Chess Academy",
+      alternateName: ["KwinBee", "Kwinbee Chess", "KwinBee Online Chess"],
       description:
-        "Online chess coaching for all ages and levels by national and international champions. Personalised 1-on-1 sessions, group classes, weekly tournaments, and puzzle-based assignments.",
+        "KwinBee is a global online chess academy providing personalised 1-on-1 chess coaching, group classes, weekly online tournaments, and puzzle-based assignments for students of all ages and skill levels. Coached by national and international chess champions.",
       url: BASE_URL,
       logo: {
         "@type": "ImageObject",
         url: `${BASE_URL}/images/logo_kwinbee.png`,
+        width: 228,
+        height: 64,
       },
       email: "chess@kwinbee.com",
       sameAs: [
         "https://www.facebook.com/profile.php?id=61555420220545",
         "https://www.instagram.com/kwinbee64",
       ],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Chess Coaching Plans",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            name: "1 Month Chess Coaching",
-            description: "8 sessions, 4 tournaments, 8 assignments",
-          },
-          {
-            "@type": "Offer",
-            name: "4 Month Chess Coaching",
-            description: "32 sessions, 16 tournaments, 40 assignments",
-          },
-          {
-            "@type": "Offer",
-            name: "8 Month Chess Coaching",
-            description: "64 sessions, 32 tournaments, 40 assignments",
-          },
-          {
-            "@type": "Offer",
-            name: "12 Month Chess Coaching",
-            description: "98 sessions, 48 tournaments, 200 assignments",
-          },
-        ],
+      numberOfEmployees: { "@type": "QuantitativeValue", minValue: 10, maxValue: 50 },
+      areaServed: "Worldwide",
+      knowsAbout: [
+        "Chess coaching",
+        "Chess tactics",
+        "Chess strategy",
+        "Chess openings",
+        "Chess endgame",
+        "Chess tournaments",
+        "Online chess education",
+      ],
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.8",
+        bestRating: "5",
+        worstRating: "1",
+        ratingCount: "25",
+        reviewCount: "25",
       },
     },
+
+    /* 2. WebSite with SearchAction */
     {
       "@type": "WebSite",
       "@id": `${BASE_URL}/#website`,
       url: BASE_URL,
-      name: "KwinBee Chess",
+      name: "KwinBee Chess Academy",
+      description: "Online chess coaching for all ages and levels by national and international champions.",
       publisher: { "@id": `${BASE_URL}/#organization` },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${BASE_URL}/?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
+      inLanguage: "en-US",
+    },
+
+    /* 3. Course catalogue */
+    {
+      "@type": "Course",
+      "@id": `${BASE_URL}/#course-1month`,
+      name: "1-Month Chess Coaching Programme",
+      description: "8 live sessions, 4 online tournaments, 8 puzzle assignments. Perfect for beginners trying chess coaching for the first time.",
+      provider: { "@id": `${BASE_URL}/#organization` },
+      courseMode: "online",
+      educationalLevel: "Beginner",
+      teaches: ["Chess fundamentals", "Basic tactics", "Opening principles"],
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "online",
+        instructor: { "@type": "Person", name: "KwinBee Coach" },
       },
+    },
+    {
+      "@type": "Course",
+      "@id": `${BASE_URL}/#course-4month`,
+      name: "4-Month Chess Coaching Programme",
+      description: "32 live sessions, 16 online tournaments, 40 puzzle assignments. Ideal for building a solid chess foundation.",
+      provider: { "@id": `${BASE_URL}/#organization` },
+      courseMode: "online",
+      educationalLevel: "Beginner to Intermediate",
+      teaches: ["Chess tactics", "Opening repertoire", "Middlegame strategy"],
+    },
+    {
+      "@type": "Course",
+      "@id": `${BASE_URL}/#course-8month`,
+      name: "8-Month Chess Coaching Programme — Most Popular",
+      description: "64 live sessions, 32 online tournaments, 40 puzzle assignments. The most popular plan for serious skill improvement.",
+      provider: { "@id": `${BASE_URL}/#organization` },
+      courseMode: "online",
+      educationalLevel: "Intermediate",
+      teaches: ["Advanced tactics", "Strategic planning", "Tournament preparation", "Chess endgames"],
+    },
+    {
+      "@type": "Course",
+      "@id": `${BASE_URL}/#course-12month`,
+      name: "12-Month Chess Coaching Programme — Best Value",
+      description: "98 live sessions, 48 online tournaments, 200 puzzle assignments. Complete competitive mastery programme for serious players.",
+      provider: { "@id": `${BASE_URL}/#organization` },
+      courseMode: "online",
+      educationalLevel: "Intermediate to Advanced",
+      teaches: ["Full competitive preparation", "Advanced openings", "Endgame mastery", "Tournament strategy"],
+    },
+
+    /* 4. FAQ — targets voice search and Google featured snippets */
+    {
+      "@type": "FAQPage",
+      "@id": `${BASE_URL}/#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How do I start learning chess online?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Book a free demo class with KwinBee. Our coaches assess your current level and create a personalised training plan. No experience needed — we teach complete beginners to advanced players.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is KwinBee suitable for kids?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes! KwinBee specialises in chess coaching for children. Our coaches are patient, engaging, and experienced in teaching kids from age 5 and above. Parents report significant improvement in focus, problem-solving, and academic performance.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How much does online chess coaching cost?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "KwinBee offers flexible plans starting from a 1-month trial. All plans include live 1-on-1 sessions, online tournaments, and puzzle assignments. Book a free demo class to discuss pricing tailored to your needs.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I improve my chess rating with online coaching?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Absolutely. Our students consistently improve their ratings through personalised coaching, targeted tactics training, and weekly tournament practice. Many students see rating improvements within the first few months.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Who are KwinBee's chess coaches?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "KwinBee's coaches are national and international chess champions with proven teaching experience. They specialise in identifying your weaknesses and creating a focused improvement plan.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you offer chess lessons for complete beginners?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. KwinBee welcomes complete beginners. We start from the basics — piece movement, board control, and tactics — and build up to advanced strategy at your own pace.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is online chess coaching as effective as in-person lessons?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Online chess coaching with KwinBee uses interactive boards, screen sharing, and real-time game analysis, making it just as effective as in-person lessons — with the added flexibility of learning from anywhere in the world.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What age group does KwinBee cater to?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "KwinBee coaches students of all ages — from young children (age 5+) to adults. We have specific programmes for juniors, teenagers, and adult learners at all skill levels.",
+          },
+        },
+      ],
     },
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* ── JSON-LD structured data ── */}
+        {/* JSON-LD structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        {/* ── Meta Pixel (consent revoked until cookie banner accepted) ── */}
+        {/* Meta Pixel — consent revoked until cookie banner accepted */}
         <Script
           id="meta-pixel"
           strategy="afterInteractive"
@@ -217,7 +381,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* ── Google Analytics 4 ── */}
+        {/* Google Analytics 4 */}
         {GA_ID && (
           <>
             <Script
@@ -244,12 +408,10 @@ export default function RootLayout({
       </head>
 
       <body>
-        {/* FacebookPixel tracks PageView on every route change */}
         <Suspense fallback={null}>
           <FacebookPixel />
         </Suspense>
 
-        {/* NoScript fallback for Meta Pixel */}
         <noscript>
           <img
             height="1"
