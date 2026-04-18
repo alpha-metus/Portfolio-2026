@@ -73,7 +73,7 @@ export default function Header({ ...props }: Props) {
         className="h-[34px] w-[120px] object-contain sm:w-[120px]"
       />
       {/* Desktop Menu - visible on medium screens and up */}
-      <ul className="!mr-3.5 flex flex-wrap gap-8 lg:gap-[54px] sm:hidden">
+      <ul className="!mr-3.5 flex flex-nowrap items-center gap-5 lg:gap-8 sm:hidden">
         <li>
           <a href="#about" onClick={() => handleNavClick("About Us")}>
             <Heading as="p" className="text-[13.88px] font-semibold">
