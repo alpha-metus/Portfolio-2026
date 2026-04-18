@@ -2,26 +2,26 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const allTestimonials = [
-  { name: "Elizaveta", review: "Aman is incredibly patient and explains complex strategies in a simple, relatable way. His sessions are engaging and interactive — I genuinely look forward to every class." },
+  { name: "Elizaveta", review: "KwinBee is incredibly patient and explains complex strategies in a simple, relatable way. His sessions are engaging and interactive — I genuinely look forward to every class." },
   { name: "Ryan",      review: "Great teacher, very patient and good at explaining things." },
-  { name: "Joel",      review: "Aman is a knowledgeable and patient tutor. He is calm, reassuring, and identifies specific actionable areas to improve my game. I would strongly recommend him." },
+  { name: "Joel",      review: "KwinBee is a knowledgeable and patient tutor. He is calm, reassuring, and identifies specific actionable areas to improve my game. I would strongly recommend him." },
   { name: "Christopher", review: "Very knowledgeable and patient when I struggled with concepts. He's great at picking out your individual weaknesses and what you need to work on." },
-  { name: "Sheeba",    review: "My daughter had plateaued in her rating for months. Aman identified her weaknesses, taught new tactics, and reviewed her games. Her rating is going up — Aman is the best!" },
-  { name: "Tarek",     review: "Aman customizes lessons to each student — he takes time to know you before teaching, which dramatically increases success. A professional who loves chess. Highly recommend." },
-  { name: "Jack",      review: "Aman had me play games and explain my moves, then discussed my strategy and why it worked or didn't. A great way to learn instead of just talking theory. Highly recommend." },
-  { name: "Josh",      review: "Aman spotted deficiencies in my play quickly and built a training course that has had a positive impact. Great understanding of the game with very flexible hours." },
+  { name: "Sheeba",    review: "My daughter had plateaued in her rating for months. KwinBee identified her weaknesses, taught new tactics, and reviewed her games. Her rating is going up — KwinBee is the best!" },
+  { name: "Tarek",     review: "KwinBee customizes lessons to each student — he takes time to know you before teaching, which dramatically increases success. A professional who loves chess. Highly recommend." },
+  { name: "Jack",      review: "KwinBee had me play games and explain my moves, then discussed my strategy and why it worked or didn't. A great way to learn instead of just talking theory. Highly recommend." },
+  { name: "Josh",      review: "KwinBee spotted deficiencies in my play quickly and built a training course that has had a positive impact. Great understanding of the game with very flexible hours." },
   { name: "Archna",    review: "Very kind and patient with both my kids. He gave them tools to think through and recognize their mistakes, creating a truly conducive learning environment." },
   { name: "Alan",      review: "My first lesson was exceptional! Really thoughtful assessment of my needs and a great approach to improvement. Can't wait for the next lesson!" },
-  { name: "Raja",      review: "Aman had me solve puzzles, play from set positions, then reviewed where I could improve and explained opening themes. Looking forward to more sessions." },
+  { name: "Raja",      review: "KwinBee had me solve puzzles, play from set positions, then reviewed where I could improve and explained opening themes. Looking forward to more sessions." },
   { name: "Harjinder", review: "Very patient with my kid, teaches him very well." },
-  { name: "Max",       review: "Aman is an excellent teacher." },
-  { name: "Jeremiah",  review: "Aman was very kind and super helpful. It was fun to learn from him!" },
+  { name: "Max",       review: "KwinBee is an excellent teacher." },
+  { name: "Jeremiah",  review: "KwinBee was very kind and super helpful. It was fun to learn from him!" },
   { name: "Dunia",     review: "A very good chess instructor — humble, knowledgeable and fun to work with. Great foundation for teaching chess." },
   { name: "Thomas",    review: "He stayed patient with me and took the time to explain things since I hadn't played chess in a while." },
   { name: "Amal",      review: "Very fun and interactive classes!" },
   { name: "Mason",     review: "Very friendly, smart, and knowledgeable about chess. Would recommend to anyone." },
-  { name: "John",      review: "Two lessons in and I've already strengthened my game. Aman targets areas to improve quickly — excited to continue." },
-  { name: "Elie",      review: "Excellent chess player and teacher who will develop your knowledge in a short time. I absolutely recommend Aman." },
+  { name: "John",      review: "Two lessons in and I've already strengthened my game. KwinBee targets areas to improve quickly — excited to continue." },
+  { name: "Elie",      review: "Excellent chess player and teacher who will develop your knowledge in a short time. I absolutely recommend KwinBee." },
   { name: "Alexis",    review: "Amazing. My 7-year-old really enjoyed his lessons!" },
   { name: "Greg",      review: "Very knowledgeable, patient, and encouraging." },
   { name: "Christian", review: "Very good at finding my strengths and weaknesses and showing me how I can improve." },
@@ -149,15 +149,9 @@ function ReviewRow({ reviews, direction, speed = 22 }: ReviewRowProps) {
 export default function TestimonialsSection() {
   return (
     <section
-      className="py-20 md:py-12 sm:py-10 relative overflow-hidden"
+      className="py-20 md:py-12 sm:py-10 relative"
       style={{ backgroundColor: "#0d0404" }}
     >
-      {/* Fade edges */}
-      <div className="absolute top-0 left-0 bottom-0 w-[12%] z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to right, #0d0404, transparent)" }} />
-      <div className="absolute top-0 right-0 bottom-0 w-[12%] z-10 pointer-events-none"
-        style={{ background: "linear-gradient(to left, #0d0404, transparent)" }} />
-
       {/* Heading */}
       <div className="flex flex-col items-center mb-12 md:mb-8 gap-3 text-center px-5">
         <h2
@@ -171,8 +165,7 @@ export default function TestimonialsSection() {
         </p>
         <div className="flex items-center gap-2 mt-1">
           <span style={{ color: "#f9cb00", fontSize: "20px" }}>★★★★★</span>
-          <span style={{ color: "#ffffff", fontWeight: 600, fontSize: "15px" }}>5.0 / 5</span>
-          <span style={{ color: "#ffffffbf", fontSize: "14px" }}>· {allTestimonials.length} verified reviews</span>
+          <span style={{ color: "#ffffff", fontWeight: 600, fontSize: "15px" }}>4.8 / 5</span>
         </div>
       </div>
 

@@ -27,23 +27,17 @@ export default function ServicesOverviewSection() {
               puzzle-based assignments that help students improve through
               practice and play.
             </Text>
-            <div className="flex items-center gap-[7px] mt-4 sm:justify-center justify-start w-full">
-              <a href="#contact">
-                <Heading
-                  size="texts"
-                  as="h3"
-                  className="text-[20px] font-medium"
-                >
-                  Book your free class
-                </Heading>
+            <div className="flex items-center mt-6 sm:justify-center justify-start w-full">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-[16px] transition-opacity hover:opacity-85"
+                style={{ background: "#f9cb00", color: "#0d0404" }}
+              >
+                Book Free Demo
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="#0d0404" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </a>
-              <Img
-                src="img_arrow_left.svg"
-                width={24}
-                height={24}
-                alt="Arrowleft"
-                className="h-[24px] self-end"
-              />
             </div>
           </div>
           {/* box section */}

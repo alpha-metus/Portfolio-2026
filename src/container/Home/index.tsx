@@ -20,6 +20,7 @@ import { Heading } from "@/components/Heading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AgeGate from "@/components/AgeGate";
+import EnrollModal from "@/components/EnrollModal";
 
 const featureBullets = [
   {
@@ -41,6 +42,7 @@ const featureBullets = [
 
 export default function Home() {
   const [showAgeGate, setShowAgeGate] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleWhatsAppClick = () => {
     setShowAgeGate(true);
@@ -74,13 +76,29 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Floating WhatsApp button */}
+      {/* Floating WhatsApp button — bottom LEFT */}
       <div
-        className="fixed sm:bottom-2 sm:right-2 bottom-4 right-4 z-[99] cursor-pointer"
+        className="fixed sm:bottom-2 sm:left-2 bottom-4 left-4 z-[99] cursor-pointer"
         onClick={handleWhatsAppClick}
       >
         <Icon name="whatsAppIcon" />
       </div>
+
+      {/* Floating Book Free Demo button — bottom RIGHT */}
+      <button
+        onClick={() => { trackJoinClassClick(); setShowModal(true); }}
+        className="fixed sm:bottom-2 sm:right-2 bottom-4 right-4 z-[99] cursor-pointer font-bold text-[13px] sm:text-[12px] rounded-full shadow-lg transition-opacity hover:opacity-85"
+        style={{
+          background: "#f9cb00",
+          color: "#0d0404",
+          padding: "13px 22px",
+          border: "none",
+          whiteSpace: "nowrap",
+          boxShadow: "0 4px 20px rgba(249,203,0,0.4)",
+        }}
+      >
+        📅 Book Free Demo
+      </button>
 
       {/* Age Gate modal — shown before WhatsApp redirect */}
       {showAgeGate && (
@@ -277,8 +295,6 @@ export default function Home() {
 
       {/* ─── SCROLLING BANNER ─── */}
       <div className="w-full relative" style={{ backgroundColor: "#0d0404" }}>
-        <div className="absolute pointer-events-none z-10 top-0 right-0 h-full w-1/6 bg-gradient-to-r from-transparent to-black" />
-        <div className="absolute pointer-events-none z-10 top-0 left-0 h-full w-1/6 bg-gradient-to-l from-transparent to-black" />
         <ScrollingBanner items={marqueeText} />
       </div>
 
@@ -295,8 +311,6 @@ export default function Home() {
 
       {/* ─── REAL STUDENTS CAROUSELS ─── */}
       <div className="relative h-[1024px] content-center md:h-auto md:py-12 sm:py-8" style={{ backgroundColor: "#0d0404" }}>
-        <div className="absolute pointer-events-none z-10 left-0 top-0 bottom-0 my-auto h-[1024px] w-[36%] bg-gradient" />
-        <div className="absolute pointer-events-none bottom-0 right-0 top-0 z-10 my-auto h-[1024px] w-[36%] rotate-[-180deg] bg-gradient" />
 
         <div className="relative z-[5] flex flex-col h-full md:h-auto">
           <div className="flex flex-col items-center pt-[52px] md:pt-8 mb-[100px] md:mb-16 gap-3 px-5">
@@ -340,6 +354,11 @@ export default function Home() {
       </div>
 
       <Footer />
+
+      {/* Floating Book Free Demo modal */}
+      {showModal && (
+        <EnrollModal plan="Free Demo Class" onClose={() => setShowModal(false)} />
+      )}
 
       {/* Single global toast instance for entire page */}
       <ToastContainer
