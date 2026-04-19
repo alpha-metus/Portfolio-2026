@@ -1,5 +1,4 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { StudentImage } from "./config";
 
@@ -9,89 +8,51 @@ interface StudentCarouselProps {
   speed?: number;
 }
 
-const Carousel = ({
-  students,
-  direction,
-  speed = 30,
-}: StudentCarouselProps) => {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollPosition, setScrollPosition] = useState(
-    direction === "right" ? -1000 : 0
-  );
-
-  const doubledStudents = [...students, ...students, ...students, ...students];
-
-  const pixelsPerFrame = speed / 60;
-  const moveDirection = direction === "left" ? -1 : 1;
-
-  useEffect(() => {
-    const containerWidth = containerRef.current?.scrollWidth
-      ? containerRef.current.scrollWidth / 2
-      : 0;
-
-    let animationFrameId: number;
-    let lastTimestamp: number;
-
-    const animate = (timestamp: number) => {
-      if (!lastTimestamp) lastTimestamp = timestamp;
-      const elapsed = timestamp - lastTimestamp;
-      lastTimestamp = timestamp;
-
-      setScrollPosition((prevPos) => {
-        let newPos =
-          prevPos + (pixelsPerFrame * moveDirection * elapsed) / 16.67;
-
-        if (direction === "left" && Math.abs(newPos) >= containerWidth) {
-          newPos = 0;
-        } else if (direction === "right" && newPos >= 0) {
-          newPos = -containerWidth;
-        }
-
-        return newPos;
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [direction, moveDirection, pixelsPerFrame]);
+/**
+ * Pure-CSS infinite marquee — no requestAnimationFrame, no React state updates,
+ * no forced reflow. GPU-composited via CSS animation.
+ */
+const Carousel = ({ students, direction, speed = 30 }: StudentCarouselProps) => {
+  // Duplicate for seamless loop
+  const items = [...students, ...students];
+  // Duration: wider list → longer duration to keep pixel-speed constant
+  const durationSec = (items.length * 180) / speed;
+  const animName = direction === "left" ? "marqueeLeft" : "marqueeRight";
 
   return (
     <div className="overflow-hidden bg-[#0d0404] py-2 relative w-full">
+      <style>{`
+        @keyframes marqueeLeft {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        @keyframes marqueeRight {
+          from { transform: translateX(-50%); }
+          to   { transform: translateX(0); }
+        }
+      `}</style>
+
       <div
-        ref={containerRef}
-        className="flex"
         style={{
-          transform: `translateX(${scrollPosition}px)`,
+          display: "flex",
+          width: "max-content",
+          animation: `${animName} ${durationSec}s linear infinite`,
+          willChange: "transform",
         }}
       >
-        {doubledStudents.map((student, index) => (
+        {items.map((student, index) => (
           <div
             key={`${student.id}-${index}`}
-            className="relative min-w-[160px] h-[240px] sm:min-w-[140px] sm:h-[200px] mx-2 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105"
-            onMouseEnter={() => setHoveredId(student.id)}
-            onMouseLeave={() => setHoveredId(null)}
+            className="relative min-w-[160px] h-[240px] sm:min-w-[140px] sm:h-[200px] mx-2 rounded-lg overflow-hidden"
           >
             <Image
               src={student.src}
               alt={student.alt}
               width={200}
               height={250}
+              loading="lazy"
               className="object-cover w-full h-full rounded-lg"
             />
-
-            {/* {hoveredId === student.id && (
-              <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-4 text-white rounded-lg">
-                <h3 className="font-bold text-lg">{student.name}</h3>
-                <p className="text-sm">Age: {student.age}</p>
-                <p className="text-sm mt-1">{student.achievements}</p>
-              </div>
-            )} */}
           </div>
         ))}
       </div>

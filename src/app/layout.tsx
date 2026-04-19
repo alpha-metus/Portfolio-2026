@@ -489,6 +489,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="copyright" content="KwinBee Chess Academy" />
         <link rel="me" href="https://www.instagram.com/kwinbee64" />
 
+        {/* Preload critical font weights to eliminate render-blocking flash */}
+        <link rel="preload" href="/fonts/PoppinsRegular.ttf" as="font" type="font/truetype" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/PoppinsBold.ttf" as="font" type="font/truetype" crossOrigin="anonymous" />
+
         {/* JSON-LD structured data */}
         <script
           type="application/ld+json"

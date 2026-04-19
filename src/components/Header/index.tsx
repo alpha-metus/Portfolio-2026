@@ -81,8 +81,9 @@ export default function Header({ ...props }: Props) {
         src="img_header_logo.png"
         width={130}
         height={36}
-        alt="Headerlogo"
+        alt="KwinBee Chess Academy"
         className="h-[36px] w-[130px] object-contain"
+        priority
       />
 
       {/* Desktop nav */}
@@ -116,14 +117,14 @@ export default function Header({ ...props }: Props) {
           </a>
         </li>
         <li>
-          <Link href="/tournaments" onClick={() => handleNavClick("Tournaments")}
+          <Link href="/tournaments" prefetch={false} onClick={() => handleNavClick("Tournaments")}
             className="flex items-center gap-1 px-3 py-1.5 rounded-full transition-opacity hover:opacity-90"
             style={{ background: "rgba(249,203,0,0.12)", border: "1px solid rgba(249,203,0,0.3)", color: "#f9cb00", fontSize: "14px", fontWeight: 700 }}>
             ♟ Tournaments
           </Link>
         </li>
         <li>
-          <Link href="/explore" onClick={() => handleNavClick("Chess Hub")}
+          <Link href="/explore" prefetch={false} onClick={() => handleNavClick("Chess Hub")}
             className="flex items-center gap-1 px-3 py-1.5 rounded-full transition-opacity hover:opacity-90"
             style={{ background: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.3)", color: "#4ade80", fontSize: "14px", fontWeight: 700 }}>
             ♞ Chess Hub
@@ -189,14 +190,14 @@ export default function Header({ ...props }: Props) {
               </a>
             </li>
             <li className="mb-4">
-              <Link href="/tournaments" onClick={toggleMenu}>
+              <Link href="/tournaments" prefetch={false} onClick={toggleMenu}>
                 <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#f9cb00" }}>
                   ♟ Tournaments
                 </Heading>
               </Link>
             </li>
             <li className="mb-4">
-              <Link href="/explore" onClick={toggleMenu}>
+              <Link href="/explore" prefetch={false} onClick={toggleMenu}>
                 <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#4ade80" }}>
                   ♞ Chess Hub
                 </Heading>

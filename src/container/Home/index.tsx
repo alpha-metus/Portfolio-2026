@@ -1,28 +1,31 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import StatisticsOverviewSection from "./components/StatisticsOverviewSection";
 import ServicesOverviewSection from "./components/ServicesOverviewSection";
 import PricingSection from "./components/PricingSection";
-import InternationalStudentsSection from "./components/InternationalStudentsSection";
 import MainContentSection from "./components/MainContentSection";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CelebrityStudents from "@/components/CelebrityStudents";
-import Carousel from "@/components/Carousel";
 import { bottomRowStudents, marqueeText, topRowStudents } from "./config";
-import CustomCursor from "@/components/CustomCursor";
-import ScrollingBanner from "@/components/ScrollingBanner";
 import { trackJoinClassClick, trackWhatsAppClick } from "@/lib/fbPixel";
 import Icon from "@/components/Icons";
-import TestimonialsSection from "./components/TestimonialsSection";
-import MidPageCTA from "./components/MidPageCTA";
 import { Heading } from "@/components/Heading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AgeGate from "@/components/AgeGate";
 import EnrollModal from "@/components/EnrollModal";
-import FAQSection from "@/components/FAQSection";
 import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/components/OfferPopup";
+
+/* ── Below-fold components: lazy-loaded so they don't block initial paint ── */
+const CelebrityStudents    = dynamic(() => import("@/components/CelebrityStudents/CelebrityStudents"), { ssr: false, loading: () => <div style={{ height: 300 }} /> });
+const Carousel             = dynamic(() => import("@/components/Carousel/Carousel"),                  { ssr: false, loading: () => <div style={{ height: 260 }} /> });
+const ScrollingBanner      = dynamic(() => import("@/components/ScrollingBanner/ScrollingBanner"),    { ssr: false, loading: () => <div style={{ height: 44 }} /> });
+const CustomCursor         = dynamic(() => import("@/components/CustomCursor/CustomCursor"),          { ssr: false });
+const TestimonialsSection  = dynamic(() => import("./components/TestimonialsSection"),               { ssr: false, loading: () => <div style={{ height: 400 }} /> });
+const InternationalStudentsSection = dynamic(() => import("./components/InternationalStudentsSection"), { ssr: false, loading: () => <div style={{ height: 300 }} /> });
+const MidPageCTA           = dynamic(() => import("./components/MidPageCTA"),                        { ssr: false, loading: () => <div style={{ height: 160 }} /> });
+const FAQSection           = dynamic(() => import("@/components/FAQSection"),                        { ssr: false, loading: () => <div style={{ height: 400 }} /> });
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -57,9 +60,11 @@ export default function Home() {
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
   }, []);
 
-  // Live viewer count — fluctuates realistically
-  const [viewers, setViewers] = useState(() => 9 + Math.floor(Math.random() * 9));
+  // Live viewer count — stable SSR value (14) then randomised client-side to avoid hydration mismatch / CLS
+  const [viewers, setViewers] = useState(14);
   useEffect(() => {
+    // Set random starting value only after hydration — no server/client mismatch
+    setViewers(9 + Math.floor(Math.random() * 9));
     const iv = setInterval(() => {
       setViewers((v) => Math.min(24, Math.max(7, v + (Math.random() > 0.5 ? 1 : -1))));
     }, 6000);
@@ -99,12 +104,14 @@ export default function Home() {
       </div>
 
       {/* Floating WhatsApp button — bottom LEFT */}
-      <div
-        className="fixed sm:bottom-2 sm:left-2 bottom-4 left-4 z-[99] cursor-pointer"
+      <button
+        type="button"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed sm:bottom-2 sm:left-2 bottom-4 left-4 z-[99] cursor-pointer bg-transparent border-0 p-0"
         onClick={handleWhatsAppClick}
       >
         <Icon name="whatsAppIcon" />
-      </div>
+      </button>
 
       {/* Floating Book Free Demo button — bottom RIGHT */}
       <button
