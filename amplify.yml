@@ -9,10 +9,6 @@ frontend:
     build:
       commands:
         - npm run build
-  artifacts:
-    baseDirectory: out
-    files:
-      - '**/*'
   cache:
     paths:
       - .npm/**/*
