@@ -199,6 +199,14 @@ const inputStyle: React.CSSProperties = {
           />
         </div>
 
+        {/* Urgency row above CTA */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", background: "rgba(249,203,0,0.07)", border: "1px solid rgba(249,203,0,0.18)", borderRadius: "8px", padding: "7px 12px" }}>
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#ef4444", display: "inline-block", animation: "pulse 1.4s infinite" }} />
+          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", fontWeight: 600 }}>
+            ⚡ Only <strong style={{ color: "#f9cb00" }}>3 spots</strong> left for free demo this week
+          </span>
+        </div>
+
         <button
           type="submit"
           disabled={isSubmitting}
@@ -210,16 +218,16 @@ const inputStyle: React.CSSProperties = {
             padding: "16px 24px",
             fontWeight: 800,
             fontSize: "16px",
-            marginTop: "8px",
             cursor: isSubmitting ? "not-allowed" : "pointer",
             opacity: isSubmitting ? 0.7 : 1,
             border: "none",
             transition: "opacity 0.2s",
+            boxShadow: "0 4px 24px rgba(249,203,0,0.35)",
           }}
           onMouseEnter={e => { if (!isSubmitting) e.currentTarget.style.opacity = "0.88"; }}
           onMouseLeave={e => { if (!isSubmitting) e.currentTarget.style.opacity = "1"; }}
         >
-          {isSubmitting ? "Submitting…" : "Get My Free Demo Class →"}
+          {isSubmitting ? "Submitting…" : "🎯 Get My Free Demo Class →"}
         </button>
       </form>
 

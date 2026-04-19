@@ -22,7 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AgeGate from "@/components/AgeGate";
 import EnrollModal from "@/components/EnrollModal";
 import FAQSection from "@/components/FAQSection";
-import OfferPopup, { OFFER_KEY } from "@/components/OfferPopup";
+import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/components/OfferPopup";
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -35,24 +35,35 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [showOfferPopup, setShowOfferPopup] = useState(false);
 
-  // Show offer popup after 3s if not already dismissed/submitted
+  const shouldSuppressPopup = () =>
+    localStorage.getItem(OFFER_SUBMITTED_KEY) === "1" ||
+    sessionStorage.getItem(OFFER_DISMISSED_SESSION_KEY) === "1";
+
+  // Show offer popup after 3s — suppressed only if submitted (permanent) or dismissed this session
   useEffect(() => {
-    const stored = localStorage.getItem(OFFER_KEY);
-    if (stored === "submitted" || stored === "dismissed") return;
+    if (shouldSuppressPopup()) return;
     const t = setTimeout(() => setShowOfferPopup(true), 3000);
     return () => clearTimeout(t);
   }, []);
 
-  // Exit-intent: show popup when mouse leaves viewport from the top
+  // Exit-intent: mouse leaves viewport from the top
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY > 10) return; // only top exit
-      const stored = localStorage.getItem(OFFER_KEY);
-      if (stored === "submitted" || stored === "dismissed") return;
+      if (e.clientY > 10) return;
+      if (shouldSuppressPopup()) return;
       setShowOfferPopup(true);
     };
     document.addEventListener("mouseleave", handleMouseLeave);
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
+  }, []);
+
+  // Live viewer count — fluctuates realistically
+  const [viewers, setViewers] = useState(() => 9 + Math.floor(Math.random() * 9));
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setViewers((v) => Math.min(24, Math.max(7, v + (Math.random() > 0.5 ? 1 : -1))));
+    }, 6000);
+    return () => clearInterval(iv);
   }, []);
 
   const handleWhatsAppClick = () => {
@@ -74,15 +85,15 @@ export default function Home() {
       <CustomCursor />
 
       {/* Announcement Bar */}
-      <div style={{ backgroundColor: "#f9cb00" }} className="w-full py-2.5 px-4 text-center relative z-50">
-        <p style={{ color: "#000", fontSize: "13px", fontWeight: 600 }}>
-          🎯 Limited spots available — Next batch starts soon.{" "}
+      <div style={{ backgroundColor: "#f9cb00" }} className="announcement-bar w-full py-2 px-4 text-center relative z-50">
+        <p style={{ color: "#000", fontSize: "12px", fontWeight: 600, lineHeight: 1.5 }}>
+          🔥 <strong>3 free demo spots</strong> left this week —{" "}
           <a
             href="#contact"
             onClick={handleJoinClassClick}
-            style={{ fontWeight: 700, textDecoration: "underline" }}
+            style={{ fontWeight: 800, textDecoration: "underline", display: "inline" }}
           >
-            Book your free demo now →
+            Claim yours now →
           </a>
         </p>
       </div>
@@ -98,7 +109,7 @@ export default function Home() {
       {/* Floating Book Free Demo button — bottom RIGHT */}
       <button
         onClick={() => { trackJoinClassClick(); setShowModal(true); }}
-        className="fixed sm:bottom-2 sm:right-2 bottom-4 right-4 z-[99] cursor-pointer font-bold text-[13px] sm:text-[12px] rounded-full shadow-lg transition-opacity hover:opacity-85"
+        className="floating-cta fixed sm:bottom-3 sm:right-3 bottom-5 right-5 z-[99] cursor-pointer font-bold text-[13px] sm:text-[12px] rounded-full shadow-lg transition-opacity hover:opacity-85"
         style={{
           background: "#f9cb00",
           color: "#0d0404",
@@ -242,6 +253,21 @@ export default function Home() {
                 >
                   Coached by national champions · Results in 90 days
                 </p>
+              </div>
+
+              {/* Live viewer + urgency bar */}
+              <div className="flex flex-wrap items-center gap-3 md:justify-center">
+                <div className="flex items-center gap-2">
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#4ade80", display: "inline-block", boxShadow: "0 0 6px #4ade80", animation: "pulse 1.8s infinite" }} />
+                  <span style={{ color: "rgba(255,255,255,0.55)", fontSize: "12.5px", fontWeight: 600 }}>
+                    {viewers} people viewing right now
+                  </span>
+                </div>
+                <div style={{ width: 1, height: 14, background: "rgba(255,255,255,0.12)" }} className="sm:hidden" />
+                <div className="flex items-center gap-1.5">
+                  <span style={{ color: "#f9cb00", fontSize: "13px" }}>⚡</span>
+                  <span style={{ color: "#f9cb00", fontSize: "12.5px", fontWeight: 700 }}>3 spots left this week</span>
+                </div>
               </div>
 
               {/* Feature pills — horizontal row */}
