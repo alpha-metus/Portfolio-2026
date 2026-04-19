@@ -60,12 +60,12 @@ function winrateColor(wr: number): string {
 
 export default function ExploreOpenings() {
   const [uciMoves, setUciMoves]   = useState<string[]>([]);
-  const [fen, setFen]             = useState(new Chess().fen());
+  const [fen, setFen]             = useState(() => new Chess().fen());
   const [history, setHistory]     = useState<string[]>([]);
   const [boardFlipped, setBoardFlipped] = useState(false);
 
   const [explorerData, setExplorerData]   = useState<ChessDBData | null>(null);
-  const [loadingExplorer, setLoadingExplorer] = useState(false);
+  const [loadingExplorer, setLoadingExplorer] = useState(true);
   const [explorerError, setExplorerError] = useState(false);
 
   const abortRef = useRef<AbortController | null>(null);
@@ -280,12 +280,12 @@ export default function ExploreOpenings() {
 
             {!loadingExplorer && !explorerError && explorerData && (
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {explorerData.moves.length === 0 ? (
+                {(explorerData.moves ?? []).length === 0 ? (
                   <div style={{ color: "#4b5563", fontSize: "13px", padding: "16px 0" }}>
                     No moves found for this position.
                   </div>
                 ) : (
-                  explorerData.moves.slice(0, 8).map((move) => (
+                  (explorerData.moves ?? []).slice(0, 8).map((move) => (
                     <button
                       key={move.uci}
                       onClick={() => playMove(move.uci)}
