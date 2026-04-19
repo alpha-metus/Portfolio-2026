@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import ExploreLayout from "@/components/ExploreLayout";
@@ -46,80 +46,107 @@ function pct(n: number, total: number) {
   return total === 0 ? 0 : Math.round((n / total) * 100);
 }
 
+/** Build a Chess instance by replaying UCI moves from the start position. */
+function buildGame(uciMoves: string[]): { chess: Chess; sans: string[] } {
+  const chess = new Chess();
+  const sans: string[] = [];
+  for (const uci of uciMoves) {
+    const m = chess.move({
+      from: uci.slice(0, 2) as Parameters<Chess["move"]>[0] extends { from: infer F } ? F : string,
+      to:   uci.slice(2, 4) as Parameters<Chess["move"]>[0] extends { to: infer T } ? T : string,
+      promotion: uci.length > 4 ? (uci[4] as "q" | "r" | "b" | "n") : undefined,
+    });
+    if (m) sans.push(m.san);
+  }
+  return { chess, sans };
+}
+
 export default function ExploreOpenings() {
-  const [game, setGame] = useState(new Chess());
+  // Single source of truth: list of UCI moves played from start
+  const [uciMoves, setUciMoves] = useState<string[]>([]);
+
+  // Derived display state
   const [fen, setFen] = useState(new Chess().fen());
-  const [history, setHistory] = useState<string[]>([]); // SAN history
+  const [history, setHistory] = useState<string[]>([]); // SAN list
+
   const [speed, setSpeed] = useState<Speed>("blitz");
   const [explorerData, setExplorerData] = useState<ExplorerData | null>(null);
   const [loadingExplorer, setLoadingExplorer] = useState(false);
-  const [orientation] = useState<"white" | "black">("white");
+  const [explorerError, setExplorerError] = useState(false);
+  const [boardFlipped, setBoardFlipped] = useState(false);
+
+  const explorerAbortRef = useRef<AbortController | null>(null);
+
+  /** Apply a new UCI move list as the authoritative position. */
+  const setPosition = useCallback((moves: string[]) => {
+    const { chess, sans } = buildGame(moves);
+    setUciMoves(moves);
+    setFen(chess.fen());
+    setHistory(sans);
+  }, []);
 
   // Fetch opening stats from Lichess explorer API
   const fetchExplorer = useCallback((currentFen: string, currentSpeed: Speed) => {
+    // Cancel any in-flight request
+    explorerAbortRef.current?.abort();
+    const controller = new AbortController();
+    explorerAbortRef.current = controller;
+
     setLoadingExplorer(true);
+    setExplorerError(false);
+
     const encodedFen = encodeURIComponent(currentFen);
     fetch(
       `https://explorer.lichess.ovh/lichess?fen=${encodedFen}&speeds[]=${currentSpeed}&topGames=0&recentGames=0&moves=10`,
-      { headers: { Accept: "application/json" } }
+      { headers: { Accept: "application/json" }, signal: controller.signal }
     )
-      .then((r) => r.json())
-      .then((data) => {
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((data: ExplorerData) => {
         setExplorerData(data);
         setLoadingExplorer(false);
       })
-      .catch(() => setLoadingExplorer(false));
+      .catch((err: unknown) => {
+        if (err instanceof Error && err.name === "AbortError") return;
+        setExplorerData(null);
+        setExplorerError(true);
+        setLoadingExplorer(false);
+      });
   }, []);
 
   useEffect(() => {
     fetchExplorer(fen, speed);
+    return () => explorerAbortRef.current?.abort();
   }, [fen, speed, fetchExplorer]);
 
   // Play a move from the explorer list
   const playMove = (uci: string) => {
-    const newGame = new Chess(game.fen());
-    const move = newGame.move({
-      from: uci.slice(0, 2) as any,
-      to: uci.slice(2, 4) as any,
-      promotion: uci.length > 4 ? (uci[4] as any) : undefined,
-    });
-    if (!move) return;
-    setGame(newGame);
-    setFen(newGame.fen());
-    setHistory((h) => [...h, move.san]);
+    setPosition([...uciMoves, uci]);
   };
 
   // Board drag-and-drop
-  const onDrop = (from: string, to: string) => {
-    const newGame = new Chess(game.fen());
-    const move = newGame.move({ from: from as any, to: to as any, promotion: "q" });
+  const onDrop = (from: string, to: string): boolean => {
+    // Try the move on a temporary game built from current position
+    const { chess } = buildGame(uciMoves);
+    const move = chess.move({ from: from as "a1", to: to as "a1", promotion: "q" });
     if (!move) return false;
-    setGame(newGame);
-    setFen(newGame.fen());
-    setHistory((h) => [...h, move.san]);
+    // Build the UCI string from the move result
+    const uci = move.from + move.to + (move.promotion ?? "");
+    setPosition([...uciMoves, uci]);
     return true;
   };
 
-  // Undo last move
+  // Undo last move — simply slice the moves array
   const undoMove = () => {
-    const newGame = new Chess(game.fen());
-    newGame.undo();
-    setGame(newGame);
-    setFen(newGame.fen());
-    setHistory((h) => h.slice(0, -1));
+    if (uciMoves.length === 0) return;
+    setPosition(uciMoves.slice(0, -1));
   };
 
   // Load a starter opening
   const loadOpening = (moves: string[]) => {
-    const newGame = new Chess();
-    const sans: string[] = [];
-    for (const uci of moves) {
-      const m = newGame.move({ from: uci.slice(0, 2) as any, to: uci.slice(2, 4) as any, promotion: uci.length > 4 ? (uci[4] as any) : undefined });
-      if (m) sans.push(m.san);
-    }
-    setGame(newGame);
-    setFen(newGame.fen());
-    setHistory(sans);
+    setPosition(moves);
   };
 
   const total = (explorerData?.white ?? 0) + (explorerData?.draws ?? 0) + (explorerData?.black ?? 0);
@@ -175,17 +202,31 @@ export default function ExploreOpenings() {
 
           {/* Board column */}
           <div>
-            {/* Opening name */}
-            <div style={{ minHeight: "24px", marginBottom: "10px" }}>
-              {openingName && (
-                <span style={{
-                  backgroundColor: "rgba(96,165,250,0.12)", border: "1px solid rgba(96,165,250,0.25)",
-                  color: "#93c5fd", fontSize: "12px", fontWeight: 700,
-                  padding: "4px 12px", borderRadius: "999px",
-                }}>
-                  {explorerData?.opening?.eco} · {openingName}
-                </span>
-              )}
+            {/* Opening name + flip button row */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", minHeight: "32px", marginBottom: "10px" }}>
+              <div>
+                {openingName && (
+                  <span style={{
+                    backgroundColor: "rgba(96,165,250,0.12)", border: "1px solid rgba(96,165,250,0.25)",
+                    color: "#93c5fd", fontSize: "12px", fontWeight: 700,
+                    padding: "4px 12px", borderRadius: "999px",
+                  }}>
+                    {explorerData?.opening?.eco} · {openingName}
+                  </span>
+                )}
+              </div>
+              <button
+                onClick={() => setBoardFlipped((f) => !f)}
+                title="Flip board"
+                style={{
+                  padding: "5px 10px", borderRadius: "8px",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                  color: "#9ca3af", fontSize: "13px", cursor: "pointer",
+                }}
+              >
+                🔄 Flip
+              </button>
             </div>
 
             {/* Board */}
@@ -193,7 +234,7 @@ export default function ExploreOpenings() {
               <Chessboard
                 position={fen}
                 onPieceDrop={onDrop}
-                boardOrientation={orientation}
+                boardOrientation={boardFlipped ? "black" : "white"}
                 customDarkSquareStyle={{ backgroundColor: "#b58863" }}
                 customLightSquareStyle={{ backgroundColor: "#f0d9b5" }}
                 animationDuration={150}
@@ -217,13 +258,13 @@ export default function ExploreOpenings() {
                     ))
                   : "Start position"}
               </div>
-              <button onClick={undoMove} disabled={history.length === 0}
+              <button onClick={undoMove} disabled={uciMoves.length === 0}
                 style={{
                   padding: "8px 16px", borderRadius: "9px",
                   border: "1px solid rgba(255,255,255,0.12)",
                   backgroundColor: "rgba(255,255,255,0.05)",
-                  color: history.length ? "#e5e7eb" : "#4b5563",
-                  fontSize: "13px", fontWeight: 600, cursor: history.length ? "pointer" : "default",
+                  color: uciMoves.length ? "#e5e7eb" : "#4b5563",
+                  fontSize: "13px", fontWeight: 600, cursor: uciMoves.length ? "pointer" : "default",
                 }}
               >
                 ← Undo
@@ -271,7 +312,29 @@ export default function ExploreOpenings() {
               <div style={{ color: "#4b5563", fontSize: "13px", padding: "20px 0" }}>Loading stats…</div>
             )}
 
-            {!loadingExplorer && explorerData && (
+            {!loadingExplorer && explorerError && (
+              <div style={{
+                backgroundColor: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)",
+                borderRadius: "10px", padding: "16px", textAlign: "center",
+              }}>
+                <div style={{ fontSize: "24px", marginBottom: "8px" }}>⚠️</div>
+                <p style={{ color: "#fca5a5", fontSize: "13px", margin: 0 }}>
+                  Couldn&apos;t load explorer data. Check your connection and try again.
+                </p>
+                <button
+                  onClick={() => fetchExplorer(fen, speed)}
+                  style={{
+                    marginTop: "12px", padding: "7px 16px", borderRadius: "8px",
+                    border: "1px solid rgba(239,68,68,0.3)", backgroundColor: "rgba(239,68,68,0.1)",
+                    color: "#fca5a5", fontSize: "12px", fontWeight: 600, cursor: "pointer",
+                  }}
+                >
+                  Retry
+                </button>
+              </div>
+            )}
+
+            {!loadingExplorer && !explorerError && explorerData && (
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 {explorerData.moves.slice(0, 8).map((move) => {
                   const moveTotal = move.white + move.draws + move.black;
