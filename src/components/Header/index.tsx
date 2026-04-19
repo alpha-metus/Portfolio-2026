@@ -66,15 +66,26 @@ export default function Header({ ...props }: Props) {
   return (
     <header
       {...props}
-      className={`${props.className} flex sm:px-4 justify-between items-center gap-5 md:mx-0 ${
+      className={`${props.className} flex sm:px-4 justify-between items-center gap-5 md:mx-0 transition-all duration-300 ${
         isSticky
-          ? "fixed top-0 left-0 right-0 z-[999] bg-black-900 bg-opacity-95 backdrop-blur-md py-3 px-8 shadow-lg transition-all duration-300"
+          ? "fixed top-0 left-0 right-0 z-[999] py-3 px-8 shadow-2xl"
           : "py-1 px-2 rounded-2xl"
       }`}
       style={
-        !isSticky
-          ? { background: "rgba(13,4,4,0.55)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.07)" }
-          : undefined
+        isSticky
+          ? {
+              background: "rgba(10,3,3,0.92)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              borderBottom: "1px solid rgba(249,203,0,0.12)",
+              boxShadow: "0 4px 32px rgba(0,0,0,0.5)",
+            }
+          : {
+              background: "rgba(13,4,4,0.78)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }
       }
     >
       <Img

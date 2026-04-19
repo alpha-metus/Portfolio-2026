@@ -17,15 +17,15 @@ import AgeGate from "@/components/AgeGate";
 import EnrollModal from "@/components/EnrollModal";
 import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/components/OfferPopup";
 
-/* ── Below-fold components: lazy-loaded so they don't block initial paint ── */
-const CelebrityStudents    = dynamic(() => import("@/components/CelebrityStudents/CelebrityStudents"), { ssr: false, loading: () => <div style={{ height: 300 }} /> });
-const Carousel             = dynamic(() => import("@/components/Carousel/Carousel"),                  { ssr: false, loading: () => <div style={{ height: 260 }} /> });
-const ScrollingBanner      = dynamic(() => import("@/components/ScrollingBanner/ScrollingBanner"),    { ssr: false, loading: () => <div style={{ height: 44 }} /> });
-const CustomCursor         = dynamic(() => import("@/components/CustomCursor/CustomCursor"),          { ssr: false });
-const TestimonialsSection  = dynamic(() => import("./components/TestimonialsSection"),               { ssr: false, loading: () => <div style={{ height: 400 }} /> });
-const InternationalStudentsSection = dynamic(() => import("./components/InternationalStudentsSection"), { ssr: false, loading: () => <div style={{ height: 300 }} /> });
-const MidPageCTA           = dynamic(() => import("./components/MidPageCTA"),                        { ssr: false, loading: () => <div style={{ height: 160 }} /> });
-const FAQSection           = dynamic(() => import("@/components/FAQSection"),                        { ssr: false, loading: () => <div style={{ height: 400 }} /> });
+/* ── Below-fold components: code-split for smaller initial bundle ── */
+const CelebrityStudents           = dynamic(() => import("@/components/CelebrityStudents/CelebrityStudents"));
+const Carousel                    = dynamic(() => import("@/components/Carousel/Carousel"));
+const ScrollingBanner             = dynamic(() => import("@/components/ScrollingBanner/ScrollingBanner"));
+const CustomCursor                = dynamic(() => import("@/components/CustomCursor/CustomCursor"));
+const TestimonialsSection         = dynamic(() => import("./components/TestimonialsSection"));
+const InternationalStudentsSection = dynamic(() => import("./components/InternationalStudentsSection"));
+const MidPageCTA                  = dynamic(() => import("./components/MidPageCTA"));
+const FAQSection                  = dynamic(() => import("@/components/FAQSection"));
 
 const featureBullets = [
   { title: "Results from session one" },
