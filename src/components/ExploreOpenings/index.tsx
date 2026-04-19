@@ -95,10 +95,17 @@ export default function ExploreOpenings() {
     setLoadingExplorer(true);
     setExplorerError(false);
 
-    const encodedFen = encodeURIComponent(currentFen);
+    // Build URL with URLSearchParams so brackets are percent-encoded correctly
+    const params = new URLSearchParams();
+    params.set("fen", currentFen);
+    params.append("speeds[]", currentSpeed);
+    params.set("topGames", "0");
+    params.set("recentGames", "0");
+    params.set("moves", "10");
+
     fetch(
-      `https://explorer.lichess.ovh/lichess?fen=${encodedFen}&speeds[]=${currentSpeed}&topGames=0&recentGames=0&moves=10`,
-      { headers: { Accept: "application/json" }, signal: controller.signal }
+      `https://explorer.lichess.ovh/lichess?${params.toString()}`,
+      { signal: controller.signal }
     )
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
