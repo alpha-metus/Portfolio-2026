@@ -15,6 +15,7 @@ type ImgProps = React.DetailedHTMLProps<
     isStatic: boolean;
     width: number;
     height: number;
+    priority: boolean;
   }>;
 
 const Img: React.FC<React.PropsWithChildren<ImgProps>> = ({
