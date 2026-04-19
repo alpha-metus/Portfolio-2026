@@ -7,10 +7,10 @@ import ExploreLayout from "@/components/ExploreLayout";
 interface ChessDBMove {
   uci: string;
   san: string;
-  score: number;
-  rank: number;
+  score: number | string;
+  rank: number | string;
   note: string;
-  winrate: number;
+  winrate: number | string;
 }
 
 interface ChessDBData {
@@ -285,7 +285,11 @@ export default function ExploreOpenings() {
                     No moves found for this position.
                   </div>
                 ) : (
-                  (explorerData.moves ?? []).slice(0, 8).map((move) => (
+                  (explorerData.moves ?? []).slice(0, 8).map((move) => {
+                    const wr    = Number(move.winrate) || 0;
+                    const score = Number(move.score)   || 0;
+                    const rank  = Number(move.rank)    || 4;
+                    return (
                     <button
                       key={move.uci}
                       onClick={() => playMove(move.uci)}
@@ -303,37 +307,38 @@ export default function ExploreOpenings() {
                       {/* Top row: rank + SAN + win% */}
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                          <span style={{ fontSize: "11px" }}>{rankLabel(move.rank)}</span>
+                          <span style={{ fontSize: "11px" }}>{rankLabel(rank)}</span>
                           <span style={{ color: "#93c5fd", fontWeight: 800, fontSize: "15px", fontFamily: "monospace" }}>
                             {move.san}
                           </span>
                           {move.note && (
                             <span style={{ color: "#fbbf24", fontSize: "11px", fontWeight: 700 }}>
-                              {move.note.split(" ")[0]}
+                              {String(move.note).split(" ")[0]}
                             </span>
                           )}
                         </div>
-                        <span style={{ color: winrateColor(move.winrate), fontSize: "12px", fontWeight: 700 }}>
-                          {move.winrate.toFixed(1)}%
+                        <span style={{ color: winrateColor(wr), fontSize: "12px", fontWeight: 700 }}>
+                          {wr.toFixed(1)}%
                         </span>
                       </div>
 
                       {/* Win rate bar */}
                       <div style={{ height: "4px", borderRadius: "999px", backgroundColor: "rgba(255,255,255,0.08)", overflow: "hidden" }}>
                         <div style={{
-                          width: `${move.winrate}%`,
+                          width: `${wr}%`,
                           height: "100%",
-                          backgroundColor: winrateColor(move.winrate),
+                          backgroundColor: winrateColor(wr),
                           transition: "width 0.3s",
                         }} />
                       </div>
 
                       {/* Score */}
                       <div style={{ fontSize: "10px", color: "#6b7280" }}>
-                        Score: {move.score > 0 ? `+${move.score}` : move.score} cp
+                        Score: {score > 0 ? `+${score}` : score} cp
                       </div>
                     </button>
-                  ))
+                    );
+                  })
                 )}
 
                 {/* Legend */}
