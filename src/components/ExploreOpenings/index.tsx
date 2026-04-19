@@ -95,7 +95,7 @@ export default function ExploreOpenings() {
         return r.json();
       })
       .then((data: ChessDBData) => {
-        if (data.status !== "ok") throw new Error("bad status");
+        // "ok" = has moves, "unknown"/"nobestmove" = valid but no data for position
         setExplorerData(data);
         setLoadingExplorer(false);
       })
@@ -281,8 +281,9 @@ export default function ExploreOpenings() {
             {!loadingExplorer && !explorerError && explorerData && (
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 {(explorerData.moves ?? []).length === 0 ? (
-                  <div style={{ color: "#4b5563", fontSize: "13px", padding: "16px 0" }}>
-                    No moves found for this position.
+                  <div style={{ color: "#4b5563", fontSize: "13px", padding: "16px 0", lineHeight: 1.6 }}>
+                    No data for this position.<br/>
+                    <span style={{ fontSize: "11px" }}>Try a more common opening line.</span>
                   </div>
                 ) : (
                   (explorerData.moves ?? []).slice(0, 8).map((move) => {
