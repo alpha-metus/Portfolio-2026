@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StatisticsOverviewSection from "./components/StatisticsOverviewSection";
 import ServicesOverviewSection from "./components/ServicesOverviewSection";
 import PricingSection from "./components/PricingSection";
@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AgeGate from "@/components/AgeGate";
 import EnrollModal from "@/components/EnrollModal";
 import FAQSection from "@/components/FAQSection";
+import OfferPopup, { OFFER_KEY } from "@/components/OfferPopup";
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -32,6 +33,27 @@ const featureBullets = [
 export default function Home() {
   const [showAgeGate, setShowAgeGate] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showOfferPopup, setShowOfferPopup] = useState(false);
+
+  // Show offer popup after 3s if not already dismissed/submitted
+  useEffect(() => {
+    const stored = localStorage.getItem(OFFER_KEY);
+    if (stored === "submitted" || stored === "dismissed") return;
+    const t = setTimeout(() => setShowOfferPopup(true), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Exit-intent: show popup when mouse leaves viewport from the top
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY > 10) return; // only top exit
+      const stored = localStorage.getItem(OFFER_KEY);
+      if (stored === "submitted" || stored === "dismissed") return;
+      setShowOfferPopup(true);
+    };
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+  }, []);
 
   const handleWhatsAppClick = () => {
     setShowAgeGate(true);
@@ -329,6 +351,11 @@ export default function Home() {
       <FAQSection />
 
       <Footer />
+
+      {/* Offer popup — shows after 3s or on exit intent */}
+      {showOfferPopup && (
+        <OfferPopup onClose={() => setShowOfferPopup(false)} />
+      )}
 
       {/* Floating Book Free Demo modal */}
       {showModal && (

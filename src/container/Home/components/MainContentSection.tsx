@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { trackEvent } from "@/lib/fbPixel";
+import Confetti from "@/components/Confetti";
 
 export default function MainContentSection() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ export default function MainContentSection() {
     mobile_no: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [confetti, setConfetti] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -36,10 +39,8 @@ export default function MainContentSection() {
       });
 
       setIsSubmitting(false);
-      toast.success("🎉 Done! Check your email — we'll be in touch within 24 hrs.", {
-        position: "top-center",
-        autoClose: 6000,
-      });
+      setConfetti(true);
+      setSubmitted(true);
       setFormData({ name: "", email: "", mobile_no: "" });
     } catch (error) {
       setIsSubmitting(false);
@@ -70,6 +71,52 @@ const inputStyle: React.CSSProperties = {
     marginBottom: "6px",
     display: "block",
   };
+
+  if (submitted) {
+    return (
+      <>
+        <Confetti active={confetti} />
+        <div
+          id="contact"
+          className="sm:!p-5"
+          style={{
+            background: "#1a1a1a",
+            borderRadius: "20px",
+            padding: "40px",
+            width: "100%",
+            scrollMarginTop: "80px",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ fontSize: "56px", marginBottom: "16px" }}>🏆</div>
+          <h2 style={{ color: "#f9cb00", fontSize: "24px", fontWeight: 900, margin: "0 0 12px", lineHeight: 1.2 }}>
+            You just made your best move!
+          </h2>
+          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "15.5px", lineHeight: 1.75, margin: "0 0 8px" }}>
+            This is the <strong style={{ color: "#ffffff" }}>first step in the right direction</strong>. 🚀
+          </p>
+          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "13.5px", lineHeight: 1.7, margin: "0 0 28px" }}>
+            Our coach will reach out within a few hours to schedule your free demo. Get ready to level up your chess!
+          </p>
+          <button
+            onClick={() => setSubmitted(false)}
+            style={{
+              background: "rgba(249,203,0,0.12)",
+              color: "#f9cb00",
+              border: "1px solid rgba(249,203,0,0.3)",
+              borderRadius: "50px",
+              padding: "10px 24px",
+              fontWeight: 700,
+              fontSize: "13px",
+              cursor: "pointer",
+            }}
+          >
+            Book another slot
+          </button>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div
