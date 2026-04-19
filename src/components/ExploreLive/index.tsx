@@ -20,20 +20,20 @@ interface TVState {
   blackSecs: number | null;
 }
 
-// Lichess TV API channel names are case-sensitive
+// Lichess TV API uses camelCase keys matching the website URL paths
 const CHANNELS = [
   { id: "best",        label: "⭐ Best",          path: "" },
-  { id: "ultraBullet", label: "🚀 UltraBullet",   path: "UltraBullet" },
-  { id: "bullet",      label: "⚡ Bullet",        path: "Bullet" },
-  { id: "blitz",       label: "🔥 Blitz",         path: "Blitz" },
-  { id: "rapid",       label: "⏱ Rapid",          path: "Rapid" },
-  { id: "classical",   label: "🎓 Classical",     path: "Classical" },
-  { id: "chess960",    label: "♾ Chess960",       path: "Chess960" },
-  { id: "koth",        label: "♛ King of Hill",   path: "King Of The Hill" },
-  { id: "antichess",   label: "👻 Antichess",     path: "Antichess" },
-  { id: "atomic",      label: "💥 Atomic",        path: "Atomic" },
-  { id: "horde",       label: "⚔️ Horde",         path: "Horde" },
-  { id: "computer",    label: "🤖 vs Computer",   path: "Computer" },
+  { id: "ultraBullet", label: "🚀 UltraBullet",   path: "ultraBullet" },
+  { id: "bullet",      label: "⚡ Bullet",        path: "bullet" },
+  { id: "blitz",       label: "🔥 Blitz",         path: "blitz" },
+  { id: "rapid",       label: "⏱ Rapid",          path: "rapid" },
+  { id: "classical",   label: "🎓 Classical",     path: "classical" },
+  { id: "chess960",    label: "♾ Chess960",       path: "chess960" },
+  { id: "koth",        label: "♛ King of Hill",   path: "kingOfTheHill" },
+  { id: "antichess",   label: "👻 Antichess",     path: "antichess" },
+  { id: "atomic",      label: "💥 Atomic",        path: "atomic" },
+  { id: "horde",       label: "⚔️ Horde",         path: "horde" },
+  { id: "computer",    label: "🤖 vs Computer",   path: "computer" },
 ];
 
 function playerLabel(p?: TVPlayer) {
