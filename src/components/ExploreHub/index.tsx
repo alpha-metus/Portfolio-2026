@@ -17,7 +17,7 @@ const cards = [
     href: "/explore/live",
     emoji: "📺",
     title: "Live Chess TV",
-    description: "Watch top grandmasters play live right now. Learn from the best games happening in real time.",
+    description: "Watch top grandmasters play live right now across 12 channels — Blitz, Bullet, Rapid, Classical and more.",
     color: "#4ade80",
     bg: "rgba(74,222,128,0.08)",
     border: "rgba(74,222,128,0.25)",
@@ -27,21 +27,11 @@ const cards = [
     href: "/explore/openings",
     emoji: "📖",
     title: "Opening Explorer",
-    description: "Study chess openings with the Lichess database. Explore moves, win rates, and top games.",
+    description: "Study chess openings with the Lichess database. Explore moves, win rates, and statistics from millions of games.",
     color: "#60a5fa",
     bg: "rgba(96,165,250,0.08)",
     border: "rgba(96,165,250,0.25)",
     badge: "Education · Free",
-  },
-  {
-    href: "/explore/leaderboard",
-    emoji: "🏆",
-    title: "Leaderboard",
-    description: "See the top-rated players on Lichess. Get inspired by the world's best and track your ranking.",
-    color: "#f97316",
-    bg: "rgba(249,115,22,0.08)",
-    border: "rgba(249,115,22,0.25)",
-    badge: "Rankings · Free",
   },
 ];
 
@@ -105,7 +95,7 @@ export default function ExploreHub() {
             lineHeight: 1.6,
           }}
         >
-          Free interactive tools for young chess learners — puzzles, live games, openings &amp; rankings, all in one place.
+          Free interactive tools for chess learners — daily puzzles, live grandmaster games, and opening statistics, all in one place.
         </p>
       </div>
 
