@@ -43,16 +43,6 @@ const cards = [
     border: "rgba(192,132,252,0.25)",
     badge: "Chess.com + Lichess · Free",
   },
-  {
-    href: "/explore/fide",
-    emoji: "📅",
-    title: "FIDE Calendar",
-    description: "Official FIDE tournament calendar — World Championships, Grand Prix, Candidates and all international events.",
-    color: "#fb923c",
-    bg: "rgba(251,146,60,0.08)",
-    border: "rgba(251,146,60,0.25)",
-    badge: "Official · Free",
-  },
 ];
 
 export default function ExploreHub() {

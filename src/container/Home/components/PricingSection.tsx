@@ -11,11 +11,19 @@ export default function PricingSection() {
   return (
     <div
       id="pricing"
-      className="relative h-auto sm:pb-[40px] bg-[radial-gradient(ellipse_at_center,rgba(250,204,0,0.8)_0%,rgba(150,120,0,0.6)_30%,rgba(80,50,0,0.4)_55%,rgba(13,4,4,1)_80%)] py-12 scroll-mt-20"
+      className="relative h-auto sm:pb-[40px] py-12 scroll-mt-20"
+      style={{ background: "radial-gradient(ellipse 120% 70% at center 50%, rgba(250,204,0,0.75) 0%, rgba(150,120,0,0.55) 28%, rgba(80,50,0,0.35) 52%, rgba(13,4,4,0) 75%)", backgroundColor: "#0d0404" }}
     >
+      {/* Top fade — blends the section edge into the background */}
+      <div className="absolute inset-x-0 top-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, #0d0404 0%, transparent 100%)" }} />
+      {/* Bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to top, #0d0404 0%, transparent 100%)" }} />
+
       {/* Chess piece decorations */}
-      <div className="absolute top-8 left-8 text-[40px] opacity-30 pointer-events-none">♕</div>
-      <div className="absolute top-8 right-8 text-[40px] opacity-30 pointer-events-none">♕</div>
+      <div className="absolute top-8 left-8 text-[40px] opacity-25 pointer-events-none select-none">♕</div>
+      <div className="absolute top-8 right-8 text-[40px] opacity-25 pointer-events-none select-none">♕</div>
+      <div className="absolute bottom-16 left-16 text-[28px] opacity-15 pointer-events-none select-none sm:hidden">♖</div>
+      <div className="absolute bottom-16 right-16 text-[28px] opacity-15 pointer-events-none select-none sm:hidden">♖</div>
 
       <div className="w-full mx-auto flex flex-col items-center bg-blue_gray-700_7f rounded-[50px] py-7 relative z-10">
         <h2

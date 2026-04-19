@@ -319,18 +319,38 @@ export default function Home() {
       </div>
 
       {/* ─── STATISTICS + SERVICES ─── */}
-      <div className="flex flex-col w-full max-w-[1440px] m-auto gap-[138px] pt-16 md:gap-12 md:pt-8 md:px-5">
+      <div className="flex flex-col w-full max-w-[1440px] m-auto gap-[138px] pt-16 md:gap-12 md:pt-8 md:px-5 relative">
+        {/* Decorative board pattern — top-right */}
+        <div className="absolute top-0 right-0 w-64 h-64 pointer-events-none opacity-[0.03] sm:hidden"
+          style={{
+            backgroundImage: "linear-gradient(45deg,#f9cb00 25%,transparent 25%),linear-gradient(-45deg,#f9cb00 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#f9cb00 75%),linear-gradient(-45deg,transparent 75%,#f9cb00 75%)",
+            backgroundSize: "32px 32px",
+            backgroundPosition: "0 0, 0 16px, 16px -16px, -16px 0",
+          }} />
         <StatisticsOverviewSection />
         <ServicesOverviewSection />
       </div>
 
+      {/* ─── CHESS PIECE SECTION DIVIDER ─── */}
+      <div className="w-full flex justify-center py-6 sm:py-4" style={{ backgroundColor: "#0d0404" }} aria-hidden="true">
+        <div style={{ display: "flex", gap: "clamp(12px,3vw,32px)", color: "rgba(249,203,0,0.18)", fontSize: "clamp(20px,3vw,30px)", userSelect: "none", letterSpacing: "4px" }}>
+          {"♜♞♝♛♚♝♞♜".split("").map((p, i) => (
+            <span key={i} style={{ display: "inline-block", transform: `translateY(${i % 2 === 0 ? "0" : "4px"})`, transition: "color 0.3s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "rgba(249,203,0,0.6)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(249,203,0,0.18)")}>
+              {p}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* ─── CELEBRITY STUDENTS ─── */}
-      <div style={{ backgroundColor: "#0d0404" }} className="pt-44 md:pt-12 md:px-5">
+      <div style={{ backgroundColor: "#0d0404" }} className="pt-12 md:pt-8 md:px-5">
         <CelebrityStudents />
       </div>
 
       {/* ─── REAL STUDENTS CAROUSELS ─── */}
-      <div className="relative h-[1024px] content-center md:h-auto md:py-12 sm:py-8" style={{ backgroundColor: "#0d0404" }}>
+      <div className="relative h-[1024px] content-center md:h-auto md:py-12 sm:py-8" style={{ backgroundColor: "#0d0404", backgroundImage: "radial-gradient(circle at 50% 50%, rgba(249,203,0,0.04) 0%, transparent 65%)" }}>
 
         <div className="relative z-[5] flex flex-col h-full md:h-auto">
           <div className="flex flex-col items-center pt-[52px] md:pt-8 mb-[100px] md:mb-16 gap-3 px-5">
