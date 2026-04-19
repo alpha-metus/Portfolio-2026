@@ -82,7 +82,7 @@ export default function ExplorePuzzle() {
       .catch(() => { setError(true); setLoading(false); });
   }, [setupBoard]);
 
-  // ── Hint: highlight from-square of next expected move ──
+  // ── Hint: from-square + green dots for all legal destinations ──
   const hintSquare =
     showHint && puzzle && moveIndex < puzzle.puzzle.solution.length
       ? puzzle.puzzle.solution[moveIndex].slice(0, 2)
@@ -90,10 +90,26 @@ export default function ExplorePuzzle() {
 
   const customSquareStyles: Record<string, React.CSSProperties> = {};
   if (hintSquare) {
+    // Ring around the piece to move
     customSquareStyles[hintSquare] = {
-      backgroundColor: "rgba(249,203,0,0.45)",
-      boxShadow: "inset 0 0 0 3px #f9cb00",
+      borderRadius: "50%",
+      boxShadow: "inset 0 0 0 4px rgba(20,85,30,0.8)",
+      backgroundColor: "rgba(20,85,30,0.15)",
     };
+    // Green dots on every legal destination for that piece
+    const legalMoves = game.moves({ square: hintSquare as any, verbose: true }) as Array<{ to: string; captured?: string }>;
+    legalMoves.forEach(({ to, captured }) => {
+      customSquareStyles[to] = captured
+        // capture square: full ring
+        ? {
+            borderRadius: "50%",
+            boxShadow: "inset 0 0 0 4px rgba(20,85,30,0.7)",
+          }
+        // empty square: centre dot via radial-gradient
+        : {
+            background: "radial-gradient(circle, rgba(20,85,30,0.55) 25%, transparent 25%)",
+          };
+    });
   }
 
   // ── View Solution: auto-play all remaining moves ──
