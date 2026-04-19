@@ -20,10 +20,8 @@ export default function PricingSection() {
       <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to top, #0d0404 0%, transparent 100%)" }} />
 
       {/* Chess piece decorations */}
-      <div className="absolute top-8 left-8 text-[40px] opacity-25 pointer-events-none select-none">♕</div>
-      <div className="absolute top-8 right-8 text-[40px] opacity-25 pointer-events-none select-none">♕</div>
-      <div className="absolute bottom-16 left-16 text-[28px] opacity-15 pointer-events-none select-none sm:hidden">♖</div>
-      <div className="absolute bottom-16 right-16 text-[28px] opacity-15 pointer-events-none select-none sm:hidden">♖</div>
+      <div className="absolute top-8 left-8 text-[40px] opacity-30 pointer-events-none">♕</div>
+      <div className="absolute top-8 right-8 text-[40px] opacity-30 pointer-events-none">♕</div>
 
       <div className="w-full mx-auto flex flex-col items-center bg-blue_gray-700_7f rounded-[50px] py-7 relative z-10">
         <h2
