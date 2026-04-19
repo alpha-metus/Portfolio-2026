@@ -29,7 +29,15 @@ export default function OfferPopup({ onClose }: Props) {
   useEffect(() => {
     const tick = setInterval(() => {
       const start = parseInt(localStorage.getItem(TIMER_KEY) || Date.now().toString(), 10);
-      setTimeLeft(Math.max(0, DURATION - Math.floor((Date.now() - start) / 1000)));
+      const remaining = DURATION - Math.floor((Date.now() - start) / 1000);
+      if (remaining <= 0) {
+        // Reset timer for a fresh 30-minute countdown
+        const newStart = Date.now().toString();
+        localStorage.setItem(TIMER_KEY, newStart);
+        setTimeLeft(DURATION);
+      } else {
+        setTimeLeft(remaining);
+      }
     }, 1000);
     return () => clearInterval(tick);
   }, []);
