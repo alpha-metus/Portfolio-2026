@@ -1,31 +1,28 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import StatisticsOverviewSection from "./components/StatisticsOverviewSection";
 import ServicesOverviewSection from "./components/ServicesOverviewSection";
 import PricingSection from "./components/PricingSection";
+import InternationalStudentsSection from "./components/InternationalStudentsSection";
 import MainContentSection from "./components/MainContentSection";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CelebrityStudents from "@/components/CelebrityStudents/CelebrityStudents";
+import Carousel from "@/components/Carousel/Carousel";
 import { bottomRowStudents, marqueeText, topRowStudents } from "./config";
+import CustomCursor from "@/components/CustomCursor/CustomCursor";
+import ScrollingBanner from "@/components/ScrollingBanner/ScrollingBanner";
 import { trackJoinClassClick, trackWhatsAppClick } from "@/lib/fbPixel";
 import Icon from "@/components/Icons";
+import TestimonialsSection from "./components/TestimonialsSection";
+import MidPageCTA from "./components/MidPageCTA";
 import { Heading } from "@/components/Heading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AgeGate from "@/components/AgeGate";
 import EnrollModal from "@/components/EnrollModal";
+import FAQSection from "@/components/FAQSection";
 import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/components/OfferPopup";
-
-/* ── Below-fold components: code-split for smaller initial bundle ── */
-const CelebrityStudents           = dynamic(() => import("@/components/CelebrityStudents/CelebrityStudents"));
-const Carousel                    = dynamic(() => import("@/components/Carousel/Carousel"));
-const ScrollingBanner             = dynamic(() => import("@/components/ScrollingBanner/ScrollingBanner"));
-const CustomCursor                = dynamic(() => import("@/components/CustomCursor/CustomCursor"));
-const TestimonialsSection         = dynamic(() => import("./components/TestimonialsSection"));
-const InternationalStudentsSection = dynamic(() => import("./components/InternationalStudentsSection"));
-const MidPageCTA                  = dynamic(() => import("./components/MidPageCTA"));
-const FAQSection                  = dynamic(() => import("@/components/FAQSection"));
 
 const featureBullets = [
   { title: "Results from session one" },
