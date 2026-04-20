@@ -108,7 +108,7 @@ export default function Footer({ ...props }: Props) {
                 +44 7786 033126
               </Text>
             </a>
-            <a href="tel:+13464309064" className="flex items-center gap-2">
+            <a href="tel:+17473249524" className="flex items-center gap-2">
               <Img
                 src="callicon.png"
                 width={24}
@@ -120,7 +120,7 @@ export default function Footer({ ...props }: Props) {
                 as="p"
                 className="text-[16px] font-normal !text-white-a700_bf"
               >
-                +1 (346) 430-9064
+                +1 (747) 324-9524
               </Text>
             </a>
             <a
@@ -286,7 +286,7 @@ export default function Footer({ ...props }: Props) {
                 </Text>
               </a>
               <a
-                href="tel:+13464309064"
+                href="tel:+17473249524"
                 className="ml-1 mt-[18px] flex items-center gap-1.5 md:ml-0"
               >
                 <Img
@@ -300,7 +300,7 @@ export default function Footer({ ...props }: Props) {
                   as="p"
                   className="text-[16px] font-normal !text-white-a700_bf"
                 >
-                  +1 (346) 430-9064
+                  +1 (747) 324-9524
                 </Text>
               </a>
               <a

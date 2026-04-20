@@ -75,7 +75,7 @@ export default function Home() {
   const proceedToWhatsApp = () => {
     setShowAgeGate(false);
     trackWhatsAppClick();
-    window.open("https://wa.link/pbywtu", "_blank", "noopener,noreferrer");
+    window.open("https://wa.me/17473249524", "_blank", "noopener,noreferrer");
   };
 
   const handleJoinClassClick = () => {

@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
           </div>
           <p style={{ marginBottom: "12px" }}>We use the following third-party platforms for lead generation and parent/guardian communication:</p>
           <ul style={{ listStyle: "none", padding: 0, marginBottom: "16px" }}>
-            <Li><strong style={{ color: "#fff" }}>WhatsApp</strong> (Meta Platforms Inc.) — We use a WhatsApp Business link (<code style={{ backgroundColor: "rgba(255,255,255,0.08)", padding: "1px 6px", borderRadius: "4px" }}>wa.link/pbywtu</code>) to allow parents to contact us directly. Clicking this link opens WhatsApp on your device and initiates a chat with KwinBee.</Li>
+            <Li><strong style={{ color: "#fff" }}>WhatsApp</strong> (Meta Platforms Inc.) — We use a WhatsApp link (<code style={{ backgroundColor: "rgba(255,255,255,0.08)", padding: "1px 6px", borderRadius: "4px" }}>+1 (747) 324-9524</code>) to allow parents to contact us directly. Clicking this link opens WhatsApp on your device and initiates a chat with KwinBee.</Li>
             <Li><strong style={{ color: "#fff" }}>Instagram</strong> (Meta Platforms Inc.) — Our Instagram page (<code style={{ backgroundColor: "rgba(255,255,255,0.08)", padding: "1px 6px", borderRadius: "4px" }}>@kwinbee64</code>) is used to share student achievements and coaching content.</Li>
           </ul>
           <p style={{ marginBottom: "12px" }}><strong style={{ color: "#e5e7eb" }}>How this data is used:</strong></p>
