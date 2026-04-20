@@ -43,16 +43,28 @@ const Carousel = ({ students, direction, speed = 30 }: StudentCarouselProps) => 
         {items.map((student, index) => (
           <div
             key={`${student.id}-${index}`}
-            className="relative mx-2 rounded-lg overflow-hidden bg-[#0d0404] flex items-center justify-center"
-            style={{ width: 160, height: 220, flexShrink: 0 }}
+            className="relative mx-2 rounded-xl overflow-hidden"
+            style={{ width: 170, height: 220, flexShrink: 0 }}
           >
+            {/* Blurred backdrop — fills gaps for any aspect ratio */}
+            <Image
+              src={student.src}
+              alt=""
+              fill
+              loading="lazy"
+              aria-hidden
+              className="object-cover scale-110"
+              sizes="170px"
+              style={{ filter: "blur(12px)", opacity: 0.7 }}
+            />
+            {/* Sharp full photo on top */}
             <Image
               src={student.src}
               alt={student.alt}
               fill
               loading="lazy"
-              className="object-contain rounded-lg"
-              sizes="160px"
+              className="object-contain relative z-10"
+              sizes="170px"
             />
           </div>
         ))}
