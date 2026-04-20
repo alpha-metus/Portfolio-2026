@@ -43,15 +43,16 @@ const Carousel = ({ students, direction, speed = 30 }: StudentCarouselProps) => 
         {items.map((student, index) => (
           <div
             key={`${student.id}-${index}`}
-            className="relative min-w-[160px] h-[240px] sm:min-w-[140px] sm:h-[200px] mx-2 rounded-lg overflow-hidden"
+            className="relative mx-2 rounded-lg overflow-hidden bg-[#0d0404] flex items-center justify-center"
+            style={{ width: 160, height: 220, flexShrink: 0 }}
           >
             <Image
               src={student.src}
               alt={student.alt}
-              width={200}
-              height={250}
+              fill
               loading="lazy"
-              className="object-cover w-full h-full rounded-lg"
+              className="object-contain rounded-lg"
+              sizes="160px"
             />
           </div>
         ))}
