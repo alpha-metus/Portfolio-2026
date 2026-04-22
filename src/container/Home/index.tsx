@@ -23,6 +23,7 @@ import AgeGate from "@/components/AgeGate";
 import EnrollModal from "@/components/EnrollModal";
 import FAQSection from "@/components/FAQSection";
 import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/components/OfferPopup";
+import CompaniesSection from "./components/CompaniesSection";
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -321,6 +322,9 @@ export default function Home() {
       <div className="w-full relative" style={{ backgroundColor: "#0d0404" }}>
         <ScrollingBanner items={marqueeText} />
       </div>
+
+      {/* ─── COMPANIES WE WORK WITH ─── */}
+      <CompaniesSection />
 
       {/* ─── STATISTICS + SERVICES ─── */}
       <div className="flex flex-col w-full max-w-[1440px] m-auto gap-[138px] pt-16 md:gap-12 md:pt-8 md:px-5">
