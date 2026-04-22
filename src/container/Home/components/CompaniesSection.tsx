@@ -85,79 +85,119 @@ const orgs = [
   },
 ];
 
-const ICON_H = 38; // display height for all icons
+/*
+ * Professional logo-grid approach (used by Stripe / Linear / Figma):
+ * – Every cell is exactly 1fr wide → equal visual weight regardless of logo width
+ * – Content is centred inside each cell with padding, not gap hacks
+ * – Thin dividers between cells create clean structure without extra markup
+ * – React.cloneElement sets correct SVG intrinsic size (no transform tricks)
+ */
+const ICON_H = 40; // px – matches original SVG design height; clean round number
 
 export default function CompaniesSection() {
   return (
-    <div
-      className="w-full py-20 px-8"
+    <section
+      className="w-full"
       style={{
         backgroundColor: "#110505",
         borderTop: "1px solid rgba(255,255,255,0.07)",
         borderBottom: "1px solid rgba(255,255,255,0.07)",
       }}
     >
-      {/* subtitle */}
+      {/* ── heading ── */}
       <p
-        className="text-center mb-16"
+        className="text-center pt-14 pb-10"
         style={{
-          fontSize: "15px",
+          fontSize: "14px",
           fontWeight: 400,
-          letterSpacing: "0.3px",
-          color: "rgba(255,255,255,0.4)",
+          letterSpacing: "0.25px",
+          color: "rgba(255,255,255,0.38)",
+          margin: 0,
         }}
       >
         Recognised &amp; affiliated with leading chess organisations worldwide
       </p>
 
-      {/* 3-col desktop · 2-col tablet · 1-col mobile */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 max-w-5xl mx-auto px-4">
-        {orgs.map((org) => (
-          <div
-            key={org.key}
-            className="flex flex-row items-center justify-center"
-            style={{
-              gap: "14px",
-              color: "rgba(255,255,255,0.48)",
-              transition: "color 0.25s, filter 0.25s",
-              cursor: "default",
-              filter: "drop-shadow(0 0 0px transparent)",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLDivElement;
-              el.style.color = "rgba(255,255,255,0.92)";
-              el.style.filter = "drop-shadow(0 0 10px rgba(249,203,0,0.38))";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLDivElement;
-              el.style.color = "rgba(255,255,255,0.48)";
-              el.style.filter = "drop-shadow(0 0 0px transparent)";
-            }}
-          >
-            {/* icon — cloneElement sets correct intrinsic size so layout is accurate */}
-            {React.cloneElement(
-              org.svg as React.ReactElement<React.SVGProps<SVGSVGElement>>,
-              {
-                height: ICON_H,
-                width: Math.round(org.w * (ICON_H / org.h)),
-                style: { flexShrink: 0, display: "block" },
-              }
-            )}
+      {/* ── 3 × 2 bordered logo grid ── */}
+      <div
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          padding: "0 2rem 3.5rem",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: "14px",
+            overflow: "hidden",
+          }}
+        >
+          {orgs.map((org, i) => {
+            const notLastCol  = i % 3 !== 2;
+            const notLastRow  = i < 3;           // 6 items → rows 0-2 and 3-5
 
-            <span
-              style={{
-                fontSize: "17px",
-                fontWeight: 600,
-                letterSpacing: "0.2px",
-                color: "inherit",
-                lineHeight: 1.2,
-              }}
-            >
-              {org.label}
-            </span>
-          </div>
-        ))}
+            return (
+              <div
+                key={org.key}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "14px",
+                  padding: "2.75rem 1.5rem",
+                  /* dividers */
+                  borderRight:  notLastCol ? "1px solid rgba(255,255,255,0.08)" : "none",
+                  borderBottom: notLastRow ? "1px solid rgba(255,255,255,0.08)" : "none",
+                  /* colour + transitions */
+                  color: "rgba(255,255,255,0.5)",
+                  background: "transparent",
+                  transition: "color 0.22s ease, background 0.22s ease, filter 0.22s ease",
+                  cursor: "default",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.color      = "rgba(255,255,255,0.95)";
+                  el.style.background = "rgba(255,255,255,0.03)";
+                  el.style.filter     = "drop-shadow(0 0 10px rgba(249,203,0,0.28))";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.color      = "rgba(255,255,255,0.5)";
+                  el.style.background = "transparent";
+                  el.style.filter     = "none";
+                }}
+              >
+                {/* icon at exactly ICON_H — layout-accurate via cloneElement */}
+                {React.cloneElement(
+                  org.svg as React.ReactElement<React.SVGProps<SVGSVGElement>>,
+                  {
+                    height: ICON_H,
+                    width:  Math.round(org.w * (ICON_H / org.h)),
+                    style:  { flexShrink: 0, display: "block" },
+                  }
+                )}
+
+                {/* name */}
+                <span
+                  style={{
+                    fontSize:    "15px",
+                    fontWeight:  600,
+                    lineHeight:  1.3,
+                    color:       "inherit",
+                    maxWidth:    "110px",   /* allows long names to wrap cleanly */
+                  }}
+                >
+                  {org.label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
