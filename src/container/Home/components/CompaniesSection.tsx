@@ -4,7 +4,7 @@ const orgs = [
   {
     key: "fide",
     logo: (
-      <svg width="120" height="48" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="105" height="42" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Globe ring */}
         <ellipse cx="18" cy="18" rx="11" ry="11" stroke="currentColor" strokeWidth="1.6" fill="none" />
         <ellipse cx="18" cy="18" rx="5" ry="11" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.6" />
@@ -20,7 +20,7 @@ const orgs = [
   {
     key: "uschess",
     logo: (
-      <svg width="144" height="48" viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="126" height="42" viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Knight silhouette — simplified */}
         <path
           d="M14 28 L14 22 C14 22 11 20 11 16 C11 12 14 10 14 10 L16 12 C16 12 17 10 19 10 C21 10 22 11 22 12 C23 11.5 24 12 24 13 C24 14 23 14.5 22 14 C22 15 21 17 21 19 L22 28 Z"
@@ -37,7 +37,7 @@ const orgs = [
   {
     key: "ecf",
     logo: (
-      <svg width="117" height="48" viewBox="0 0 88 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="102" height="42" viewBox="0 0 88 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Crown */}
         <path
           d="M10 26 L10 18 L13 21 L18 14 L23 21 L26 18 L26 26 Z"
@@ -57,7 +57,7 @@ const orgs = [
   {
     key: "aicf",
     logo: (
-      <svg width="130" height="48" viewBox="0 0 98 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="114" height="42" viewBox="0 0 98 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Lotus / Ashoka chakra simplified */}
         <circle cx="18" cy="18" r="9" stroke="currentColor" strokeWidth="1.4" fill="none" />
         <circle cx="18" cy="18" r="3" fill="currentColor" opacity="0.5" />
@@ -83,7 +83,7 @@ const orgs = [
   {
     key: "chesscom",
     logo: (
-      <svg width="163" height="48" viewBox="0 0 122 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="143" height="42" viewBox="0 0 122 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Chess.com badge square */}
         <rect x="6" y="6" width="24" height="24" rx="5" fill="none" stroke="currentColor" strokeWidth="1.4" />
         {/* Knight inside */}
@@ -102,7 +102,7 @@ const orgs = [
   {
     key: "lichess",
     logo: (
-      <svg width="144" height="48" viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="126" height="42" viewBox="0 0 108 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Lichess knight — open-source style minimal */}
         <path
           d="M12 29 L12 22 C12 22 9 20 9 16 C9 12 13 8 13 8 C13 8 14 10 16 10 C18 10 20 8.5 22 9 C23.5 9.5 24 11 23 12 C22 13 21 13 21 14 C21 16 20 19 21 22 L22 29 Z"
@@ -142,7 +142,7 @@ export default function CompaniesSection() {
         Companies &amp; Organisations We Work With
       </p>
 
-      <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 max-w-5xl mx-auto">
+      <div className="flex flex-nowrap items-center justify-center gap-x-8 max-w-6xl mx-auto overflow-x-auto pb-1 sm:gap-x-5">
         {orgs.map((org) => (
           <div
             key={org.key}
