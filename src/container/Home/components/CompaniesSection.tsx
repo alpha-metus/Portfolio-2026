@@ -111,13 +111,14 @@ export default function CompaniesSection() {
         {orgs.map((org) => (
           <div
             key={org.key}
-            title={org.label}
             style={{
-              color: "rgba(255,255,255,0.65)",
+              color: "rgba(255,255,255,0.55)",
               transition: "color 0.2s, filter 0.2s",
               cursor: "default",
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
+              gap: "8px",
               flexShrink: 0,
               filter: "drop-shadow(0 0 0px transparent)",
             }}
@@ -128,11 +129,22 @@ export default function CompaniesSection() {
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLDivElement;
-              el.style.color = "rgba(255,255,255,0.65)";
+              el.style.color = "rgba(255,255,255,0.55)";
               el.style.filter = "drop-shadow(0 0 0px transparent)";
             }}
           >
             {org.svg}
+            <span
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.5px",
+                color: "inherit",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {org.label}
+            </span>
           </div>
         ))}
       </div>
