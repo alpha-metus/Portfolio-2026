@@ -85,76 +85,83 @@ const orgs = [
 ];
 
 export default function CompaniesSection() {
+  /* icon scale: render original 40px SVGs scaled to 52px */
+  const ICON_H = 52;
+  const scale = ICON_H / 40;
+
   return (
     <div
-      className="w-full py-14 px-6"
+      className="w-full py-20 px-8"
       style={{
         backgroundColor: "#110505",
         borderTop: "1px solid rgba(255,255,255,0.07)",
         borderBottom: "1px solid rgba(255,255,255,0.07)",
       }}
     >
-      {/* subtitle line — same style as the reference */}
+      {/* subtitle */}
       <p
-        className="text-center mb-12"
+        className="text-center mb-16"
         style={{
-          fontSize: "13px",
+          fontSize: "15px",
           fontWeight: 400,
           letterSpacing: "0.3px",
-          color: "rgba(255,255,255,0.38)",
+          color: "rgba(255,255,255,0.4)",
         }}
       >
         Recognised &amp; affiliated with leading chess organisations worldwide
       </p>
 
-      {/* 3-column grid on desktop, 2-column on tablet */}
+      {/* 3-col desktop · 2-col tablet */}
       <div
-        className="grid grid-cols-3 sm:grid-cols-2 gap-y-10 gap-x-8 max-w-3xl mx-auto"
-        style={{ justifyItems: "center" }}
+        className="grid grid-cols-3 sm:grid-cols-2 max-w-4xl mx-auto"
+        style={{ gap: "3rem 3.5rem", justifyItems: "center" }}
       >
         {orgs.map((org) => (
           <div
             key={org.key}
-            className="flex flex-row items-center gap-3"
+            className="flex flex-row items-center"
             style={{
-              color: "rgba(255,255,255,0.45)",
+              gap: "14px",
+              color: "rgba(255,255,255,0.48)",
               transition: "color 0.25s, filter 0.25s",
               cursor: "default",
               filter: "drop-shadow(0 0 0px transparent)",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLDivElement;
-              el.style.color = "rgba(255,255,255,0.9)";
-              el.style.filter = "drop-shadow(0 0 8px rgba(249,203,0,0.35))";
+              el.style.color = "rgba(255,255,255,0.92)";
+              el.style.filter = "drop-shadow(0 0 10px rgba(249,203,0,0.38))";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLDivElement;
-              el.style.color = "rgba(255,255,255,0.45)";
+              el.style.color = "rgba(255,255,255,0.48)";
               el.style.filter = "drop-shadow(0 0 0px transparent)";
             }}
           >
-            {/* icon at 30px height via CSS scale */}
+            {/* icon scaled to ICON_H */}
             <div
               style={{
                 flexShrink: 0,
                 display: "flex",
                 alignItems: "center",
-                transform: `scale(${30 / 40})`,
+                justifyContent: "center",
+                transform: `scale(${scale})`,
                 transformOrigin: "left center",
-                width: org.w * (30 / 40),
-                height: 30,
+                width: org.w * scale,
+                height: ICON_H,
               }}
             >
               {org.svg}
             </div>
+
             <span
               style={{
-                fontSize: "15px",
+                fontSize: "18px",
                 fontWeight: 600,
                 letterSpacing: "0.2px",
                 color: "inherit",
                 whiteSpace: "nowrap",
-                lineHeight: 1,
+                lineHeight: 1.2,
               }}
             >
               {org.label}
