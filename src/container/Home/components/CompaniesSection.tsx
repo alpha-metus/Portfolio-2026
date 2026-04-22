@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 const orgs = [
   {
@@ -84,11 +85,9 @@ const orgs = [
   },
 ];
 
-export default function CompaniesSection() {
-  /* icon scale: render original 40px SVGs scaled to 52px */
-  const ICON_H = 52;
-  const scale = ICON_H / 40;
+const ICON_H = 38; // display height for all icons
 
+export default function CompaniesSection() {
   return (
     <div
       className="w-full py-20 px-8"
@@ -111,15 +110,12 @@ export default function CompaniesSection() {
         Recognised &amp; affiliated with leading chess organisations worldwide
       </p>
 
-      {/* 3-col desktop · 2-col tablet */}
-      <div
-        className="grid grid-cols-3 sm:grid-cols-2 max-w-4xl mx-auto"
-        style={{ gap: "3rem 3.5rem", justifyItems: "center" }}
-      >
+      {/* 3-col desktop · 2-col tablet · 1-col mobile */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 max-w-5xl mx-auto px-4">
         {orgs.map((org) => (
           <div
             key={org.key}
-            className="flex flex-row items-center"
+            className="flex flex-row items-center justify-center"
             style={{
               gap: "14px",
               color: "rgba(255,255,255,0.48)",
@@ -138,29 +134,22 @@ export default function CompaniesSection() {
               el.style.filter = "drop-shadow(0 0 0px transparent)";
             }}
           >
-            {/* icon scaled to ICON_H */}
-            <div
-              style={{
-                flexShrink: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transform: `scale(${scale})`,
-                transformOrigin: "left center",
-                width: org.w * scale,
+            {/* icon — cloneElement sets correct intrinsic size so layout is accurate */}
+            {React.cloneElement(
+              org.svg as React.ReactElement<React.SVGProps<SVGSVGElement>>,
+              {
                 height: ICON_H,
-              }}
-            >
-              {org.svg}
-            </div>
+                width: Math.round(org.w * (ICON_H / org.h)),
+                style: { flexShrink: 0, display: "block" },
+              }
+            )}
 
             <span
               style={{
-                fontSize: "18px",
+                fontSize: "17px",
                 fontWeight: 600,
                 letterSpacing: "0.2px",
                 color: "inherit",
-                whiteSpace: "nowrap",
                 lineHeight: 1.2,
               }}
             >
