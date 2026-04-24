@@ -24,6 +24,7 @@ import FAQSection from "@/components/FAQSection";
 import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/components/OfferPopup";
 import CompaniesSection from "./components/CompaniesSection";
 import HowItWorksSection from "./components/HowItWorksSection";
+import ClickSpark from "@/components/ClickSpark";
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -84,6 +85,15 @@ export default function Home() {
   };
 
   return (
+    <ClickSpark
+      sparkColor="#f9cb00"
+      sparkSize={10}
+      sparkRadius={18}
+      sparkCount={8}
+      duration={420}
+      easing="ease-out"
+      extraScale={1.2}
+    >
     <div className="w-full sm:pb-20" style={{ backgroundColor: "#0d0404" }}>
       <CustomCursor />
 
@@ -447,5 +457,6 @@ export default function Home() {
         style={{ top: "80px", zIndex: 9999 }}
       />
     </div>
+    </ClickSpark>
   );
 }
