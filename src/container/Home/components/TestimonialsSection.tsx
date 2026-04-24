@@ -161,7 +161,8 @@ export default function TestimonialsSection() {
           ♞ What Students &amp; Parents Say ♞
         </h2>
         <p style={{ color: "#ffffffbf", fontSize: "16px", maxWidth: "520px" }}>
-          Real reviews from real students — every rating is a genuine 5 stars
+          Real reviews from real students — every rating is a genuine{" "}
+          <span style={{ whiteSpace: "nowrap" }}>5 stars</span>
         </p>
         <div className="flex items-center gap-2 mt-1">
           <span style={{ color: "#f9cb00", fontSize: "20px" }}>★★★★★</span>
