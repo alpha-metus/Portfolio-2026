@@ -313,6 +313,9 @@ export default function Home() {
         <ScrollingBanner items={marqueeText} />
       </div>
 
+      {/* ─── COMPANIES WE WORK WITH ─── */}
+      <CompaniesSection />
+
       {/* ─── STATISTICS + SERVICES ─── */}
       <div className="flex flex-col w-full max-w-[1440px] m-auto gap-[138px] pt-16 md:gap-12 md:pt-8 md:px-5">
         <StatisticsOverviewSection />
@@ -321,9 +324,6 @@ export default function Home() {
 
       {/* ─── HOW IT WORKS ─── */}
       <HowItWorksSection />
-
-      {/* ─── COMPANIES WE WORK WITH ─── */}
-      <CompaniesSection />
 
       {/* ─── CELEBRITY STUDENTS ─── */}
       <div style={{ backgroundColor: "#0d0404" }} className="pt-44 md:pt-12 md:px-5">
