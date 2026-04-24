@@ -55,7 +55,8 @@ export default function InternationalStudentsSection() {
             <div className="flex w-full flex-col items-center md:w-full">
               <Heading
                 as="h2"
-                className="text-center sm:text-[29px] sm:leading-[40px] text-[55px] md:text-[47px] font-semibold"
+                className="text-center font-semibold"
+              style={{ fontSize: "clamp(26px, 5vw, 55px)", lineHeight: 1.2 }}
               >
                 <>
                   Trusted by students

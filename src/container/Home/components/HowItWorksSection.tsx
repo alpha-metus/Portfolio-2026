@@ -62,7 +62,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section className="w-full py-24 px-6" style={{ backgroundColor: "#0d0404" }}>
+    <section className="w-full py-24 px-6 md:py-16 sm:py-12 sm:px-4" style={{ backgroundColor: "#0d0404" }}>
 
       {/* heading */}
       <div className="text-center mb-14">
@@ -142,7 +142,7 @@ export default function HowItWorksSection() {
         </div>
 
         {/* Vertical flow — mobile only */}
-        <div className="hidden sm:flex flex-col items-center" style={{ maxWidth: "400px", margin: "0 auto" }}>
+        <div className="hidden sm:flex flex-col items-center w-full px-2" style={{ maxWidth: "min(100%, 400px)", margin: "0 auto" }}>
           {steps.map((step, i) => (
             <React.Fragment key={step.title}>
               <div

@@ -34,7 +34,7 @@ export default function Footer({ ...props }: Props) {
       {...props}
       className={`${props.className} bg-black-900 flex flex-col items-start`}
     >
-      <div className="mx-auto flex w-full max-w-[1218px] items-start justify-between gap-8 md:flex-col md:px-5 md:gap-10 pt-10 md:pt-8 sm:pt-6">
+      <div className="mx-auto flex w-full max-w-[1218px] items-start justify-between gap-8 md:flex-col md:px-5 md:gap-8 sm:gap-6 pt-10 md:pt-8 sm:pt-6">
         <div className="flex flex-col items-start gap-10 md:gap-8">
           <Img
             src="img_footer_logo.png"
@@ -155,7 +155,7 @@ export default function Footer({ ...props }: Props) {
             </a>
           </div>
         </div>
-        <div className="mt-3.5 flex w-[54%] items-start justify-between gap-5 self-end md:w-full sm:flex-col">
+        <div className="mt-3.5 flex w-[54%] items-start justify-between gap-5 self-end md:w-full sm:w-full sm:flex-col">
           <div className="mt-2 flex w-[46%] justify-between gap-5 sm:w-full">
             <ul className="flex w-[70%] flex-col items-start gap-4">
               <li>

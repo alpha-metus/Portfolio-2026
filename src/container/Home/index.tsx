@@ -331,10 +331,10 @@ export default function Home() {
       </div>
 
       {/* ─── REAL STUDENTS CAROUSELS ─── */}
-      <div className="relative h-[1024px] content-center md:h-auto md:py-12 sm:py-8" style={{ backgroundColor: "#0d0404" }}>
+      <div className="relative h-[1024px] content-center md:h-auto md:py-12 sm:h-auto sm:py-10" style={{ backgroundColor: "#0d0404" }}>
 
-        <div className="relative z-[5] flex flex-col h-full md:h-auto">
-          <div className="flex flex-col items-center pt-[52px] md:pt-8 mb-[100px] md:mb-16 gap-3 px-5">
+        <div className="relative z-[5] flex flex-col h-full md:h-auto sm:h-auto">
+          <div className="flex flex-col items-center pt-[52px] md:pt-8 sm:pt-6 mb-[100px] md:mb-16 sm:mb-8 gap-3 px-5">
             <Heading
               size="h3"
               as="h2"
@@ -369,7 +369,7 @@ export default function Home() {
 
       {/* ─── PRICING ─── */}
       <div style={{ backgroundColor: "#0d0404" }} className="w-full">
-        <div className="pb-[151px] px-[72px] max-w-[1440px] m-auto md:px-5 md:pb-16">
+        <div className="pb-[151px] px-[72px] max-w-[1440px] m-auto md:px-5 md:pb-16 sm:px-4 sm:pb-12">
           <PricingSection />
         </div>
       </div>

@@ -83,8 +83,8 @@ function ReviewRow({ reviews, direction, speed = 22 }: ReviewRowProps) {
           <div
             key={i}
             style={{
-              minWidth: "300px",
-              maxWidth: "300px",
+              minWidth: "min(300px, 80vw)",
+              maxWidth: "min(300px, 80vw)",
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(249,203,0,0.2)",
               borderRadius: "18px",

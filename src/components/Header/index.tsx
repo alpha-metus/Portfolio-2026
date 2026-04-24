@@ -68,7 +68,7 @@ export default function Header({ ...props }: Props) {
       {...props}
       className={`${props.className} flex sm:px-4 justify-between items-center gap-5 md:mx-0 transition-all duration-300 ${
         isSticky
-          ? "fixed top-0 left-0 right-0 z-[999] py-3 px-8 shadow-2xl"
+          ? "fixed top-0 left-0 right-0 z-[999] py-3 px-8 md:px-5 sm:px-4 shadow-2xl"
           : "py-1 px-2 rounded-2xl"
       }`}
       style={

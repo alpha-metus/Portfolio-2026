@@ -20,7 +20,7 @@ export default function ServicesOverviewSection() {
             </Heading>
             <Text
               as="p"
-              className="w-[94%] text-[12px] font-normal leading-[33px] md:w-full sm:text-center text-start"
+              className="w-full text-[12px] font-normal leading-[33px] sm:text-center text-start"
             >
               At Kwinbee, we provide a well-rounded chess learning journey with
               1-on-1 sessions, group classes, weekly online tournaments, and
@@ -42,7 +42,7 @@ export default function ServicesOverviewSection() {
           </div>
           {/* box section */}
           <div
-            className="flex items-center min-h-[500px] md:h-auto px-6 py-6 sm:px-4 sm:py-5 rounded-xl w-full md:w-full"
+            className="flex items-center md:min-h-0 sm:min-h-0 min-h-[500px] px-6 py-6 sm:px-4 sm:py-5 rounded-xl w-full"
             style={{
               background: "rgba(255,255,255,0.03)",
               border: "1px solid rgba(249,203,0,0.18)",
