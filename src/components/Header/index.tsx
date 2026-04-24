@@ -141,6 +141,25 @@ export default function Header({ ...props }: Props) {
             ♞ Chess Hub
           </Link>
         </li>
+        {/* Book Free Demo — only visible in sticky state */}
+        {isSticky && (
+          <li>
+            <a
+              href="#contact"
+              onClick={() => handleNavClick("Book Demo Sticky")}
+              className="flex items-center gap-2 rounded-full font-bold transition-opacity hover:opacity-85"
+              style={{
+                background: "#f9cb00",
+                color: "#0d0404",
+                fontSize: "13px",
+                padding: "9px 20px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Book Free Demo →
+            </a>
+          </li>
+        )}
       </ul>
       {/* Hamburger Button (Mobile Only) */}
       <button

@@ -99,7 +99,7 @@ export default function CompaniesSection() {
     <section
       className="w-full"
       style={{
-        backgroundColor: "#110505",
+        backgroundColor: "#0d0404",
         borderTop: "1px solid rgba(255,255,255,0.07)",
         borderBottom: "1px solid rgba(255,255,255,0.07)",
       }}
@@ -111,7 +111,7 @@ export default function CompaniesSection() {
           fontSize: "14px",
           fontWeight: 400,
           letterSpacing: "0.25px",
-          color: "rgba(255,255,255,0.38)",
+          color: "rgba(255,255,255,0.58)",
           margin: 0,
         }}
       >

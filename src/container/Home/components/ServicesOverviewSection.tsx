@@ -41,7 +41,13 @@ export default function ServicesOverviewSection() {
             </div>
           </div>
           {/* box section */}
-          <div className="flex items-center min-h-[500px] md:h-auto px-6 py-6 sm:px-4 sm:py-5 rounded-xl w-full bg-amber-400 md:w-full">
+          <div
+            className="flex items-center min-h-[500px] md:h-auto px-6 py-6 sm:px-4 sm:py-5 rounded-xl w-full md:w-full"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(249,203,0,0.18)",
+            }}
+          >
             <div className="grid grid-cols-2 gap-6 sm:gap-4 w-full sm:grid-cols-2">
               {marketingSectionData.map((d, index) => (
                 <MarketingSession {...d} key={"listshoppingbag" + index} />

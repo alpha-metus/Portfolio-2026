@@ -13,7 +13,6 @@ import { bottomRowStudents, marqueeText, topRowStudents } from "./config";
 import CustomCursor from "@/components/CustomCursor/CustomCursor";
 import ScrollingBanner from "@/components/ScrollingBanner/ScrollingBanner";
 import { trackJoinClassClick, trackWhatsAppClick } from "@/lib/fbPixel";
-import Icon from "@/components/Icons";
 import TestimonialsSection from "./components/TestimonialsSection";
 import MidPageCTA from "./components/MidPageCTA";
 import { Heading } from "@/components/Heading";
@@ -101,17 +100,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Floating WhatsApp button — bottom LEFT */}
-      <button
-        type="button"
-        aria-label="Chat with us on WhatsApp"
-        className="fixed sm:bottom-2 sm:left-2 bottom-4 left-4 z-[99] cursor-pointer bg-transparent border-0 p-0"
-        onClick={handleWhatsAppClick}
-      >
-        <Icon name="whatsAppIcon" />
-      </button>
-
-      {/* Floating Book Free Demo button — bottom RIGHT */}
+      {/* Floating Book Free Demo button — bottom RIGHT (single CTA) */}
       <button
         onClick={() => { trackJoinClassClick(); setShowModal(true); }}
         className="floating-cta fixed sm:bottom-3 sm:right-3 bottom-5 right-5 z-[99] cursor-pointer font-bold text-[13px] sm:text-[12px] rounded-full shadow-lg transition-opacity hover:opacity-85"
@@ -124,7 +113,7 @@ export default function Home() {
           boxShadow: "0 4px 20px rgba(249,203,0,0.4)",
         }}
       >
-        📅 Book Free Demo
+        Book Free Demo
       </button>
 
       {/* Age Gate modal — shown before WhatsApp redirect */}
