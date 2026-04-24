@@ -191,26 +191,36 @@ export default function Home() {
           style={{ background: "linear-gradient(160deg, #1c0c02 0%, #0d0404 50%, #080202 100%)" }}
         />
 
-        {/* ── SOFT AURORA — KwinBee gold theme, screen-blended over the dark base ── */}
+        {/* ── SOFT AURORA — pinned to the bottom-right corner, fades toward top/left so text is clear ── */}
         <div
-          className="absolute inset-0 pointer-events-none sm:hidden"
-          style={{ mixBlendMode: "screen", zIndex: 1, opacity: 0.85 }}
+          className="absolute pointer-events-none sm:hidden"
+          style={{
+            bottom: 0,
+            right: 0,
+            width: "55%",
+            height: "55%",
+            mixBlendMode: "screen",
+            zIndex: 1,
+            opacity: 0.55,
+            WebkitMaskImage: "linear-gradient(to bottom right, transparent 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,1) 100%)",
+            maskImage: "linear-gradient(to bottom right, transparent 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,1) 100%)",
+          }}
         >
           <SoftAurora
-            speed={0.35}
-            scale={1.3}
-            brightness={0.72}
+            speed={0.3}
+            scale={1.6}
+            brightness={0.5}
             color1="#f9cb00"
             color2="#ff8c00"
-            noiseFrequency={2.2}
-            noiseAmplitude={0.9}
-            bandHeight={0.48}
-            bandSpread={1.15}
-            octaveDecay={0.15}
-            layerOffset={0.6}
-            colorSpeed={0.7}
-            enableMouseInteraction={true}
-            mouseInfluence={0.18}
+            noiseFrequency={2.0}
+            noiseAmplitude={0.85}
+            bandHeight={0.35}
+            bandSpread={1.2}
+            octaveDecay={0.12}
+            layerOffset={0.5}
+            colorSpeed={0.6}
+            enableMouseInteraction={false}
+            mouseInfluence={0.1}
           />
         </div>
 
