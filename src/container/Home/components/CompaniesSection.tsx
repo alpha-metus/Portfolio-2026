@@ -115,13 +115,13 @@ export default function CompaniesSection() {
           margin: 0,
         }}
       >
-        Recognised &amp; affiliated with leading chess organisations worldwide
+        Companies &amp; Organisations We Worked With
       </p>
 
-      {/* ── 3 × 2 bordered logo grid ── */}
+      {/* ── single-row bordered logo strip ── */}
       <div
         style={{
-          maxWidth: "900px",
+          maxWidth: "1100px",
           margin: "0 auto",
           padding: "0 2rem 3.5rem",
         }}
@@ -129,30 +129,26 @@ export default function CompaniesSection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(6, 1fr)",
             border: "1px solid rgba(255,255,255,0.08)",
             borderRadius: "14px",
             overflow: "hidden",
           }}
         >
           {orgs.map((org, i) => {
-            const notLastCol  = i % 3 !== 2;
-            const notLastRow  = i < 3;           // 6 items → rows 0-2 and 3-5
+            const notLastCol = i < orgs.length - 1; // only vertical dividers
 
             return (
               <div
                 key={org.key}
                 style={{
                   display: "flex",
-                  flexDirection: "row",
+                  flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: "14px",
-                  padding: "2.75rem 1.5rem",
-                  /* dividers */
-                  borderRight:  notLastCol ? "1px solid rgba(255,255,255,0.08)" : "none",
-                  borderBottom: notLastRow ? "1px solid rgba(255,255,255,0.08)" : "none",
-                  /* colour + transitions */
+                  gap: "10px",
+                  padding: "2rem 1rem",
+                  borderRight: notLastCol ? "1px solid rgba(255,255,255,0.08)" : "none",
                   color: "rgba(255,255,255,0.5)",
                   background: "transparent",
                   transition: "color 0.22s ease, background 0.22s ease, filter 0.22s ease",
@@ -171,7 +167,7 @@ export default function CompaniesSection() {
                   el.style.filter     = "none";
                 }}
               >
-                {/* icon at exactly ICON_H — layout-accurate via cloneElement */}
+                {/* icon */}
                 {React.cloneElement(
                   org.svg as React.ReactElement<React.SVGProps<SVGSVGElement>>,
                   {
@@ -180,15 +176,14 @@ export default function CompaniesSection() {
                     style:  { flexShrink: 0, display: "block" },
                   }
                 )}
-
-                {/* name */}
+                {/* name below icon */}
                 <span
                   style={{
-                    fontSize:    "15px",
-                    fontWeight:  600,
-                    lineHeight:  1.3,
-                    color:       "inherit",
-                    maxWidth:    "110px",   /* allows long names to wrap cleanly */
+                    fontSize:   "12px",
+                    fontWeight: 600,
+                    lineHeight: 1.3,
+                    color:      "inherit",
+                    textAlign:  "center",
                   }}
                 >
                   {org.label}
