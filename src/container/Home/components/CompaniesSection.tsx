@@ -118,37 +118,40 @@ export default function CompaniesSection() {
         Companies &amp; Organisations We Worked With
       </p>
 
-      {/* ── single-row bordered logo strip ── */}
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-          padding: "0 2rem 3.5rem",
-        }}
-      >
+      {/* ── responsive logo grid: 3 cols mobile → 6 cols desktop ── */}
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-8 pb-14">
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(6, 1fr)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "14px",
-            overflow: "hidden",
-          }}
+          className="grid grid-cols-3 sm:grid-cols-6 rounded-[14px] overflow-hidden"
+          style={{ border: "1px solid rgba(255,255,255,0.08)" }}
         >
           {orgs.map((org, i) => {
-            const notLastCol = i < orgs.length - 1; // only vertical dividers
+            /*
+             * Divider logic:
+             *   Mobile  (3-col): right border on cols 0,1  — bottom border on row 0 (i<3)
+             *   Desktop (6-col): right border on cols 0-4  — no bottom border (single row)
+             *
+             * We compute the four cases and express them as Tailwind classes:
+             */
+            const mobileRight  = i % 3 !== 2;          // cols 0,1 of each row
+            const mobileBottom = i < 3;                 // top row only
+            const deskRight    = i < 5;                 // cols 0-4
+
+            // build per-cell border class string
+            const borderCls = [
+              mobileRight  ? "border-r"    : "",
+              mobileBottom ? "border-b"    : "",
+              // desktop overrides
+              !mobileRight && deskRight ? "sm:border-r"   : "",   // col 2 gets right border on desktop
+              mobileBottom              ? "sm:border-b-0" : "",   // remove bottom on desktop
+              mobileRight && !deskRight ? "sm:border-r-0" : "",   // col 5 loses right on desktop
+            ].filter(Boolean).join(" ");
 
             return (
               <div
                 key={org.key}
+                className={`flex flex-col items-center justify-center gap-2.5 py-8 px-3 ${borderCls}`}
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "10px",
-                  padding: "2rem 1rem",
-                  borderRight: notLastCol ? "1px solid rgba(255,255,255,0.08)" : "none",
+                  borderColor: "rgba(255,255,255,0.08)",
                   color: "rgba(255,255,255,0.5)",
                   background: "transparent",
                   transition: "color 0.22s ease, background 0.22s ease, filter 0.22s ease",
@@ -167,7 +170,6 @@ export default function CompaniesSection() {
                   el.style.filter     = "none";
                 }}
               >
-                {/* icon */}
                 {React.cloneElement(
                   org.svg as React.ReactElement<React.SVGProps<SVGSVGElement>>,
                   {
@@ -176,16 +178,7 @@ export default function CompaniesSection() {
                     style:  { flexShrink: 0, display: "block" },
                   }
                 )}
-                {/* name below icon */}
-                <span
-                  style={{
-                    fontSize:   "12px",
-                    fontWeight: 600,
-                    lineHeight: 1.3,
-                    color:      "inherit",
-                    textAlign:  "center",
-                  }}
-                >
+                <span style={{ fontSize: "12px", fontWeight: 600, lineHeight: 1.3, color: "inherit", textAlign: "center" }}>
                   {org.label}
                 </span>
               </div>
