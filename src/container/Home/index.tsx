@@ -25,7 +25,6 @@ import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/
 import CompaniesSection from "./components/CompaniesSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import ClickSpark from "@/components/ClickSpark";
-import SoftAurora from "@/components/SoftAurora";
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -191,38 +190,6 @@ export default function Home() {
           style={{ background: "linear-gradient(160deg, #1c0c02 0%, #0d0404 50%, #080202 100%)" }}
         />
 
-        {/* ── SOFT AURORA — pinned to the bottom-right corner, fades toward top/left so text is clear ── */}
-        <div
-          className="absolute pointer-events-none sm:hidden"
-          style={{
-            bottom: 0,
-            right: 0,
-            width: "55%",
-            height: "55%",
-            mixBlendMode: "screen",
-            zIndex: 1,
-            opacity: 0.55,
-            WebkitMaskImage: "linear-gradient(to bottom right, transparent 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,1) 100%)",
-            maskImage: "linear-gradient(to bottom right, transparent 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,1) 100%)",
-          }}
-        >
-          <SoftAurora
-            speed={0.3}
-            scale={1.6}
-            brightness={0.5}
-            color1="#f9cb00"
-            color2="#ff8c00"
-            noiseFrequency={2.0}
-            noiseAmplitude={0.85}
-            bandHeight={0.35}
-            bandSpread={1.2}
-            octaveDecay={0.12}
-            layerOffset={0.5}
-            colorSpeed={0.6}
-            enableMouseInteraction={false}
-            mouseInfluence={0.1}
-          />
-        </div>
 
         {/* ── 3D CHESS FLOOR — hidden on mobile to avoid overflow + perf ── */}
         <div
