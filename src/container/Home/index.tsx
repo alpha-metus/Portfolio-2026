@@ -23,6 +23,7 @@ import EnrollModal from "@/components/EnrollModal";
 import FAQSection from "@/components/FAQSection";
 import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/components/OfferPopup";
 import CompaniesSection from "./components/CompaniesSection";
+import HowItWorksSection from "./components/HowItWorksSection";
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -317,6 +318,9 @@ export default function Home() {
         <StatisticsOverviewSection />
         <ServicesOverviewSection />
       </div>
+
+      {/* ─── HOW IT WORKS ─── */}
+      <HowItWorksSection />
 
       {/* ─── COMPANIES WE WORK WITH ─── */}
       <CompaniesSection />
