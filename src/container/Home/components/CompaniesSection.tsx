@@ -118,38 +118,43 @@ export default function CompaniesSection() {
         Companies &amp; Organisations We Worked With
       </p>
 
-      {/* ── responsive logo grid: 3 cols mobile → 6 cols desktop ── */}
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-8 pb-14">
+      {/*
+       * Grid breakpoints in this project use MAX-width:
+       *   lg (min 1051px) = desktop   → 6 cols, single row
+       *   md (max 1050px) = tablet    → 3 cols, 2 rows
+       *   sm (max  550px) = mobile    → 3 cols, 2 rows
+       *
+       * So: default = 3-col (mobile/tablet), lg: override = 6-col (desktop)
+       *
+       * Border logic per cell:
+       *   3-col: right on i%3≠2, bottom on i<3
+       *   6-col: right on i<5,   no bottom
+       *   → default covers 3-col; lg: overrides to 6-col
+       */}
+      <div className="max-w-[1100px] mx-auto px-4 pb-14">
         <div
-          className="grid grid-cols-3 sm:grid-cols-6 rounded-[14px] overflow-hidden"
+          className="grid grid-cols-3 lg:grid-cols-6 rounded-[14px] overflow-hidden"
           style={{ border: "1px solid rgba(255,255,255,0.08)" }}
         >
           {orgs.map((org, i) => {
-            /*
-             * Divider logic:
-             *   Mobile  (3-col): right border on cols 0,1  — bottom border on row 0 (i<3)
-             *   Desktop (6-col): right border on cols 0-4  — no bottom border (single row)
-             *
-             * We compute the four cases and express them as Tailwind classes:
-             */
-            const mobileRight  = i % 3 !== 2;          // cols 0,1 of each row
-            const mobileBottom = i < 3;                 // top row only
-            const deskRight    = i < 5;                 // cols 0-4
+            // 3-col borders (default — tablet & mobile)
+            const threeColRight  = i % 3 !== 2;
+            const threeColBottom = i < 3;
+            // 6-col border override (lg desktop)
+            const sixColAddRight = i === 2;       // col 2 gains right border on desktop
+            const sixColRemBot   = i < 3;         // top row loses bottom border on desktop
 
-            // build per-cell border class string
             const borderCls = [
-              mobileRight  ? "border-r"    : "",
-              mobileBottom ? "border-b"    : "",
-              // desktop overrides
-              !mobileRight && deskRight ? "sm:border-r"   : "",   // col 2 gets right border on desktop
-              mobileBottom              ? "sm:border-b-0" : "",   // remove bottom on desktop
-              mobileRight && !deskRight ? "sm:border-r-0" : "",   // col 5 loses right on desktop
+              threeColRight  ? "border-r"        : "",
+              threeColBottom ? "border-b"        : "",
+              sixColAddRight ? "lg:border-r"     : "",
+              sixColRemBot   ? "lg:border-b-0"   : "",
             ].filter(Boolean).join(" ");
 
             return (
               <div
                 key={org.key}
-                className={`flex flex-col items-center justify-center gap-2.5 py-8 px-3 ${borderCls}`}
+                className={`flex flex-col items-center justify-center gap-2.5 py-8 px-3 md:py-6 sm:py-5 ${borderCls}`}
                 style={{
                   borderColor: "rgba(255,255,255,0.08)",
                   color: "rgba(255,255,255,0.5)",
