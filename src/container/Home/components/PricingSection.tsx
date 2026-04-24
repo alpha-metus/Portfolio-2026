@@ -19,11 +19,11 @@ export default function PricingSection() {
       {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to top, #0d0404 0%, transparent 100%)" }} />
 
-      {/* Chess piece decorations */}
-      <div className="absolute top-8 left-8 text-[40px] opacity-30 pointer-events-none">♕</div>
-      <div className="absolute top-8 right-8 text-[40px] opacity-30 pointer-events-none">♕</div>
+      {/* Chess piece decorations — desktop only */}
+      <div className="absolute top-8 left-8 text-[40px] opacity-30 pointer-events-none sm:hidden">♕</div>
+      <div className="absolute top-8 right-8 text-[40px] opacity-30 pointer-events-none sm:hidden">♕</div>
 
-      <div className="w-full mx-auto flex flex-col items-center bg-blue_gray-700_7f rounded-[50px] py-7 relative z-10">
+      <div className="w-full mx-auto flex flex-col items-center bg-blue_gray-700_7f rounded-[50px] sm:rounded-3xl py-7 relative z-10">
         <h2
           style={{
             fontFamily: "var(--font-quicksand, sans-serif)",
@@ -42,7 +42,7 @@ export default function PricingSection() {
             marginTop: "14px",
             textAlign: "center",
             fontWeight: 700,
-            fontSize: "clamp(14px, 3vw, 20px)",
+            fontSize: "clamp(14px, 3vw, 18px)",
             color: "#ffffff",
             padding: "0 16px",
             lineHeight: 1.45,
@@ -57,7 +57,7 @@ export default function PricingSection() {
             color: "#f9cb00",
             fontWeight: 500,
             textAlign: "center",
-            padding: "0 12px",
+            padding: "0 16px",
           }}
         >
           ✓ No hidden fees &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ Start with a free class
@@ -65,7 +65,7 @@ export default function PricingSection() {
 
         {/* Urgency banner */}
         <div
-          className="mt-6 flex items-center gap-2 px-5 py-2.5 rounded-full"
+          className="mt-5 flex items-center gap-2 px-4 py-2.5 rounded-full sm:mx-4 sm:text-center sm:flex-wrap sm:justify-center"
           style={{
             background: "rgba(249,203,0,0.1)",
             border: "1px solid rgba(249,203,0,0.3)",
@@ -76,6 +76,7 @@ export default function PricingSection() {
               fontSize: "clamp(11px, 2.5vw, 13px)",
               fontWeight: 700,
               color: "#f9cb00",
+              textAlign: "center",
             }}
           >
             📅 Next cohort starts May 2026 —{" "}
@@ -85,8 +86,8 @@ export default function PricingSection() {
           </span>
         </div>
 
-        <div className="w-full mt-10 px-5 md:px-4 sm:px-3">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:grid-cols-1 sm:gap-4">
+        <div className="w-full mt-8 px-5 md:px-4 sm:px-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:grid-cols-1 sm:gap-4 sm:max-w-[400px] sm:mx-auto">
             {pricingPlans.map((plan, index) => (
               <PricingPlan
                 key={`plan-${index}`}

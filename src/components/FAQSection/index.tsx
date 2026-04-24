@@ -92,11 +92,12 @@ export default function FAQSection() {
                 {/* Question button */}
                 <button
                   onClick={() => toggle(i)}
-                  className="w-full flex items-center justify-between gap-5 text-left cursor-pointer"
+                  className="w-full flex items-center justify-between gap-5 text-left cursor-pointer sm:gap-3"
                   style={{
                     background: "transparent",
                     border: "none",
                     padding: "20px 24px",
+                    minHeight: "60px", // min touch target
                   }}
                   aria-expanded={isOpen}
                 >

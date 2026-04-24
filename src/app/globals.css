@@ -53,16 +53,32 @@ input:focus {
   50%       { opacity: 0.5; transform: scale(1.3); }
 }
 
-/* ── Mobile responsiveness helpers ── */
+/* ── Mobile app-like global styles ── */
 @media (max-width: 550px) {
   /* Prevent any element from breaking the viewport */
   img, video, iframe { max-width: 100%; }
 
-  /* Announcement bar wraps cleanly */
+  /* Announcement bar */
   .announcement-bar p { font-size: 11px !important; }
 
-  /* Floating buttons on very small screens */
-  .floating-cta { font-size: 11px !important; padding: 10px 14px !important; }
+  /* Hide desktop floating CTA on mobile (replaced by bottom bar) */
+  .floating-cta { display: none !important; }
+
+  /* App-like tap highlight */
+  * { -webkit-tap-highlight-color: rgba(249, 203, 0, 0.12); }
+
+  /* Prevent iOS double-tap zoom */
+  button, a { touch-action: manipulation; }
+
+  /* Smooth scrollbars hidden on scroll areas */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Input focus ring — gold on mobile */
+  input:focus, textarea:focus {
+    border-color: rgba(249, 203, 0, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(249, 203, 0, 0.12) !important;
+  }
 }
 
 /* Offer popup — on desktop centre it like a modal */

@@ -141,44 +141,54 @@ export default function HowItWorksSection() {
           ))}
         </div>
 
-        {/* Vertical flow — mobile only */}
-        <div className="hidden sm:flex flex-col items-center w-full px-2" style={{ maxWidth: "min(100%, 400px)", margin: "0 auto" }}>
+        {/* Vertical flow — mobile only (app-like horizontal cards) */}
+        <div className="hidden sm:flex flex-col w-full gap-3">
           {steps.map((step, i) => (
             <React.Fragment key={step.title}>
+              {/* App-style row card: icon left, text right */}
               <div
                 style={{
                   width: "100%",
                   background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  borderRadius: "20px",
-                  padding: "24px",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "18px",
+                  padding: "16px 18px",
                   display: "flex",
-                  flexDirection: "column",
+                  flexDirection: "row",
                   alignItems: "center",
-                  textAlign: "center",
-                  gap: "10px",
+                  gap: "16px",
                 }}
               >
-                <span style={{ fontSize: "10px", fontWeight: 800, letterSpacing: "1.5px", color: "#f9cb00", opacity: 0.7 }}>
-                  STEP {i + 1}
-                </span>
-                <div style={{ width: 52, height: 52, borderRadius: "14px", background: "#f9cb00", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  {step.icon}
+                {/* Step number + icon stacked */}
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", flexShrink: 0 }}>
+                  <span style={{ fontSize: "9px", fontWeight: 800, letterSpacing: "1px", color: "#f9cb00", opacity: 0.7 }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div style={{ width: 48, height: 48, borderRadius: "14px", background: "#f9cb00", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    {step.icon}
+                  </div>
                 </div>
-                <h3 style={{ fontSize: "16px", fontWeight: 700, color: "#ffffff", margin: "4px 0 0" }}>
-                  {step.title}
-                </h3>
-                <p style={{ fontSize: "13px", lineHeight: 1.65, color: "rgba(255,255,255,0.5)", margin: 0 }}>
-                  {step.desc}
-                </p>
+
+                {/* Text */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <h3 style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", margin: "0 0 4px" }}>
+                    {step.title}
+                  </h3>
+                  <p style={{ fontSize: "13px", lineHeight: 1.6, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+                    {step.desc}
+                  </p>
+                </div>
+
+                {/* Right chevron */}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: 0.25 }}>
+                  <path d="M6 3l5 5-5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
 
+              {/* Connector between cards */}
               {i < steps.length - 1 && (
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4px 0" }}>
-                  <div style={{ width: 1, height: 24, borderLeft: "2px dashed rgba(249,203,0,0.3)" }} />
-                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                    <path d="M1 1l5 5 5-5" stroke="#f9cb00" strokeOpacity="0.55" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", padding: "0 0 0 34px" }}>
+                  <div style={{ width: 1, height: 16, borderLeft: "2px dashed rgba(249,203,0,0.25)" }} />
                 </div>
               )}
             </React.Fragment>

@@ -183,58 +183,87 @@ export default function Header({ ...props }: Props) {
           }`}
         ></span>
       </button>
-      {/* Mobile Menu */}
+      {/* Mobile Menu — full-screen overlay */}
       {isMenuOpen && (
-        <div
-          className={`hidden sm:block absolute ${
-            isSticky ? "top-20" : "top-32"
-          } bg-gradient-to-r from-yellow-400 to-black-900 bg-blur-[15px] right-0 left-0 rounded-xl shadow-lg z-50 mx-5`}
-        >
-          <ul className="py-4 px-6">
-            <li className="mb-4">
-              <a href="#about" onClick={toggleMenu}>
-                <Heading as="p" className="text-[13.88px] font-semibold">
-                  About Us
-                </Heading>
+        <>
+          {/* Backdrop */}
+          <div
+            className="hidden sm:block fixed inset-0 z-40"
+            style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }}
+            onClick={toggleMenu}
+          />
+          {/* Drawer */}
+          <div
+            className="hidden sm:flex fixed left-0 right-0 z-50 flex-col"
+            style={{
+              top: isSticky ? 56 : 72,
+              bottom: 0,
+              background: "rgba(10,3,3,0.97)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              borderTop: "1px solid rgba(249,203,0,0.15)",
+            }}
+          >
+            <ul className="flex flex-col py-4 px-5 gap-1 overflow-y-auto">
+              {[
+                { href: "#about", label: "About Us", color: undefined },
+                { href: "#features", label: "Features", color: undefined },
+                { href: "#pricing", label: "Pricing", color: undefined },
+                { href: "#contact", label: "Contact", color: undefined },
+              ].map(({ href, label }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={toggleMenu}
+                    className="flex items-center w-full py-4 px-4 rounded-2xl transition-colors active:bg-white/5"
+                    style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                  >
+                    <span style={{ color: "#ffffff", fontSize: "17px", fontWeight: 600 }}>{label}</span>
+                    <svg className="ml-auto opacity-30" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 3l5 5-5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                </li>
+              ))}
+              <li>
+                <Link href="/tournaments" prefetch={false} onClick={toggleMenu}
+                  className="flex items-center w-full py-4 px-4 rounded-2xl transition-colors active:bg-white/5"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <span style={{ color: "#f9cb00", fontSize: "17px", fontWeight: 600 }}>♟ Tournaments</span>
+                  <svg className="ml-auto opacity-30" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 3l5 5-5 5" stroke="#f9cb00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              </li>
+              <li>
+                <Link href="/explore" prefetch={false} onClick={toggleMenu}
+                  className="flex items-center w-full py-4 px-4 rounded-2xl transition-colors active:bg-white/5"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <span style={{ color: "#4ade80", fontSize: "17px", fontWeight: 600 }}>♞ Chess Hub</span>
+                  <svg className="ml-auto opacity-30" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 3l5 5-5 5" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              </li>
+            </ul>
+
+            {/* Bottom CTA inside menu */}
+            <div className="px-5 py-4 mt-auto" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              <a
+                href="#contact"
+                onClick={toggleMenu}
+                className="flex items-center justify-center w-full rounded-2xl font-bold text-[16px]"
+                style={{
+                  background: "#f9cb00",
+                  color: "#0d0404",
+                  padding: "16px",
+                }}
+              >
+                🎯 Book Free Demo Class
               </a>
-            </li>
-            <li className="mb-4">
-              <a href="#features" onClick={toggleMenu}>
-                <Heading as="p" className="text-[13.88px] font-semibold">
-                  Features
-                </Heading>
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#pricing" onClick={toggleMenu}>
-                <Heading as="p" className="text-[13.88px] font-semibold">
-                  Pricing
-                </Heading>
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#contact" onClick={toggleMenu}>
-                <Heading as="p" className="text-[13.88px] font-semibold">
-                  Contact
-                </Heading>
-              </a>
-            </li>
-            <li className="mb-4">
-              <Link href="/tournaments" prefetch={false} onClick={toggleMenu}>
-                <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#f9cb00" }}>
-                  ♟ Tournaments
-                </Heading>
-              </Link>
-            </li>
-            <li className="mb-4">
-              <Link href="/explore" prefetch={false} onClick={toggleMenu}>
-                <Heading as="p" className="text-[13.88px] font-semibold" style={{ color: "#4ade80" }}>
-                  ♞ Chess Hub
-                </Heading>
-              </Link>
-            </li>
-          </ul>
-        </div>
+            </div>
+          </div>
+        </>
       )}
     </header>
   );

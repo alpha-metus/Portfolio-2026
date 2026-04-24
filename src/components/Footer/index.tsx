@@ -34,7 +34,7 @@ export default function Footer({ ...props }: Props) {
       {...props}
       className={`${props.className} bg-black-900 flex flex-col items-start`}
     >
-      <div className="mx-auto flex w-full max-w-[1218px] items-start justify-between gap-8 md:flex-col md:px-5 md:gap-8 sm:gap-6 pt-10 md:pt-8 sm:pt-6">
+      <div className="mx-auto flex w-full max-w-[1218px] items-start justify-between gap-8 md:flex-col md:px-5 md:gap-8 sm:gap-5 pt-10 md:pt-8 sm:pt-6 sm:px-4">
         <div className="flex flex-col items-start gap-10 md:gap-8">
           <Img
             src="img_footer_logo.png"
@@ -155,7 +155,7 @@ export default function Footer({ ...props }: Props) {
             </a>
           </div>
         </div>
-        <div className="mt-3.5 flex w-[54%] items-start justify-between gap-5 self-end md:w-full sm:w-full sm:flex-col">
+        <div className="mt-3.5 flex w-[54%] items-start justify-between gap-5 self-end md:w-full sm:w-full sm:flex-col sm:gap-6">
           <div className="mt-2 flex w-[46%] justify-between gap-5 sm:w-full">
             <ul className="flex w-[70%] flex-col items-start gap-4">
               <li>
@@ -338,20 +338,20 @@ export default function Footer({ ...props }: Props) {
         </div>
       </div>
       <div className="w-full flex justify-center">
-        <div className="mr-2.5 mt-14 h-px w-[90%] self-stretch bg-gray-400_7f md:mr-0" />
+        <div className="mr-2.5 mt-10 sm:mt-6 h-px w-[90%] self-stretch bg-gray-400_7f md:mr-0" />
       </div>
-      <div className="mr-2.5 mt-6 flex justify-between gap-5 self-stretch px-5 pb-6 md:mr-0 sm:flex-col sm:gap-3">
-        <Text as="p" className="text-[16px] font-normal !text-white-a700_bf">
+      <div className="mr-2.5 mt-5 sm:mt-4 flex justify-between gap-5 self-stretch px-5 pb-6 sm:pb-4 md:mr-0 sm:flex-col sm:gap-2 sm:items-center sm:text-center">
+        <Text as="p" className="text-[14px] sm:text-[13px] font-normal !text-white-a700_bf">
           <span>©2025.</span>
-          <span className="font-bold">&nbsp;Kwinbee.All rights reserved</span>
+          <span className="font-bold">&nbsp;Kwinbee. All rights reserved</span>
         </Text>
-        <div className="flex flex-wrap gap-2.5">
+        <div className="flex flex-wrap gap-2.5 sm:justify-center">
           <Link href="/privacy-policy">
-            <Text as="p" className="text-[16px] font-normal !text-white-a700_bf" style={{ textDecoration: "underline", cursor: "pointer" }}>
+            <Text as="p" className="text-[14px] sm:text-[13px] font-normal !text-white-a700_bf" style={{ textDecoration: "underline", cursor: "pointer" }}>
               Privacy policy
             </Text>
           </Link>
-          <Text as="p" className="text-[16px] font-normal !text-white-a700_bf">
+          <Text as="p" className="text-[14px] sm:text-[13px] font-normal !text-white-a700_bf">
             Terms &amp; conditions
           </Text>
         </div>

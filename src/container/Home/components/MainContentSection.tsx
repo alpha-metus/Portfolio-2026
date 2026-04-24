@@ -53,13 +53,15 @@ export default function MainContentSection() {
 
 const inputStyle: React.CSSProperties = {
     width: "100%",
-    borderRadius: "10px",
-    border: "none",
-    backgroundColor: "#2a2a2a",
-    padding: "14px 16px",
-    fontSize: "14px",
+    borderRadius: "12px",
+    border: "1.5px solid rgba(255,255,255,0.08)",
+    backgroundColor: "#1e1e1e",
+    padding: "15px 16px",
+    fontSize: "16px", // 16px minimum prevents iOS auto-zoom
     color: "#ffffff",
     outline: "none",
+    WebkitAppearance: "none",
+    appearance: "none",
   };
 
   const labelStyle: React.CSSProperties = {
@@ -121,10 +123,12 @@ const inputStyle: React.CSSProperties = {
   return (
     <div
       id="contact"
-      className="sm:!p-5"
+      className="sm:!p-5 sm:!rounded-2xl"
       style={{
-        background: "#1a1a1a",
-        borderRadius: "20px",
+        background: "linear-gradient(145deg, #1c1c1c 0%, #161616 100%)",
+        borderRadius: "24px",
+        border: "1px solid rgba(255,255,255,0.07)",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset",
         padding: "40px",
         width: "100%",
         scrollMarginTop: "80px",
@@ -134,7 +138,7 @@ const inputStyle: React.CSSProperties = {
       <h2
         style={{
           color: "#ffffff",
-          fontSize: "28px",
+          fontSize: "clamp(22px, 4vw, 28px)",
           fontWeight: 800,
           lineHeight: 1.2,
           marginBottom: "8px",
@@ -142,7 +146,7 @@ const inputStyle: React.CSSProperties = {
       >
         Book Your Free Demo
       </h2>
-      <p style={{ color: "#9ca3af", fontSize: "14px", marginBottom: "28px" }}>
+      <p style={{ color: "#9ca3af", fontSize: "14px", marginBottom: "24px" }}>
         Secure your spot for a personalized 30-minute session.
       </p>
 

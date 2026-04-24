@@ -6,21 +6,21 @@ import { marketingSectionData } from "../config";
 export default function ServicesOverviewSection() {
   return (
     <section id="features" className="scroll-mt-20">
-      <div className="w-full mt-12 lg:mt-0 ">
-        <div className="px-12 md:px-6 sm:px-4 flex flex-row md:flex-col justify-between w-full gap-12 md:gap-8 sm:gap-6">
-          {/* text section  */}
-          <div className="mt-28 md:mt-16 sm:mt-10 w-full flex-col gap-3.5">
+      <div className="w-full mt-12 lg:mt-0">
+        <div className="px-12 md:px-6 sm:px-0 flex flex-row md:flex-col justify-between w-full gap-12 md:gap-8 sm:gap-5">
+          {/* text section */}
+          <div className="mt-28 md:mt-8 sm:mt-0 w-full flex-col gap-3.5 sm:px-4">
             <Heading
               size="heading"
               as="h2"
-              className="w-full sm:text-center text-start lg:w-[94%] text-[55px] font-semibold leading-[81px] md:w-full md:text-[44px] md:leading-[65px] sm:text-[28px] sm:leading-[41px]"
+              className="w-full sm:text-center text-start lg:w-[94%] text-[55px] font-semibold leading-[81px] md:w-full md:text-[44px] md:leading-[65px] sm:text-[26px] sm:leading-[36px]"
             >
               What do we provide at{" "}
               <span className="text-amber-400">Kwinbee</span>
             </Heading>
             <Text
               as="p"
-              className="w-full text-[12px] font-normal leading-[33px] sm:text-center text-start"
+              className="w-full text-[12px] font-normal leading-[33px] sm:text-center text-start sm:text-[13px] sm:leading-[24px]"
             >
               At Kwinbee, we provide a well-rounded chess learning journey with
               1-on-1 sessions, group classes, weekly online tournaments, and
@@ -30,7 +30,7 @@ export default function ServicesOverviewSection() {
             <div className="flex items-center mt-6 sm:justify-center justify-start w-full">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-[16px] transition-opacity hover:opacity-85"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-[16px] transition-opacity hover:opacity-85 sm:w-full sm:justify-center sm:py-4"
                 style={{ background: "#f9cb00", color: "#0d0404" }}
               >
                 Book Free Demo
@@ -40,15 +40,15 @@ export default function ServicesOverviewSection() {
               </a>
             </div>
           </div>
-          {/* box section */}
+          {/* box section — app-like card grid on mobile */}
           <div
-            className="flex items-center md:min-h-0 sm:min-h-0 min-h-[500px] px-6 py-6 sm:px-4 sm:py-5 rounded-xl w-full"
+            className="flex items-center md:min-h-0 sm:min-h-0 min-h-[500px] px-6 py-6 sm:px-4 sm:py-5 rounded-xl w-full sm:rounded-none sm:border-x-0"
             style={{
               background: "rgba(255,255,255,0.03)",
               border: "1px solid rgba(249,203,0,0.18)",
             }}
           >
-            <div className="grid grid-cols-2 gap-6 sm:gap-4 w-full sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-6 sm:gap-3 w-full sm:grid-cols-2">
               {marketingSectionData.map((d, index) => (
                 <MarketingSession {...d} key={"listshoppingbag" + index} />
               ))}
