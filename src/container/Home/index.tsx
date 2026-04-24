@@ -242,14 +242,14 @@ export default function Home() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-6 pb-28 md:px-5 md:pb-16 sm:px-4 sm:pb-10">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-12 pt-6 pb-28 md:px-5 md:pb-16 sm:px-4 sm:pt-4 sm:pb-8">
           <Header />
 
           {/* Two-column hero */}
           <div className="flex items-center gap-14 mt-14 md:mt-8 sm:mt-6 lg:flex-row md:flex-col md:gap-8 sm:gap-6">
 
             {/* ── LEFT: hero copy ── */}
-            <div className="flex-1 flex flex-col gap-10 md:gap-8 md:items-center md:text-center">
+            <div className="flex-1 flex flex-col gap-10 md:gap-8 sm:gap-5 md:items-center md:text-center sm:w-full">
 
               {/* Social proof badge */}
               <div
@@ -268,10 +268,11 @@ export default function Home() {
               {/* Main headline */}
               <div className="flex flex-col gap-4">
                 <h1
+                  className="hero-h1"
                   style={{
                     color: "#ffffff",
                     fontWeight: 900,
-                    lineHeight: 1.04,
+                    lineHeight: 1.08,
                     fontSize: "clamp(38px, 5.2vw, 64px)",
                     margin: 0,
                     letterSpacing: "-2px",
@@ -281,6 +282,7 @@ export default function Home() {
                   <span style={{ color: "#f9cb00" }}>Tournament Winner</span>
                 </h1>
                 <p
+                  className="hero-subtitle"
                   style={{
                     fontSize: "clamp(15px, 1.6vw, 18px)",
                     fontWeight: 500,
