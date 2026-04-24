@@ -25,6 +25,7 @@ import OfferPopup, { OFFER_SUBMITTED_KEY, OFFER_DISMISSED_SESSION_KEY } from "@/
 import CompaniesSection from "./components/CompaniesSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import ClickSpark from "@/components/ClickSpark";
+import SoftAurora from "@/components/SoftAurora";
 
 const featureBullets = [
   { title: "Results from session one" },
@@ -190,6 +191,29 @@ export default function Home() {
           style={{ background: "linear-gradient(160deg, #1c0c02 0%, #0d0404 50%, #080202 100%)" }}
         />
 
+        {/* ── SOFT AURORA — KwinBee gold theme, screen-blended over the dark base ── */}
+        <div
+          className="absolute inset-0 pointer-events-none sm:hidden"
+          style={{ mixBlendMode: "screen", zIndex: 1, opacity: 0.85 }}
+        >
+          <SoftAurora
+            speed={0.35}
+            scale={1.3}
+            brightness={0.72}
+            color1="#f9cb00"
+            color2="#ff8c00"
+            noiseFrequency={2.2}
+            noiseAmplitude={0.9}
+            bandHeight={0.48}
+            bandSpread={1.15}
+            octaveDecay={0.15}
+            layerOffset={0.6}
+            colorSpeed={0.7}
+            enableMouseInteraction={true}
+            mouseInfluence={0.18}
+          />
+        </div>
+
         {/* ── 3D CHESS FLOOR — hidden on mobile to avoid overflow + perf ── */}
         <div
           className="absolute bottom-0 left-[-10%] right-[-10%] pointer-events-none sm:hidden"
@@ -242,13 +266,13 @@ export default function Home() {
           }}
         />
 
-        {/* ── Amber spotlight — top-left warm accent ── */}
+        {/* ── Amber spotlight — reduced since aurora handles warm glow ── */}
         <div
-          className="absolute pointer-events-none"
+          className="absolute pointer-events-none sm:hidden"
           style={{
             top: "-20%", left: "-8%",
             width: "60%", height: "90%",
-            background: "radial-gradient(ellipse, rgba(249,203,0,0.16) 0%, transparent 65%)",
+            background: "radial-gradient(ellipse, rgba(249,203,0,0.07) 0%, transparent 65%)",
           }}
         />
 
